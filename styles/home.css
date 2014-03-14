@@ -7,7 +7,7 @@
 .footer-line, .footer-line .cnt{background-image:url(https://i.alipayobjects.com/e/201303/2NwD1Q6ihZ.png);}
 
 html{color:#000;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#fff;}
-body{margin:0;padding:0;font:12px/1.5 tahoma,arial,Hiragino Sans GB,微软雅黑,\5b8b\4f53,"Microsoft YaHei";}
+body{margin:0;padding:0;font:12px/1.5 tahoma,arial,Hiragino Sans GB,微软雅黑,"Microsoft YaHei",\5b8b\4f53;}
 
 div{margin:0;padding:0;}
 dl{margin:0;padding:0;}
