@@ -1,0 +1,19 @@
+/* This file contains the styles used in the index.html to theme the buttons. */
+body {
+	font-family: "Segoe UI", "Helvetica", "Arial", "Sans Serif";
+}
+.demo-button {
+	display: inline-block;
+	padding: 5px 10px;
+	border: solid 1px #a9a9a9;
+	border-radius: 6px;
+	background-color: #eeeeee;
+	text-decoration: none;
+	margin-bottom: 5px;
+	color: #494949;
+}
+.demo-button:hover {
+	border-color: #2e2e2e;
+	background-color: #494949;
+	color: #eeeeee;
+}

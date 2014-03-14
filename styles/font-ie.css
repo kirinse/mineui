@@ -1,0 +1,6 @@
+/* This shows how we can exploit CSS Expressions to provide font icon support in IE7. */
+.lt-ie8 .demo-google-plus { zoom: expression(this.runtimeStyle['zoom']='1',this.innerHTML='\e000'); }
+.lt-ie8 .demo-facebook { zoom: expression(this.runtimeStyle['zoom']='1',this.innerHTML='\e001'); }
+.lt-ie8 .demo-twitter { zoom: expression(this.runtimeStyle['zoom']='1',this.innerHTML='\e002'); }
+.lt-ie8 .demo-github { zoom: expression(this.runtimeStyle['zoom']='1',this.innerHTML='\e003'); }
+.lt-ie8 .demo-wordpress { zoom: expression(this.runtimeStyle['zoom']='1',this.innerHTML='\e004'); }

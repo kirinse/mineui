@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>支付宝首页焦点图jQuery代码-97站长网 - www.97zzw.com</title> 
+<link charset="utf-8" rel="stylesheet" href="http://www.sucaijiayuan.com/demo/20121219-3/images/97zzw.css" />
+</head>
+<body role="document">
+<div id="banner" class="slide-2" coor-rate="0.1" coor="default-banner" role="banner">
+      <div class="login-box">
+      </div>
+      <ul id="J-slide">
+<li class="slide">
+        <div class="bg bg-1"></div>
+        <div class="pic pic-1"></div>
+        <div class="txt-wrap">
+          <div class="txt txt-1">
+            <h3>购物支付 快速安全</h3>
+            <p>无需网银 3步完成购物支付</p>
+ <a href="http://www.97zzw.com" target="_blank" title="立即体验" hidefocus="true" seed="txt-link" smartracker="on">立即体验</a></div>
+        </div>
+        </li>
+<li class="slide">
+        <div class="bg bg-2"></div>
+        <div class="pic pic-2"></div>
+        <div class="txt-wrap">
+          <div class="txt txt-2">
+            <h3>生活支付 轻松便捷</h3>
+            <p>在家也能缴费还款</p>
+            <a href="http://www.97zzw.com" target="_blank" title="立即体验" hidefocus="true" seed="txt-linkT1" smartracker="on">立即体验</a>
+          </div>     
+        </div>
+        </li>
+<li class="slide">
+        <div class="bg bg-3"></div>
+        <div class="pic pic-3"></div>
+        <div class="txt-wrap">  
+          <div class="txt txt-3">
+            <h3>把支付宝随身带</h3>
+            <p>随时随地用支付宝</p>
+            <a href="http://www.97zzw.com" target="_blank" title="立即体验" hidefocus="true" seed="txt-linkT2" smartracker="on">立即体验</a>
+          </div>               
+        </div>
+        </li>
+</ul>
+<div id="J-slide-number" class="slide-number">
+<a href="http://www.97zzw.com"  class="" hidefocus="true" seed="JSlideNumber-slideNumberActive" smartracker="on">1</a>
+<a href="http://www.97zzw.com" hidefocus="true" seed="JSlideNumber-link" smartracker="on" class="slide-number-active">2</a>
+<a href="http://www.97zzw.com" hidefocus="true" seed="JSlideNumber-linkT1" smartracker="on" class="">3</a></div>
+<div id="server-link">
+        <ul class="ui-link">
+          <li class="ui-link-item"><a href="http://www.97zzw.com/" target="_blank" seed="Banner-charging-rules">97站长网 - 站长资源</a></li>
+          <li class="ui-link-item ui-link-item-last"><a href="http://www.97zzw.com/jscode" target="_blank" seed="Banner-payment-agreement">JS代码素材免费下载</a></li>
+        </ul>
+      </div>
+</div>
+    <script type="text/javascript" charset="utf-8">
+      araleConfig = {
+        combo_host: 'https://a.alipayobjects.com',
+        combo_path: '/ar/??/'
+      }
+    </script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/arale.core-1.sc.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/alipay.alipayIndexSimple.base-1.0.js"></script>
+    <script type="text/javascript">
+      var adjust = null, adjustHeight = null,adjustHeightRecord = 0;
+      Loader.use('alipay.alipayIndexSimple.main',function(){
+
+        //自适应
+        adjust = alipay.index.adjust;
+
+        //图片延时加载
+        alipay.index.lazyload($$('noscript'),{
+          done:function(){
+
+
+        //秒杀大神
+        alipay.index.banner(4,5000);
+
+
+    </script>
+    <script type="text/javascript">
+      //banner图片轮转
+    if (arale.isIE()) {
+      Loader.use('aralex.slider.FadeSlider', function() {
+        var fs = new aralex.slider.FadeSlider({
+          id: "J-slide",
+          triggerId: "J-slide-number",
+          triggerEvent: "click",
+          activeTriggerClass: 'slide-number-active',
+          delay: 5000
+        });
+      });
+    } else {
+      (function() {
+        var banner = document.getElementById('banner');
+        var triggers = $$('#J-slide-number a');
+        var index = 1;
+        for (i = 0; i < triggers.length; i++) {
+          var item = triggers[i];
+          item.click(function(e) {
+            e.preventDefault();
+            slideTo(e.target.innerHTML);
+          });
+        }
+        function slideTo(number) {
+          index = parseInt(number);
+          banner.className = 'slide-' + number;
+          for (i = 0; i < triggers.length; i++) {
+            triggers[i].removeClass('slide-number-active');
+          }
+          triggers[index - 1].addClass('slide-number-active');
+        }
+        var SLIDE;
+        SLIDE = setInterval(function() {
+          if (index >= 3) index = 0;
+          index++;
+          slideTo(index);
+        }, 5000);
+        E.on(banner, 'mouseover', function() {
+          clearInterval(SLIDE);
+        });
+        E.on(banner, 'mouseout', function() {
+          SLIDE = setInterval(function() {
+            if (index >= 3) index = 0;
+            index++;
+            slideTo(index);
+          }, 5000);
+        });
+      })();
+    }
+      E.on($$('#J-slide-number a'), 'click', function(e){
+        e.preventDefault();
+      });
+    </script>  
+</body>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</div>
+ 
+
+ 
+ 
+ 
+ 
