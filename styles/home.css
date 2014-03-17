@@ -127,9 +127,9 @@ body .fn-hide{display:none;}
 .topmenu-item-dropdown:hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}
 .topmenu-item-dropdown-hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}
 .topmenu-item-dropdown a{float:left;zoom:1;}
-.topmenu-item-dropdown .icon-dropdown{width:12px;height:12px;display:inline-block;line-height:10px;overflow:hidden;vertical-align:middle;zoom:1;background-position:-452px -117px;}
+.topmenu-item-dropdown .icon-dropdown{width:12px;height:12px;display:inline-block;line-height:10px;overflow:hidden;vertical-align:middle;zoom:1;background-position:-600px -76px;}
 .topmenu-item-dropdown a:hover{text-decoration:none;}
-.topmenu-item-dropdown a:hover .icon-dropdown{background-position:-445px -60px;}
+.topmenu-item-dropdown a:hover .icon-dropdown{background-position:-624px -76px;}
 .topmenu-item-dropdown-hover .icon-dropdown{background-position:-445px -60px;}
 .topmenu-item-dropdown ul{display:none;position:absolute;background-color:#fff;}
 .topmenu-item-dropdown:hover ul{padding-top:8px;*padding-top:6px;padding-bottom:2px;padding-left:15px;padding-right:27px;display:block;border-bottom:1px solid #ccc;left:-1px;top:16px;border-left:1px solid #ccc;border-right:1px solid #ccc;background-color:#ffffff;}
@@ -289,7 +289,7 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 .product-item .ui-link-item{line-height:16px;padding:0 4px;}
 .product-item .ui-link-item-first{padding-left:0;}
 
-.product-item a:hover{color:#ff6600;text-decoration:none;}
+.product-item a:hover{color:#0cf;text-decoration:none;}
 .product-item .link{margin-bottom:10px;padding:4px 0 4px 0px;margin-top:5px;font-size:14px;}
 .product-item .link .icon-youhui{width:49px;height:17px;margin:-4px 5px 0 0;display:inline-block;vertical-align:middle;background-position:-480px -74px;}
 .product-item .picture{width:270px;height:45px;}
@@ -327,17 +327,17 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 .partner-item .more .icon-more{line-height:15px;width:15px;height:15px;*height:13px;*line-height:13px;display:inline-block;vertical-align:text-bottom;background-position:-445px -45px;}
 .partner-item .cnt{width:340px;/*height:50px;*/zoom:1;overflow:hidden;}
 .partner-item-last .cnt{width:270px;}
-.partner-item .cnt .business-pic{/*width:37px;line-height:37px;*/margin-right:8px;}
-.partner-item .cnt .business-pic i{margin-right:5px;display:inline-block;vertical-align: middle;height:37px;}
-.partner-item .cnt .business-pic .qq{background-position:-79px -233px;width:32px;}
-.partner-item .cnt .business-pic .wechat{background-position:-125px -233px;width:41px;}
-.partner-item .cnt .business-pic .weibo{background-position:-79px -280px;width:40px;}
-.partner-item .cnt .business-pic .tweibo{background-position:-125px -280px;width:36px;}
+.partner-item .cnt .business-pic, .partner-item .cnt .browser-pic{/*width:37px;line-height:37px;*/margin-right:8px;}
+.partner-item .cnt .business-pic i{margin-right:5px;display:inline-block;vertical-align: middle;height:20px;}
+.partner-item .cnt .business-pic .qq{background-position:-80px -235px;width:20px;}
+.partner-item .cnt .business-pic .wechat{background-position:-127px -235px;width:24px;}
+.partner-item .cnt .business-pic .weibo{background-position:-80px -280px;width:20px;}
+.partner-item .cnt .business-pic .tweibo{background-position:-126px -280px;width:22px;}
 .partner-item .cnt .browser-pic i{margin-right:5px;display:inline-block;vertical-align: middle;height:20px;}
 .partner-item .cnt .browser-pic .b360{background-position:-167px -234px;width:18px;}
-.partner-item .cnt .browser-pic .ie{background-position:-230px -234px;width:18px;}
+.partner-item .cnt .browser-pic .ie{background-position:-226px -235px;width:18px;}
 .partner-item .cnt .browser-pic .chrome{background-position:-196px -234px;width:18px;}
-.partner-item .cnt .browser-pic .firefox{background-position:-260px -234px;width:18px;}
+.partner-item .cnt .browser-pic .firefox{background-position:-258px -235px;width:18px;}
 .partner-item .ui-list-item{line-height:20px;height:24px;}
 .partner-item .ui-list-item .icon-list{width:12px;height:12px;display:inline-block;background-position:-440px -117px;}
 
