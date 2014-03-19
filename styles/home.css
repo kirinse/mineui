@@ -7,7 +7,7 @@
 .footer-line, .footer-line .cnt{background-image:url(https://i.alipayobjects.com/e/201303/2NwD1Q6ihZ.png);}
 
 html{color:#000;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#fff;}
-body{margin:0;padding:0;font:12px/1.5 tahoma,arial,Hiragino Sans GB,微软雅黑,"Microsoft YaHei",\5b8b\4f53;}
+body{margin:0;padding:0;font:12px/1.5 tahoma,arial,Hiragino Sans GB,微软雅黑,"Microsoft YaHei",\5b8b\4f53;position:relative;}
 
 div{margin:0;padding:0;}
 dl{margin:0;padding:0;}
@@ -76,7 +76,14 @@ body .fn-hide{display:none;}
 .fn-right{display:inline;float:right;}
 .footer-line{width:100%;height:20px;background-repeat:repeat-x;}
 .footer-line .cnt{height:20px;background-repeat:repeat-x;}
-.sl-shadow{-moz-box-shadow:0 0 4px #999999;-o-box-shadow:0 0 4px #999999;-webkit-box-shadow:0px 0px 4px #999999;box-shadow:0px 0px 4px #999999;-ms-filter:"progid:DXImageTransform.Microsoft.Glow(color=#a0a0a0,strength=0) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2)";*filter:progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2);}
+.sl-shadow{
+  -moz-box-shadow:0 0 4px #999999;
+  -o-box-shadow:0 0 4px #999999;
+  -webkit-box-shadow:0px 0px 4px #999999;
+  box-shadow:0px 0px 4px #999999;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Glow(color=#a0a0a0,strength=0) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2)";
+  *filter:progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=0,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=90,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=180,strength=2) progid:DXImageTransform.Microsoft.Shadow(color=#a0a0a0,direction=270,strength=2);
+}
 :root .sl-shadow{filter:none\9;}
 
 .ui-link-item{float:left;padding:0 8px;border-right:1px solid #cccccc;line-height:14px;}
@@ -140,19 +147,28 @@ body .fn-hide{display:none;}
 .topmenu-item-dropdown ul li a{display:block;}
 .topmenu-item-dropdown ul li a:hover{color:#ff6600;background-color:#ffffff;}
 
-.header{width:100%;height:100px;background-color:#ffffff;}
+.header{width:100%;height:100px;background-color:#ffffff;/*position:relative;*/}
 .header-wrap{height:83px;padding-top:10px;}
 #logo-noflash{width:260px;height:45px;background-position:-206px 0;}
 
 .ui-logo-kirin{width:275px;height:83px;display:block;text-indent:-9999px;background-position:0 0;}
 
-.nav{/*width:660px;*/height:45px;float:right;position:relative;z-index:999;}
+.nav{/*width:660px;*/height:45px;float:right;/*position:relative;*/z-index:999;}
 
-.nav-item{float:left;height:45px;position:relative;}
+.nav-item{float:left;height:45px;/*position:relative;*/}
 .nav-item .nav-item-link{height:45px;display:block;text-indent:-9999em;overflow:hidden;background-repeat:no-repeat;font-size:16px;line-height: 54px;}
 .nav-item .nav-item-link:hover{background-repeat:no-repeat;}
 .nav-item .nav-item-link-active{background-repeat:no-repeat;}
-.nav-item-sub{position:absolute;padding:9px 3px;top:45px;background-color:#fff;}
+
+.nav-item-sub{position:absolute;/*padding:9px 3px;*/top:100px;background-color:#fff;left:0;width:100%;z-index:999;border-top:solid 1px #e3e3e3;border-bottom:solid 1px #e3e3e3;}
+.nav-item-sub .sub-container{padding:10px 0;}
+.nav-item-sub .sub-container .sub-item{width:190px;height:180px;margin-right:10px;float:left; border-right: 1px solid #e7e7e7;}
+.nav-item-sub .sub-container .sub-item .title{padding: 0 12px 2px 15px;
+white-space: nowrap;
+font-weight: 700;
+border-collapse: separate;}
+.nav-item-sub .sub-container .sub-item-last{margin-right:0;border-right: 0;}
+
 .nav-item-table{white-space:nowrap;background-repeat:repeat;background-attachment:scroll;background-position:0 0;}
 .nav-item-table td{border-right:1px solid #e7e7e7;padding:2px 14px;white-space:nowrap;}
 .nav-item-table th{border-right:1px solid #e7e7e7;padding:0 12px 2px 15px;white-space:nowrap;font-weight:700;border-collapse:separate;}
@@ -161,6 +177,7 @@ body .fn-hide{display:none;}
 .nav-item-table a{color:#898989;display:block;padding-left:3px;position:relative;vertical-align:middle;}
 .nav-item-table a:hover{background-color:#aaaaaa;border-radius:2px 2px 2px 2px;color:#FFFFFF;text-decoration:none;vertical-align:middle;}
 .nav-item .nav-item-sub{display:none;}
+
 .nav-item .angle{position:absolute;display:none;width:15px;height:15px;font-size:0;top:35px;*top:36px;_top:38px;top:38px\0;right:65px;overflow:hidden;background-position:-418px -72px;}
 :root .angle{top:35px;}
 .nav-item:hover .nav-item-sub{display:block;}
@@ -174,7 +191,7 @@ body .fn-hide{display:none;}
 #lotto .nav-item-link{width:32px;margin-right:42px;background-position:-15px -190px;}
 #lotto .nav-item-link:hover{background-position:-15px -235px;}
 #lotto .nav-item-link-active{background-position:-15px -235px;}
-#lotto .nav-item-sub{right:20px;}
+#lotto .nav-item-sub{/*right:20px;*/}
 
 #casino .nav-item-link{width:48px;margin-right:32px;background-position:-15px -280px;}
 #casino .nav-item-link:hover{background-position:-15px -325px;}
