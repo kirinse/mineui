@@ -2,7 +2,7 @@
 
 .bg{background-size:cover;}
 #J-slide{background-image:url(../images/loading-modal.gif);}
-.topbar-wrap .mobile .icon-mobile, .topmenu-item-dropdown .icon-dropdown, .topmenu-item-dropdown a:hover .icon-dropdown, .topmenu-item-dropdown-hover .icon-dropdown, #logo-noflash, .ui-logo-kirin, .nav-item .angle, #home .nav-item-link, #home .nav-item-link:hover, #lotto .nav-item-link, #lotto .nav-item-link:hover, #lotto .nav-item-link-active, #casino .nav-item-link, #casino .nav-item-link:hover, #casino .nav-item-link-active, #sports .nav-item-link, #sports .nav-item-link:hover, #sports .nav-item-link-active, #game .nav-item-link, #game .nav-item-link:hover, #game .nav-item-link-active, #promo .nav-item-link, #promo .nav-item-link:hover, #promo .nav-item-link-active, #help .icon-nav-split, #help .nav-item-link, #help .nav-item-link:hover, #help .nav-item-link-active, .slide-number a, .slide-number .slide-number-active, #product-lotto .title-link, #product-casino .title-link, #product-sports .title-link, #pay-anywhere .title-link, .product-item .link .icon-youhui, .about-item .icon-title-safety, .about-item .icon-title-vip, .about-item .icon-title-abc, .about-item .icon-about-safety, .about-item .icon-about-vip, .about-item .icon-about-abc, .partner-item .more .icon-more, .partner-item .cnt .business-pic .qq, .partner-item .cnt .business-pic .wechat, .partner-item .cnt .business-pic .weibo, .partner-item .cnt .business-pic .tweibo, .partner-item .cnt .browser-pic .b360, .partner-item .cnt .browser-pic .ie, .partner-item .cnt .browser-pic .firefox, .partner-item .cnt .browser-pic .chrome, .partner-item .ui-list-item .icon-list, .icon-partner-bank, .icon-partner-security, .auth .icon-zfywxk, .auth .icon-zfywxk:hover, .auth .icon-pcirk, .auth .icon-pcirk:hover, .auth .icon-visayz, .auth .icon-visayz:hover, .auth .icon-vsjmfw, .auth .icon-vsjmfw:hover, .auth .icon-zjwm, .auth .icon-zjwm:hover, .auth .icon-wlgs, .auth .icon-wlgs:hover, .auth .icon-ppaa, .auth .icon-ppaa:hover, .auth .icon-hzdt, .auth .icon-hzdt:hover, .auth .icon-aqff, .auth .icon-aqff:hover, .auth .icon-rzcx, .auth .icon-rzcx:hover, .follow_btn, .follow_btn:hover, .partner-item .cnt .business-pic-last i, .partner-item .cnt .business-pic-last .a, .partner-item .cnt .business-pic-last .b, .partner-item .cnt .business-pic-last .c, .partner-item .cnt .business-pic-last .d, .partner-item .cnt .business-pic-last .e, .partner-item .cnt .business-pic-last .f, .partner-item .cnt .business-pic-last .g, .partner-item .cnt .business-pic-last .h, .partner-item .cnt .business-pic-last .i, .partner-item .cnt .business-pic-last .j{background-image:url(../images/combo.png);}
+.topbar-wrap .mobile .icon-mobile, .topmenu-item-dropdown .icon-dropdown, .topmenu-item-dropdown a:hover .icon-dropdown, .topmenu-item-dropdown-hover .icon-dropdown, #logo-noflash, .ui-logo-kirin, .nav-item .angle, #home .nav-item-link, #home .nav-item-link:hover, #lotto .nav-item-link, #lotto .nav-item-link:hover, #lotto .nav-item-link-active, #casino .nav-item-link, #casino .nav-item-link:hover, #casino .nav-item-link-active, #sports .nav-item-link, #sports .nav-item-link:hover, #sports .nav-item-link-active, #game .nav-item-link, #game .nav-item-link:hover, #game .nav-item-link-active, #promo .nav-item-link, #promo .nav-item-link:hover, #promo .nav-item-link-active, #help .icon-nav-split, #help .nav-item-link, #help .nav-item-link:hover, #help .nav-item-link-active, .slide-number a, .slide-number .slide-number-active, #product-lotto .title-link, #product-casino .title-link, #product-sports .title-link, #product-game .title-link, .product-item .link .icon-youhui, .about-item .icon-title-safety, .about-item .icon-title-vip, .about-item .icon-title-abc, .about-item .icon-about-safety, .about-item .icon-about-vip, .about-item .icon-about-abc, .partner-item .more .icon-more, .partner-item .cnt .business-pic .qq, .partner-item .cnt .business-pic .wechat, .partner-item .cnt .business-pic .weibo, .partner-item .cnt .business-pic .tweibo, .partner-item .cnt .browser-pic .b360, .partner-item .cnt .browser-pic .ie, .partner-item .cnt .browser-pic .firefox, .partner-item .cnt .browser-pic .chrome, .partner-item .ui-list-item .icon-list, .icon-partner-bank, .icon-partner-security, .auth .icon-zfywxk, .auth .icon-zfywxk:hover, .auth .icon-pcirk, .auth .icon-pcirk:hover, .auth .icon-visayz, .auth .icon-visayz:hover, .auth .icon-vsjmfw, .auth .icon-vsjmfw:hover, .auth .icon-zjwm, .auth .icon-zjwm:hover, .auth .icon-wlgs, .auth .icon-wlgs:hover, .auth .icon-ppaa, .auth .icon-ppaa:hover, .auth .icon-hzdt, .auth .icon-hzdt:hover, .auth .icon-aqff, .auth .icon-aqff:hover, .auth .icon-rzcx, .auth .icon-rzcx:hover, .follow_btn, .follow_btn:hover, .partner-item .cnt .business-pic-last i, .partner-item .cnt .business-pic-last .a, .partner-item .cnt .business-pic-last .b, .partner-item .cnt .business-pic-last .c, .partner-item .cnt .business-pic-last .d, .partner-item .cnt .business-pic-last .e, .partner-item .cnt .business-pic-last .f, .partner-item .cnt .business-pic-last .g, .partner-item .cnt .business-pic-last .h, .partner-item .cnt .business-pic-last .i, .partner-item .cnt .business-pic-last .j,.nav-item-sub .sub-container .digital,.sub-item .sub-item-digital,.sub-item .sub-item-11x5,.sub-item .sub-item-kl8,.sub-item .sub-item-3d,.sub-item .sub-item-k3,.sub-item .sub-item-p3{background-image:url(../images/combo.png);}
 
 .footer-line, .footer-line .cnt{background-image:url(https://i.alipayobjects.com/e/201303/2NwD1Q6ihZ.png);}
 
@@ -118,6 +118,111 @@ body .fn-hide{display:none;}
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');
 	border-bottom:1px solid #dcdcdc;_overflow:hidden;
 }
+.loginbar{width: 660px;float: right;height:45px;/*line-height:45px;*/}
+.loginbar .ui-form{float:right;font-size: 12px;line-height: 1.5;position: relative;zoom: 1;}
+.loginbar .ui-form .topmenu{*float:left;}
+.ui-form, .ui-form * {list-style: none;}
+.ui-form-item {
+padding: 0;
+zoom: 1;
+position: relative;
+float:left;
+margin-right:5px;
+}
+.ui-form-item-last{margin-right:0;}
+.loginbar .ui-label {
+border-top: 1px solid #a7a7a7;
+border-bottom: 1px solid #a7a7a7;
+border-left: 1px solid #a7a7a7;
+}
+.ui-label {
+width: 23px;
+height: 22px;
+display: block;
+float: left;
+cursor: pointer;
+}
+.ui-label .ui-icon {
+width: 23px;
+height: 22px;
+display: block;
+text-indent: -9999em;
+overflow: hidden;
+background-color: #aaabab;
+background-image: url(../images/combo.png);
+/*_background-image: url(https://i.alipayobjects.com/e/201311/1Yc1UNOrYL.png);*/
+background-repeat: no-repeat;
+}
+.ui-icon-userDEF {
+background-position: -75px -368px;
+}
+.loginbar .ui-input {
+border: 1px solid #a7a7a7;
+vertical-align: middle;
+}
+.ui-input-normal, .standardPwdContainer .ui-input, .alieditContainer .ui-input {
+width: 100px;
+_width: 98px;
+}
+.ui-input {
+float: left;
+position: relative;
+padding: 1px 3px;
+line-height: 20px;
+height: 20px;
+color: #595959;
+font-size: 12px;
+vertical-align: middle;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+box-shadow: none;
+}
+.ui-input:focus,.ui-input-focus{outline-style:none;color:#595959}
+.ui-icon-securityOFF {
+background-position: -101px -368px;
+}
+.loginbar .ui-button {
+display: block;
+text-align: center;
+text-decoration: none;
+vertical-align: middle;
+cursor: pointer;
+width: 60px;
+padding: 0 10px;
+font-size: 12px;
+line-height: 24px;
+height: 24px;
+color: #fff;
+text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+font-weight: 400;
+font-weight: bold\0;
+_font-weight: 700;
+background-color: #0cf;
+background: -webkit-gradient(linear,left top,left bottom,from(#0cf),to(#009FE0));
+background: -moz-linear-gradient(top,#0cf,#009FE0);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ccff', endColorstr='#009FE0');
+background: -o-linear-gradient(top,#0cf,#009FE0);
+background: -ms-linear-gradient(top,#00ccff 0,#009FE0 100%);
+background: linear-gradient(top,#0cf,#009FE0);
+border: 0;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.loginbar .ui-button:hover, a.ui-button:hover {
+text-decoration: none;
+background-color: #f48f0d;
+background: -webkit-gradient(linear,left top,left bottom,from(#009FE0),to(#0cf));
+background: -moz-linear-gradient(top,#009FE0,#0cf);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#009FE0', endColorstr='#00ccff');
+background: -o-linear-gradient(top,#009FE0,#00ccff);
+background: -ms-linear-gradient(top,#009FE0 0,#00ccff 100%);
+background: linear-gradient(top,#009FE0,#00ccff);
+}
+
+
+
 .topbar-wrap{height:26px;background:#f5f5f5;background:-moz-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);background:-webkit-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);background:-o-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);background:-ms-linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);background:linear-gradient(-90deg, #fcfcfc 0%, #f5f5f5 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5');border-bottom:1px solid #dcdcdc;}
 
 .topbar-wrap .toplink{float:left;width:300px;line-height:14px;height:14px;padding:6px 0;}
@@ -131,8 +236,8 @@ body .fn-hide{display:none;}
 .topmenu-item-first .split{padding:0 5px;color:#666;}
 .topmenu-item-last{border-right:none;padding-right:0;}
 .topmenu-item-dropdown{position:relative;border-left:1px solid #e2e2e2;border-right:1px solid #e2e2e2;}
-.topmenu-item-dropdown:hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}
-.topmenu-item-dropdown-hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:3px;top:-3px;background-color:#ffffff;}
+.topmenu-item-dropdown:hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:6px;top:-6px;background-color:#ffffff;}
+.topmenu-item-dropdown-hover{border-top:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;padding-top:6px;top:-6px;background-color:#ffffff;}
 .topmenu-item-dropdown a{float:left;zoom:1;}
 .topmenu-item-dropdown .icon-dropdown{width:12px;height:12px;display:inline-block;line-height:10px;overflow:hidden;vertical-align:middle;zoom:1;background-position:-600px -76px;}
 .topmenu-item-dropdown a:hover{text-decoration:none;}
@@ -162,20 +267,21 @@ body .fn-hide{display:none;}
 
 .nav-item-sub{position:absolute;/*padding:9px 3px;*/top:100px;background-color:#fff;left:0;width:100%;z-index:999;border-top:solid 1px #e3e3e3;border-bottom:solid 1px #e3e3e3;}
 .nav-item-sub .sub-container{padding:10px 0;}
-.nav-item-sub .sub-container .sub-item{width:190px;height:180px;margin-right:10px;float:left; border-right: 1px solid #e7e7e7;}
+.nav-item-sub .sub-container .sub-item{width:175px;height:120px;margin-right:10px;float:left; border-right: 1px solid #e7e7e7;position: relative;padding-right: 14px;}
+.nav-item-sub .sub-container .digital{background-position:-167px -280px;}
 .nav-item-sub .sub-container .sub-item .title{padding: 0 12px 2px 15px;
 white-space: nowrap;
 font-weight: 700;
 border-collapse: separate;}
-.nav-item-sub .sub-container .sub-item-last{margin-right:0;border-right: 0;}
+.nav-item-sub .sub-container .sub-item-last{margin-right:0;padding-right:0;border-right: 0;width:189px;}
 
 .nav-item-table{white-space:nowrap;background-repeat:repeat;background-attachment:scroll;background-position:0 0;}
 .nav-item-table td{border-right:1px solid #e7e7e7;padding:2px 14px;white-space:nowrap;}
 .nav-item-table th{border-right:1px solid #e7e7e7;padding:0 12px 2px 15px;white-space:nowrap;font-weight:700;border-collapse:separate;}
 .nav-item-table th.last{border-right:none;}
 .nav-item-table td.last{border-right:none;}
-.nav-item-table a{color:#898989;display:block;padding-left:3px;position:relative;vertical-align:middle;}
-.nav-item-table a:hover{background-color:#aaaaaa;border-radius:2px 2px 2px 2px;color:#FFFFFF;text-decoration:none;vertical-align:middle;}
+.nav-item-sub a{color:#898989;display:inline-block;padding:0 3px;position:relative;vertical-align:middle;}
+.nav-item-sub a:hover{background-color:#aaaaaa;border-radius:2px 2px 2px 2px;color:#FFFFFF;text-decoration:none;vertical-align:middle;}
 .nav-item .nav-item-sub{display:none;}
 
 .nav-item .angle{position:absolute;display:none;width:15px;height:15px;font-size:0;top:35px;*top:36px;_top:38px;top:38px\0;right:65px;overflow:hidden;background-position:-418px -72px;}
@@ -196,7 +302,7 @@ border-collapse: separate;}
 #casino .nav-item-link{width:48px;margin-right:32px;background-position:-15px -280px;}
 #casino .nav-item-link:hover{background-position:-15px -325px;}
 #casino .nav-item-link-active{background-position:-15px -325px;}
-#casino .nav-item-sub{right:20px;}
+#casino .nav-item-sub{/*right:20px;*/}
 
 #sports .nav-item-link{width:32px;margin-right:42px;background-position:-15px -370px;}
 #sports .nav-item-link:hover{background-position:-15px -415px;}
@@ -232,8 +338,8 @@ border-collapse: separate;}
 #indexBanner a{display:inline-block;overflow:hidden;}
 #indexBanner img{display:block;}
 #indexBanner a.fn-hide{display:none;}
-#banner{position:relative;margin:0 auto;min-width:990px;overflow:hidden;width:100%;height:400px;z-index:100;border-bottom:1px solid #ffffff;background-color:#f9f9f9;}
-#J-slide{position:relative;width:100%;height:400px;background-repeat:no-repeat;background-color:#f9f4ed;background-position:center center;}
+#banner{position:relative;margin:0 auto;min-width:990px;overflow:hidden;width:100%;height:400px;z-index:100;border-bottom:1px solid #ffffff;background-color:#000000;}
+#J-slide{position:relative;width:100%;height:400px;background-repeat:no-repeat;/*background-color:#f9f4ed;*/background-position:center center;}
 #J-slide .slide{float:left;position:absolute;top:0;left:0;width:100%;height:400px;}
 .bg{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;overflow:hidden;background-position:50% 50%;background-repeat:no-repeat;-webkit-transition:opacity 800ms ease-in-out;-moz-transition:opacity 800ms ease-in-out;-ms-transition:opacity 800ms ease-in-out;-o-transition:opacity 800ms ease-in-out;transition:opacity 800ms ease-in-out;text-align:center;vertical-align:middle;}
 
@@ -279,11 +385,11 @@ border-collapse: separate;}
 .anim-down-over{top:50px;}
 
 #server-link{width:990px;height:30px;margin:0 auto;position:relative;z-index:999;top:-56px;overflow:hidden;border: 1px solid transparent;
-background: rgba(0,0,0,.4);
+/*background: rgba(0,0,0,.4);
 _background: 0;
 _border: 0;
-filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66000000', EndColorStr='#66000000');}
-#server-link .ui-link{/*padding:10px 0;*/position:absolute;bottom:17px;left:30px;}
+filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66000000', EndColorStr='#66000000');*/}
+#server-link .ui-link{/*padding:10px 0;*/position:absolute;bottom:17px;/*left:30px;*/}
 #server-link .ui-link-item{border-right:none;float:none;line-height:30px;height:30px;/*padding-left:40px;*/}
 #server-link .ui-link-item a{color:#ffffff;}
 #server-link .ui-link-item a:hover{color:#ffffff;text-decoration:underline;}
@@ -292,15 +398,15 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 .main{width:100%;/*height:260px;*/background-color:#f9f9f9;}
 .product{height:200px;/*border-bottom:1px solid #e6e6e6;*/background-color:#f9f9f9;}
 .product-item{width:240px;height:auto;float:left;margin:25px 20px 0 0;}
-.product-item .title{width:200px;height:30px;margin-top:10px;/*text-indent:-9999em;*/overflow:hidden;font-size:16px;}
+.product-item .title{width:200px;height:30px;margin-top:10px;text-indent:-9999em;overflow:hidden;font-size:16px;}
 .product-item .title-link{display:block;height:30px;}
 
-#product-lotto .title-link{width:200px;background-position:-246px -260px;}
+#product-lotto .title-link{width:80px;background-position:-80px -333px;}
 
-#product-casino .title-link{width:199px;background-position:0 -290px;}
-#product-sports .title-link{width:199px;background-position:0 -290px;}
+#product-casino .title-link{width:110px;background-position:-166px -333px;}
+#product-sports .title-link{width:80px;background-position:-280px -333px;}
 
-#pay-anywhere .title-link{width:246px;background-position:0 -260px;}
+#product-game .title-link{width:128px;background-position:-366px -333px;}
 
 .product-item .ui-link{padding:6px 0;font-size:14px;}
 .product-item .ui-link-item{line-height:16px;padding:0 4px;}
@@ -318,17 +424,26 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 .about{height:58px;padding:20px 0;border-top:1px solid #ffffff;background-color:#f9f9f9;}
 .about-item{width:270px;height:55px;float:left;margin-right:90px;position:relative;}
 .about-item-last{margin-right:0;}
+
 .about-item .title{width:220px;margin-left:60px;height:30px;text-indent:-9999em;margin-bottom:2px;}
-.about-item .icon-title-safety{width:155px;background-position:-155px -230px;}
+.sub-item .icon-title-shishicai{/*width:120px;background-position:-155px -230px;*/}
 .about-item .icon-title-vip{width:155px;background-position:0 -230px;}
 .about-item .icon-title-abc{width:155px;background-position:-310px -230px;}
-.about-item .ui-link{height:16px;padding:0px 0;position:relative;left:60px;}
-.about-item .ui-link-item{line-height:16px;font-size:14px;}
-.about-item .ui-link-item a{color:#999;}
-.about-item .ui-link-item a:hover{color:#ff6600;}
-.about-item .ui-link-item-last{padding-right:6px;}
-.about-item .icon-about{position:absolute;top:3px;left:0;width:46px;height:46px;display:block;}
-.about-item .icon-about-safety{background-position:0 0;}
+.sub-item .ui-link{/*height:16px;*/padding:0px 0;position:relative;padding-left:106px;/*width:80px;*/}
+.nav-item-sub .sub-container .sub-item-last .ui-link{right:0;}
+.sub-item .ui-link-item{line-height:16px;font-size:14px;}
+.sub-item .ui-link-item a{color:#999;}
+.sub-item .ui-link-item a:hover{color:#ff6600;}
+.sub-item .ui-link-item-last{padding-right:6px;}
+
+.sub-item .icon-sub-item{position:absolute;top:3px;left:0;width:92px;height:92px;display:block;}
+.sub-item .sub-item-digital{background-position:-670px 14px;}
+.sub-item .sub-item-11x5{background-position:-782px 10px;}
+.sub-item .sub-item-kl8{background-position:-890px 14px;}
+.sub-item .sub-item-3d{background-position:-1000px 4px;}
+.sub-item .sub-item-k3{background-position:-1115px 4px;}
+.sub-item .sub-item-p3{background-position:-1230px 10px;}
+
 .about-item .icon-about-vip{background-position:-48px 0;}
 .about-item .icon-about-abc{background-position:0 -48px;}
 
@@ -399,8 +514,8 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 
 #ServerNum{width:100%;color:#ededed;background-color:#ededed;}
 #ServerNum p{background-color:#ededed;text-align:center;}
-.follow_btn{display:inline-block;text-indent:-99999px;width:46px;height:21px;background-position:-48px -75px;}
-.follow_btn:hover{display:inline-block;text-indent:-99999px;width:46px;height:21px;background-position:-325px -320px;}
+.follow_btn{display:inline-block;text-indent:-99999px;width:46px;height:21px;background-position:-992px -386px;}
+.follow_btn:hover{display:inline-block;text-indent:-99999px;width:46px;height:21px;background-position:-992px -364px;}
 .partner-item .cnt .business-pic-last i{display:block;width:205px;height:20px;background-position:-205px -427px;}
 .partner-item .cnt .business-pic-last .a{background-position:-205px -347px;}
 .partner-item .cnt .business-pic-last .b{background-position:0 -427px;}
@@ -416,4 +531,4 @@ filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr
 
 
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx){.about-item .icon-about-safety, .about-item .icon-about-vip, .about-item .icon-about-abc, #personal .nav-item-link:hover, #personal .nav-item-link-active, #payment .nav-item-link:hover, #payment .nav-item-link-active, #security .nav-item-link, #security .nav-item-link:hover, #security .nav-item-link-active, #logo-noflash, .ui-logo-alipay, #business .nav-item-link, #business .nav-item-link:hover, #business .nav-item-link-active, #personal .nav-item-link, #home .nav-item-link, #business .icon-nav-split, #payment .nav-item-link, .icon-partner-security, .icon-partner-bank, .about-item .icon-title-vip, .about-item .icon-title-safety, .about-item .icon-title-abc, #pay-anywhere .title-link, #product-lotto .title-link, #product-casino .title-link, #product-casino .title-link, .auth .icon-zfywxk, .auth .icon-rzcx:hover, .auth .icon-pcirk, .auth .icon-zfywxk:hover, .auth .icon-pcirk:hover, .auth .icon-visayz, .auth .icon-visayz:hover, .auth .icon-vsjmfw, .auth .icon-zjwm, .auth .icon-vsjmfw:hover, .auth .icon-wlgs, .auth .icon-zjwm:hover, .auth .icon-wlgs:hover, .auth .icon-ppaa, .auth .icon-ppaa:hover, .auth .icon-hzdt, .auth .icon-hzdt:hover, .auth .icon-aqff, .auth .icon-rzcx, .auth .icon-aqff:hover, .follow_btn, .partner-item .cnt .business-pic, .follow_btn:hover, .partner-item .cnt .business-pic-last .i, .partner-item .cnt .business-pic-last .a, .partner-item .cnt .business-pic-last .f, .partner-item .cnt .business-pic-last .g, .partner-item .cnt .business-pic-last .h, .partner-item .cnt .business-pic-last .c, .partner-item .cnt .business-pic-last .e, .partner-item .cnt .business-pic-last .j, .partner-item .cnt .business-pic-last .d, .partner-item .cnt .business-pic-last .b, .partner-item .cnt .business-pic-last i, .product-item .link .icon-youhui, .partner-item .more .icon-more, .nav-item .angle, .slide-number .slide-number-active, .slide-number a, .topbar-wrap .mobile .icon-mobile, .topmenu-item-dropdown a:hover .icon-dropdown, .topmenu-item-dropdown-hover .icon-dropdown, .partner-item .ui-list-item .icon-list, .topmenu-item-dropdown .icon-dropdown{background-image:url(https://i.alipayobjects.com/e/201307/jebmKcbrh.png);background-size:466px 447px;}}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx){.about-item .icon-about-safety, .about-item .icon-about-vip, .about-item .icon-about-abc, #personal .nav-item-link:hover, #personal .nav-item-link-active, #payment .nav-item-link:hover, #payment .nav-item-link-active, #security .nav-item-link, #security .nav-item-link:hover, #security .nav-item-link-active, #logo-noflash, .ui-logo-alipay, #business .nav-item-link, #business .nav-item-link:hover, #business .nav-item-link-active, #personal .nav-item-link, #home .nav-item-link, #business .icon-nav-split, #payment .nav-item-link, .icon-partner-security, .icon-partner-bank, .about-item .icon-title-vip, .about-item .icon-title-safety, .about-item .icon-title-abc, #product-game .title-link, #product-lotto .title-link, #product-casino .title-link, #product-casino .title-link, .auth .icon-zfywxk, .auth .icon-rzcx:hover, .auth .icon-pcirk, .auth .icon-zfywxk:hover, .auth .icon-pcirk:hover, .auth .icon-visayz, .auth .icon-visayz:hover, .auth .icon-vsjmfw, .auth .icon-zjwm, .auth .icon-vsjmfw:hover, .auth .icon-wlgs, .auth .icon-zjwm:hover, .auth .icon-wlgs:hover, .auth .icon-ppaa, .auth .icon-ppaa:hover, .auth .icon-hzdt, .auth .icon-hzdt:hover, .auth .icon-aqff, .auth .icon-rzcx, .auth .icon-aqff:hover, .follow_btn, .partner-item .cnt .business-pic, .follow_btn:hover, .partner-item .cnt .business-pic-last .i, .partner-item .cnt .business-pic-last .a, .partner-item .cnt .business-pic-last .f, .partner-item .cnt .business-pic-last .g, .partner-item .cnt .business-pic-last .h, .partner-item .cnt .business-pic-last .c, .partner-item .cnt .business-pic-last .e, .partner-item .cnt .business-pic-last .j, .partner-item .cnt .business-pic-last .d, .partner-item .cnt .business-pic-last .b, .partner-item .cnt .business-pic-last i, .product-item .link .icon-youhui, .partner-item .more .icon-more, .nav-item .angle, .slide-number .slide-number-active, .slide-number a, .topbar-wrap .mobile .icon-mobile, .topmenu-item-dropdown a:hover .icon-dropdown, .topmenu-item-dropdown-hover .icon-dropdown, .partner-item .ui-list-item .icon-list, .topmenu-item-dropdown .icon-dropdown{background-image:url(https://i.alipayobjects.com/e/201307/jebmKcbrh.png);background-size:466px 447px;}}
