@@ -4,9 +4,9 @@
 #J-slide{background-image:url(../images/loading-modal.gif);}
 .topbar-wrap .mobile .icon-mobile, .topmenu-item-dropdown .icon-dropdown, .topmenu-item-dropdown a:hover .icon-dropdown, .topmenu-item-dropdown-hover .icon-dropdown, #logo-noflash, .ui-logo-kirin, .nav-item .angle, #home .nav-item-link, #home .nav-item-link:hover, #lotto .nav-item-link, #lotto .nav-item-link:hover, #lotto .nav-item-link-active, #casino .nav-item-link, #casino .nav-item-link:hover, #casino .nav-item-link-active, #sports .nav-item-link, #sports .nav-item-link:hover, #sports .nav-item-link-active, #game .nav-item-link, #game .nav-item-link:hover, #game .nav-item-link-active, #promo .nav-item-link, #promo .nav-item-link:hover, #promo .nav-item-link-active, #help .icon-nav-split, #help .nav-item-link, #help .nav-item-link:hover, #help .nav-item-link-active, .slide-number a, .slide-number .slide-number-active, #product-lotto .title-link, #product-casino .title-link, #product-sports .title-link, #product-game .title-link, .product-item .link .icon-youhui, .about-item .icon-title-safety, .about-item .icon-title-vip, .about-item .icon-title-abc, .about-item .icon-about-safety, .about-item .icon-about-vip, .about-item .icon-about-abc, .partner-item .more .icon-more, .partner-item .cnt .business-pic .qq, .partner-item .cnt .business-pic .wechat, .partner-item .cnt .business-pic .weibo, .partner-item .cnt .business-pic .tweibo, .partner-item .cnt .browser-pic .b360, .partner-item .cnt .browser-pic .ie, .partner-item .cnt .browser-pic .firefox, .partner-item .cnt .browser-pic .chrome, .partner-item .ui-list-item .icon-list, .icon-partner-bank, .icon-partner-security, .auth .icon-zfywxk, .auth .icon-zfywxk:hover, .auth .icon-pcirk, .auth .icon-pcirk:hover, .auth .icon-visayz, .auth .icon-visayz:hover, .auth .icon-vsjmfw, .auth .icon-vsjmfw:hover, .auth .icon-zjwm, .auth .icon-zjwm:hover, .auth .icon-wlgs, .auth .icon-wlgs:hover, .auth .icon-ppaa, .auth .icon-ppaa:hover, .auth .icon-hzdt, .auth .icon-hzdt:hover, .auth .icon-aqff, .auth .icon-aqff:hover, .auth .icon-rzcx, .auth .icon-rzcx:hover, .follow_btn, .follow_btn:hover, .partner-item .cnt .business-pic-last i, .partner-item .cnt .business-pic-last .a, .partner-item .cnt .business-pic-last .b, .partner-item .cnt .business-pic-last .c, .partner-item .cnt .business-pic-last .d, .partner-item .cnt .business-pic-last .e, .partner-item .cnt .business-pic-last .f, .partner-item .cnt .business-pic-last .g, .partner-item .cnt .business-pic-last .h, .partner-item .cnt .business-pic-last .i, .partner-item .cnt .business-pic-last .j,.nav-item-sub .sub-container .digital,.sub-item .sub-item-digital,.sub-item .sub-item-11x5,.sub-item .sub-item-kl8,.sub-item .sub-item-3d,.sub-item .sub-item-k3,.sub-item .sub-item-p3{background-image:url(../images/combo.png);}
 
-.footer-line, .footer-line .cnt{background-image:url(https://i.alipayobjects.com/e/201303/2NwD1Q6ihZ.png);}
+.footer-line, .footer-line .cnt{background-image:url(../images/footer-line.png);}
 
-html{color:#000;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#fff;}
+html{color:#000;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#ededed;}
 body{margin:0;padding:0;font:12px/1.5 tahoma,arial,Hiragino Sans GB,微软雅黑,"Microsoft YaHei",\5b8b\4f53;position:relative;}
 
 div{margin:0;padding:0;}
@@ -129,6 +129,8 @@ position: relative;
 float:left;
 margin-right:5px;
 }
+/*for chrome 33*/#J-username, #J-password{width:132px;}
+
 .ui-form-item-last{margin-right:0;}
 .loginbar .ui-label {
 border-top: 1px solid #a7a7a7;
