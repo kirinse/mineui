@@ -120,7 +120,7 @@ var srcFileReg=/(?:.*).css|(.*)src\.js/;var noneSrcFileReg=/(.*)(.js)/;var getSr
 if(matcher.length>2){return matcher[1]+"-src"+matcher[2]}}else{return fileName}};
 var getPaths=function(paths){if(arale.depSrc){for(var i=paths.length-1;i>-1;i--){paths[i]=getSrcFile(paths[i])
 }}if(araleConfig.__tmp){for(var i=0,l=paths.length;i<l;i++){var fileName=paths[i];
-if(fileName.indexOf("arale")>-1||fileName.indexOf("alipay")>-1){paths[i]="static/ar/"+fileName
+if(fileName.indexOf("arale")>-1||fileName.indexOf("kirin")>-1){paths[i]="static/ar/"+fileName
 }else{paths[i]=fileName.slice(0,fileName.indexOf("."))+"/"+fileName}}}var path=context+paths.join(",");
 if(arale.debug){path=path+"&date="+new Date().getTime()+"&debug=1"}return path};var startLoader=function(watiTime){if(loading){clearTimeout(loading)
 }loading=setTimeout(function(){var paths=[],modules=[],moduleList=readyLoader,tempModule;
@@ -148,7 +148,7 @@ default:return}});var proxyModule=deps.depsToModule(module);if(Allsuccess){proxy
 cssReadyLoader=[]}},50)};return{use:blockLoader,waituse:function(){throw new Error("Deprecated method.");
 return;var params=[].slice.call(arguments,0);$E.domReady(function(){blockLoader.apply(null,params)
 })},css:function(cssPath){if(cssPath){cssReadyLoader.push(cssPath);loadCss()}},useCss:function(){var files=[].slice.call(arguments,0);
-if(araleConfig.__tmp){for(var i=0,l=files.length;i<l;i++){var fileName=files[i];if(fileName.indexOf("alice")>-1||fileName.indexOf("arale")>-1||fileName.indexOf("alipay")>-1){files[i]="static/al/"+fileName
+if(araleConfig.__tmp){for(var i=0,l=files.length;i<l;i++){var fileName=files[i];if(fileName.indexOf("alice")>-1||fileName.indexOf("arale")>-1||fileName.indexOf("kirin")>-1){files[i]="static/al/"+fileName
 }else{files[i]=fileName.slice(0,fileName.indexOf("."))+"/"+fileName}}}loadCssDomElement(cssContext+files.join(","))
 },loadScriptByUrl:function(url,callback){loadScriptDomElement(url,callback)}}},"$Loader");
 Loader=$Loader;arale.deps.depsToModule("arale.base-1.1.js").moduleStatus(arale.deps.LOAD.loaded);
