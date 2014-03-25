@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A Gentle Introduction</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#/author">#/author</a></li>
+      <li><a href="#/books">#/books</a></li>
+      <li><a href="#/books/view/1">#/books/view/1</a></li>
+    </ul>
+    <script type="text/javascript" charset="utf-8" src="javascripts/director.js"></script>
+    <script>
+
+      var author = function () { console.log("author"); },
+          books = function () { console.log("books"); },
+          viewBook = function(bookId) { console.log("viewBook: bookId is populated: " + bookId); };
+
+      var routes = {
+        '/author': author,
+        '/books': [books, function() { console.log("An inline route handler."); }],
+        '/books/view/:bookId': viewBook
+      };
+
+      var router = Router(routes);
+      router.init();
+
+    </script>
+  </body>
+</html>
