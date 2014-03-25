@@ -1,57 +1,326 @@
-var _baseAraleConfig={debug:false,combo_path:"/min/?b=ar&f=",css_combo_path:"/min/?b=al&f=",combo_host:"localhost",module_path:"/arale-trunk",locale:"zh-cn",waitTime:100,corex:false,depSrc:false};
-if(window.araleConfig){(function(){for(var _name in _baseAraleConfig){if(_baseAraleConfig.hasOwnProperty(_name)&&!araleConfig.hasOwnProperty(_name)){araleConfig[_name]=_baseAraleConfig[_name]
-}}}())}else{var araleConfig=_baseAraleConfig}var arale=arale||{debug:araleConfig.debug||false,depSrc:araleConfig.depSrc||false,cache:{},env:{combo_host:araleConfig.combo_host,combo_path:araleConfig.combo_path,css_combo_path:araleConfig.css_combo_path,locale:araleConfig.locale},registerCoboPath:function(comboPath){arale.env.combo_path=comboPath
-},registerComboHost:function(moduleHost){arale.env.combo_host=moduleHost},getComboPath:function(){return this.getComboHost()+arale.env.combo_path
-},getCssComboPath:function(){if(araleConfig.__tmp){if(this.getComboHost().indexOf("assets")>-1){return this.getCssComboHost()+"/??"
-}else{return this.getCssComboHost()+"/min/?f="}}return this.getCssComboHost()+arale.env.css_combo_path
-},getComboHost:function(){var env=arale.env;if(env.combo_host.indexOf("http")==-1){env.combo_host=location.protocol+"//"+env.combo_host
-}return env.combo_host},getCssComboHost:function(){return this.getComboHost()},$try:function(){for(var i=0,l=arguments.length;
-i<l;i++){try{return arguments[i]()}catch(e){}}return null},implement:function(objects,properties){if(!arale.isArray(objects)){objects=[objects]
-}for(var i=0,l=objects.length;i<l;i++){for(var p in properties){objects[i].prototype[p]=properties[p]
-}}},namespace:function(namespace,root){var parts=namespace.split("."),current=root||window;
-if(!(parts[0] in window)){window[parts[0]]={}}for(var part;parts.length&&(part=parts.shift());
-){if(!current[part]){current[part]={}}current[part]._parentModule||(current[part]._parentModule=current);
-current=current[part];current._moduleName=part}return current},parseNamespace:function(ns){var arr=ns.split("."),obj;
-for(var i=0;i<arr.length;i++){obj=arr[i]}},module:function(module,obj,alias){var current=this.namespace(module),root=window;
-if(arale.isFunction(obj)){obj=obj.call(arale,obj)}if(arale.isFunction(obj)){alias&&(root[alias]=obj);
-current._parentModule[current._moduleName]=obj}else{arale._mixin(current,obj);if(!root[alias]){root[alias]={}
-}alias&&(arale._mixin(root[alias],obj))}},_mixin:function(target,src,override){if(!target){target={}
-}for(var name in src){if(src.hasOwnProperty(name)){if((target[name]==undefined)||override){target[name]=src[name]
-}}}return target},extend:function(obj){var temp=function(){};temp.prototype=obj;return new temp()
-},inherits:function(childCtor,parentCtor){function tempCtor(){}tempCtor.prototype=parentCtor.prototype;
-childCtor.superClass=parentCtor.prototype;childCtor.superCouns=parentCtor;childCtor.prototype=new tempCtor();
-childCtor.prototype.constructor=childCtor},augment:function(receivingClass,obj){for(methodName in obj){if(obj.hasOwnProperty(methodName)){if(!receivingClass.prototype.hasOwnProperty(methodName)){receivingClass.prototype[methodName]=obj[methodName]
-}}}},dblPrototype:function(obj,init){var Middle=function(){};Middle.prototype=obj;
-var First=function(){if(init){init.apply(this,arguments)}this[0]=arguments[0]};First.prototype=new Middle();
-return First},typeOf:function(value){var s=typeof value;if(s=="object"){if(value){if(value instanceof Array||(!(value instanceof Object)&&(Object.prototype.toString.call((value))=="[object Array]")||typeof value.length=="number"&&typeof value.splice!="undefined"&&typeof value.propertyIsEnumerable!="undefined"&&!value.propertyIsEnumerable("splice"))){return"array"
-}if(!(value instanceof Object)&&(Object.prototype.toString.call((value))=="[object Function]"||typeof value.call!="undefined"&&typeof value.propertyIsEnumerable!="undefined"&&!value.propertyIsEnumerable("call"))){return"function"
-}}else{return"null"}}else{if(s=="function"&&typeof value.call=="undefined"){return"object"
-}}return s},isUndefined:function(val){return typeof val==="undefined"},isNull:function(val){return val===null
-},isFunction:function(val){return arale.typeOf(val)=="function"},isArray:function(val){return arale.typeOf(val)=="array"
-},isNumber:function(val){return arale.typeOf(val)=="number"},isString:function(val){return arale.typeOf(val)=="string"
-},isObject:function(val){var type=arale.typeOf(val);return type=="object"||type=="array"||type=="function"
-},isDate:function(val){return arale.isObject(val)&&arale.isFunction(val.getMonth)
-},isNativeObject:function(ufo){return(arale.isString(ufo)||arale.isObject(ufo)||arale.isFunction(ufo)||arale.isDate(ufo))
-},unique:function(arr){if(arr.constructor!==Array){arale.error("type error: "+arr+" must be an Array!")
-}var r=new Array();o:for(var i=0,n=arr.length;i<n;i++){for(var x=0,y=r.length;x<y;
-x++){if(r[x]==arr[i]){continue o}}r[r.length]=arr[i]}return r},$random:function(min,max){return Math.floor(Math.random()*(max-min+1)+min)
-},error:function(str){arale.log("error:"+str)},exec:function(text){if(!text){return text
-}if(window.execScript){window.execScript(text)}else{var script=document.createElement("script");
-script.setAttribute("type","text/javascript");script[(arale.browser.Engine.webkit&&arale.browser.Engine.ver<420)?"innerText":"text"]=text;
-document.getElementsByTagName("head")[0].appendChild(script);document.getElementsByTagName("head")[0].removeChild(script)
-}return text},hitch:function(scope,method){if(!method){method=scope;scope=null}if(arale.isString(method)){scope=scope||window;
-if(!scope[method]){throw (['arlea.hitch: scope["',method,'"] is null (scope="',scope,'")'].join(""))
-}return function(){return scope[method].apply(scope,arguments||[])}}return !scope?method:function(){return method.apply(scope,arguments||[])
-}},now:function(){return(new Date()).getTime()},logError:function(sev,msg){var img=new Image();
-img.src="sev="+encodeURIComponent(sev)+"&msg="+encodeURIComponent(msg)},log:function(){if(araleConfig.debug&&("console" in window)){console.log.apply(console,arguments)
-}},getUniqueId:function(str){var id=arale.getUniqueId._id||1;arale.getUniqueId._id=++id;
-return(str)?str+id:id},getModulePath:function(path){return araleConfig.module_path+"/"+path
-},each:function(obj,callback,bind){var isObject=arale.typeOf(obj)==="object",key;
-if(isObject){for(key in obj){if(this.obj.hasOwnProperty(key)){callback.call(bind,key,obj[key])
-}}}else{if(Array.prototype.forEach){return[].forEach.call(obj,callback,bind)}for(var i=0,len=obj.length;
-i<len;i++){callback.call(bind,obj[i],i,obj)}}},checkVersion:function(version){return;
-if(version!=arale.version){throw new Error("core version disaccord.[runtime is "+arale.verison+", dependency is "+version)
-}}};arale.range=function(start,end,step){var matrix=[];var inival,endval,plus;var walker=step||1;
+var _baseAraleConfig={
+  debug:false,
+  combo_path:"/min/?b=ar&f=",
+  css_combo_path:"/min/?b=al&f=",
+  combo_host:"localhost",
+  module_path:"/arale-trunk",
+  locale:"zh-cn",
+  waitTime:100,
+  corex:false,
+  depSrc:false
+};
+if(window.araleConfig){
+  (function(){
+    for(var _name in _baseAraleConfig){
+      if(_baseAraleConfig.hasOwnProperty(_name)&&!araleConfig.hasOwnProperty(_name)){
+        araleConfig[_name]=_baseAraleConfig[_name]
+      }
+    }
+  }())
+}
+else
+{
+  var araleConfig=_baseAraleConfig
+}
+var arale=arale||{
+  debug:araleConfig.debug||false,
+  depSrc:araleConfig.depSrc||false,
+  cache:{},
+  env:{
+    combo_host:araleConfig.combo_host,
+    combo_path:araleConfig.combo_path,
+    css_combo_path:araleConfig.css_combo_path,
+    locale:araleConfig.locale
+  },
+  registerCoboPath:function(comboPath){
+    arale.env.combo_path=comboPath
+  },
+  registerComboHost:function(moduleHost){
+    arale.env.combo_host=moduleHost
+  },
+  getComboPath:function(){
+    return this.getComboHost()+arale.env.combo_path
+  },
+  getCssComboPath:function(){
+    if(araleConfig.__tmp){
+      if(this.getComboHost().indexOf("assets")>-1){
+        return this.getCssComboHost()+"/??"
+      }
+      else
+      {
+        return this.getCssComboHost()+"/min/?f="
+      }
+    }
+    return this.getCssComboHost()+arale.env.css_combo_path
+  },
+  getComboHost:function(){
+    var env=arale.env;
+    if(env.combo_host.indexOf("http")==-1){
+      env.combo_host=location.protocol+"//"+env.combo_host
+    }
+    return env.combo_host
+  },
+  getCssComboHost:function(){
+    return this.getComboHost()
+  },
+  $try:function(){
+    for(var i=0,l=arguments.length;i<l;i++){
+      try{
+        return arguments[i]()
+      }
+      catch(e){}
+    }
+    return null
+  },
+  implement:function(objects,properties){
+    if(!arale.isArray(objects)){
+      objects=[objects]
+    }
+    for(var i=0,l=objects.length;i<l;i++){
+      for(var p in properties){
+        objects[i].prototype[p]=properties[p]
+      }
+    }
+  },
+  namespace:function(namespace,root){
+    var parts=namespace.split("."),current=root||window;
+    if(!(parts[0] in window)){
+      window[parts[0]]={}
+    }
+    for(var part;parts.length&&(part=parts.shift());){
+      if(!current[part]){
+        current[part]={}
+      }
+      current[part]._parentModule||(current[part]._parentModule=current);
+      current=current[part];
+      current._moduleName=part
+    }
+    return current
+  },
+  parseNamespace:function(ns){
+    var arr=ns.split("."),obj;
+    for(var i=0;i<arr.length;i++){
+      obj=arr[i]
+    }
+  },
+  module:function(module,obj,alias){
+    var current=this.namespace(module),root=window;
+    if(arale.isFunction(obj)){
+      obj=obj.call(arale,obj)
+    }
+    if(arale.isFunction(obj)){
+      alias&&(root[alias]=obj);
+      current._parentModule[current._moduleName]=obj
+    }
+    else
+    {
+      arale._mixin(current,obj);
+      if(!root[alias]){
+        root[alias]={}
+      }
+      alias&&(arale._mixin(root[alias],obj))
+    }
+  },
+  _mixin:function(target,src,override){
+    if(!target){
+      target={}
+    }
+    for(var name in src){
+      if(src.hasOwnProperty(name)){
+        if((target[name]==undefined)||override){
+          target[name]=src[name]
+        }
+      }
+    }
+    return target
+  },
+  extend:function(obj){
+    var temp=function(){};
+    temp.prototype=obj;
+    return new temp()
+  },
+  inherits:function(childCtor,parentCtor){
+    function tempCtor(){}
+    tempCtor.prototype=parentCtor.prototype;
+    childCtor.superClass=parentCtor.prototype;
+    childCtor.superCouns=parentCtor;
+    childCtor.prototype=new tempCtor();
+    childCtor.prototype.constructor=childCtor
+  },
+  augment:function(receivingClass,obj){
+    for(methodName in obj){
+      if(obj.hasOwnProperty(methodName)){
+        if(!receivingClass.prototype.hasOwnProperty(methodName)){
+          receivingClass.prototype[methodName]=obj[methodName]
+        }
+      }
+    }
+  },
+  dblPrototype:function(obj,init){
+    var Middle=function(){};
+    Middle.prototype=obj;
+    var First=function(){
+      if(init){
+        init.apply(this,arguments)
+      }
+      this[0]=arguments[0]
+    };
+    First.prototype=new Middle();
+    return First
+  },
+  typeOf:function(value){
+    var s=typeof value;
+    if(s=="object"){
+      if(value){
+        if(value instanceof Array||(!(value instanceof Object)&&(Object.prototype.toString.call((value))=="[object Array]")||typeof value.length=="number"&&typeof value.splice!="undefined"&&typeof value.propertyIsEnumerable!="undefined"&&!value.propertyIsEnumerable("splice"))){
+          return"array"
+        }
+        if(!(value instanceof Object)&&(Object.prototype.toString.call((value))=="[object Function]"||typeof value.call!="undefined"&&typeof value.propertyIsEnumerable!="undefined"&&!value.propertyIsEnumerable("call"))){
+          return"function"
+        }
+      }
+      else
+      {
+        return"null"
+      }
+    }
+    else
+    {
+      if(s=="function"&&typeof value.call=="undefined"){
+        return"object"
+      }
+    }
+    return s
+  },
+  isUndefined:function(val){
+    return typeof val==="undefined"
+  },
+  isNull:function(val){
+    return val===null
+  },
+  isFunction:function(val){
+    return arale.typeOf(val)=="function"
+  },
+  isArray:function(val){
+    return arale.typeOf(val)=="array"
+  },
+  isNumber:function(val){
+    return arale.typeOf(val)=="number"
+  },
+  isString:function(val){
+    return arale.typeOf(val)=="string"
+  },
+  isObject:function(val){
+    var type=arale.typeOf(val);
+    return type=="object"||type=="array"||type=="function"
+  },
+  isDate:function(val){
+    return arale.isObject(val)&&arale.isFunction(val.getMonth)
+  },
+  isNativeObject:function(ufo){
+    return(arale.isString(ufo)||arale.isObject(ufo)||arale.isFunction(ufo)||arale.isDate(ufo))
+  },
+  unique:function(arr){
+    if(arr.constructor!==Array){
+      arale.error("type error: "+arr+" must be an Array!")
+    }
+    var r=new Array();
+    o:for(var i=0,n=arr.length;i<n;i++){
+      for(var x=0,y=r.length;x<y;x++){
+        if(r[x]==arr[i]){continue o}
+      }
+      r[r.length]=arr[i]
+    }
+    return r
+  },
+  $random:function(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min)
+  },
+  error:function(str){
+    arale.log("error:"+str)
+  },
+  exec:function(text){
+    if(!text){
+      return text
+    }
+    if(window.execScript){
+      window.execScript(text)
+    }
+    else
+    {
+      var script=document.createElement("script");
+      script.setAttribute("type","text/javascript");
+      script[(arale.browser.Engine.webkit&&arale.browser.Engine.ver<420)?"innerText":"text"]=text;
+      document.getElementsByTagName("head")[0].appendChild(script);
+      document.getElementsByTagName("head")[0].removeChild(script)
+    }
+    return text
+  },
+  hitch:function(scope,method){
+    if(!method){
+      method=scope;
+      scope=null
+    }
+    if(arale.isString(method)){
+      scope=scope||window;
+      if(!scope[method]){
+        throw (['arlea.hitch: scope["',method,'"] is null (scope="',scope,'")'].join(""))
+      }
+      return function(){
+        return scope[method].apply(scope,arguments||[])
+      }
+    }
+    return !scope?method:function(){
+      return method.apply(scope,arguments||[])
+    }
+  },
+  now:function(){
+    return(new Date()).getTime()
+  },
+  logError:function(sev,msg){
+    var img=new Image();
+    img.src="sev="+encodeURIComponent(sev)+"&msg="+encodeURIComponent(msg)
+  },
+  log:function(){
+    if(araleConfig.debug&&("console" in window)){
+      console.log.apply(console,arguments)
+    }
+  },
+  getUniqueId:function(str){
+    var id=arale.getUniqueId._id||1;
+    arale.getUniqueId._id=++id;
+    return(str)?str+id:id
+  },
+  getModulePath:function(path){
+    return araleConfig.module_path+"/"+path
+  },
+  each:function(obj,callback,bind){
+    var isObject=arale.typeOf(obj)==="object",key;
+    if(isObject){
+      for(key in obj){
+        if(this.obj.hasOwnProperty(key)){
+          callback.call(bind,key,obj[key])
+        }
+      }
+    }
+    else
+    {
+      if(Array.prototype.forEach){
+        return[].forEach.call(obj,callback,bind)
+      }
+      for(var i=0,len=obj.length;i<len;i++){
+        callback.call(bind,obj[i],i,obj)
+      }
+    }
+  },
+  checkVersion:function(version){
+    return;
+    if(version!=arale.version){
+      throw new Error("core version disaccord.[runtime is "+arale.verison+", dependency is "+version)
+    }
+  }
+};
+arale.range=function(start,end,step){var matrix=[];var inival,endval,plus;var walker=step||1;
 var chars=false;if(!isNaN(start)&&!isNaN(end)){inival=start;endval=end}else{if(isNaN(start)&&isNaN(end)){chars=true;
 inival=start.charCodeAt(0);endval=end.charCodeAt(0)}else{inival=(isNaN(start)?0:start);
 endval=(isNaN(end)?0:end)}}plus=((inival>endval)?false:true);if(plus){while(inival<=endval){matrix.push(((chars)?String.fromCharCode(inival):inival));

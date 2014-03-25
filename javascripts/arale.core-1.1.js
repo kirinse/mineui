@@ -18,8 +18,7 @@ if(window.araleConfig){
 		}
 	}())
 }
-else
-{
+else{
 	var araleConfig=_baseAraleConfig
 }
 var arale=arale||{
@@ -418,168 +417,162 @@ arale.browser=function(){
 				browser.ver=RegExp["$1"];
 				browser.chrome=parseFloat(browser.ver)
 			}
-			else
-			{
+			else{
 				if(/Version\/(\S+)/.test(ua)){
 					browser.ver=RegExp["$1"];
 					browser.safari=parseFloat(browser.ver)
 				}
-				else
-				{
+				else{
 					var safariVersion=1;
 					if(engine.webkit<100){
 						safariVersion=1
 					}
-					else
-					{
+					else{
 						if(engine.webkit<312){
 							safariVersion=1.2
 						}
-						else
-						{
+						else{
 							if(engine.webkit<412){
 								safariVersion=1.3
 							}
-							else
-							{
+							else{
 								safariVersion=2
 							}
 						}
 					}
-				browser.safari=browser.ver=safariVersion
-			}
-		}
-	}
-	else
-	{
-		if(/KHTML\/(\S+)/.test(ua)||/Konqueror\/([^;]+)/.test(ua)){
-			engine.ver=browser.ver=RegExp["$1"];
-			engine.khtml=browser.konq=parseFloat(engine.ver)
-		}
-		else
-		{
-			if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
-				engine.ver=RegExp["$1"];
-				engine.gecko=parseFloat(engine.ver);
-				if(/Firefox\/(\S+)/.test(ua)){
-					browser.ver=RegExp["$1"];
-					browser.firefox=parseFloat(browser.ver)
-				}
-			}
-			else
-			{
-				if(/MSIE ([^;]+)/.test(ua)){
-					engine.ver=browser.ver=RegExp["$1"];
-					engine.ie=browser.ie=parseFloat(engine.ver)
-				}
-			}
-		}
-	}
-}
-browser.ie=engine.ie;
-browser.opera=engine.opera;
-var p=navigator.platform;
-system.win=p.indexOf("Win")==0;
-system.mac=p.indexOf("Mac")==0;
-system.x11=(p=="X11")||(p.indexOf("Linux")==0);
-if(system.win){
-	if(/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)){
-		if(RegExp["$1"]=="NT"){
-			switch(RegExp["$2"]){
-				case"5.0":
-					system.win="2000";
-					break;
-				case"5.1":
-					system.win="XP";
-					break;
-				case"6.0":
-					system.win="Vista";
-					break;
-				default:
-					system.win="NT";
-					break
-			}
-		}
-		else
-		{
-			if(RegExp["$1"]=="9x"){
-				system.win="ME"
-			}
-			else
-			{
-				system.win=RegExp["$1"]
-			}
-		}
-	}
-}
-system.iphone=ua.indexOf("iPhone")>-1;
-system.ipod=ua.indexOf("iPod")>-1;
-system.nokiaN=ua.indexOf("NokiaN")>-1;
-system.winMobile=(system.win=="CE");
-system.macMobile=(system.iphone||system.ipod);
-system.wii=ua.indexOf("Wii")>-1;
-system.ps=/playstation/i.test(ua);
-arale.isIE=function(){
-	return browser.ie>0
-};
-arale.isIE6=function(){
-	return browser.ie==6
-};
-arale.isFF=function(){
-	return browser.firefox>0
-};
-arale.isChrome=function(){
-	return browser.chrome>0
-};
-arale.isSafari=function(){
-	return browser.safari>0
-};
-arale.isOpera=function(){
-	return browser.opera>0
-};
-arale.isMac=function(){
-	return system.mac
-};
-browser.name=arale.isIE()?"ie":(arale.isFF()?"firefox":(arale.isChrome()?"chrome":(arale.isSafari()?"safari":(arale.isOpera()?"opera":"unknown"))));
-var s=system;
-system.name=s.win?"win":(s.mac?"mac":(s.x11?"x11":(s.iphone?"iphone":(s.ipod?"ipod":(s.nokiaN?"nokiaN":(s.winMobile?"winMobile":(s.macMobile?"macMobile":(s.wii?"wii":(s.ps?"ps":"unknown")))))))));
-var e=engine;
-engine.name=e.ie?"ie":(e.gecko?"gecko":(e.webkit?"webkit":(e.khtml?"khtml":(e.opera?"opera":"unknown"))));
-return{
-	name:browser.name,
-	Engine:engine,
-	Browser:browser,
-	System:system,
-	ver:function(){
-		return this.Browser.ver
-	},
-	Request:function(){
-		if(typeof XMLHttpRequest!="undefined"){
-			return new XMLHttpRequest()
-		}
-		else
-		{
-			if(typeof ActiveXObject!="undefined"){
-				if(typeof arguments.callee.activeXString!="string"){
-					var versions=["MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP","MSXML2.XMLHttp.6.0"];
-					for(var i=0,len=versions.length;i<len;i++){
-						try{
-							var xhr=new ActiveXObject(versions[i]);
-							arguments.callee.activeXString=versions[i];
-							return xhr
-						}
-						catch(ex){}
-					}
-				}
-				return new ActiveXObject(arguments.callee.activeXString)
-			}
-			else
-			{
-				throw new Error("No XHR object available.")
-			}
-		}
-	}
-}}();
+				  browser.safari=browser.ver=safariVersion
+			  }
+		  }
+  	}
+  	else{
+  		if(/KHTML\/(\S+)/.test(ua)||/Konqueror\/([^;]+)/.test(ua)){
+  			engine.ver=browser.ver=RegExp["$1"];
+  			engine.khtml=browser.konq=parseFloat(engine.ver)
+  		}
+  		else
+  		{
+  			if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
+  				engine.ver=RegExp["$1"];
+  				engine.gecko=parseFloat(engine.ver);
+  				if(/Firefox\/(\S+)/.test(ua)){
+  					browser.ver=RegExp["$1"];
+  					browser.firefox=parseFloat(browser.ver)
+  				}
+  			}
+  			else{
+  				if(/MSIE ([^;]+)/.test(ua)){
+  					engine.ver=browser.ver=RegExp["$1"];
+  					engine.ie=browser.ie=parseFloat(engine.ver)
+  				}
+  			}
+  		}
+  	}
+  }
+  browser.ie=engine.ie;
+  browser.opera=engine.opera;
+  var p=navigator.platform;
+  system.win=p.indexOf("Win")==0;
+  system.mac=p.indexOf("Mac")==0;
+  system.x11=(p=="X11")||(p.indexOf("Linux")==0);
+  if(system.win){
+  	if(/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)){
+  		if(RegExp["$1"]=="NT"){
+  			switch(RegExp["$2"]){
+  				case"5.0":
+  					system.win="2000";
+  					break;
+  				case"5.1":
+  					system.win="XP";
+  					break;
+  				case"6.0":
+  					system.win="Vista";
+  					break;
+  				default:
+  					system.win="NT";
+  					break
+  			}
+  		}
+  		else
+  		{
+  			if(RegExp["$1"]=="9x"){
+  				system.win="ME"
+  			}
+  			else
+  			{
+  				system.win=RegExp["$1"]
+  			}
+  		}
+  	}
+  }
+  system.iphone=ua.indexOf("iPhone")>-1;
+  system.ipod=ua.indexOf("iPod")>-1;
+  system.nokiaN=ua.indexOf("NokiaN")>-1;
+  system.winMobile=(system.win=="CE");
+  system.macMobile=(system.iphone||system.ipod);
+  system.wii=ua.indexOf("Wii")>-1;
+  system.ps=/playstation/i.test(ua);
+  arale.isIE=function(){
+  	return browser.ie>0
+  };
+  arale.isIE6=function(){
+  	return browser.ie==6
+  };
+  arale.isFF=function(){
+  	return browser.firefox>0
+  };
+  arale.isChrome=function(){
+  	return browser.chrome>0
+  };
+  arale.isSafari=function(){
+  	return browser.safari>0
+  };
+  arale.isOpera=function(){
+  	return browser.opera>0
+  };
+  arale.isMac=function(){
+  	return system.mac
+  };
+  browser.name=arale.isIE()?"ie":(arale.isFF()?"firefox":(arale.isChrome()?"chrome":(arale.isSafari()?"safari":(arale.isOpera()?"opera":"unknown"))));
+  var s=system;
+  system.name=s.win?"win":(s.mac?"mac":(s.x11?"x11":(s.iphone?"iphone":(s.ipod?"ipod":(s.nokiaN?"nokiaN":(s.winMobile?"winMobile":(s.macMobile?"macMobile":(s.wii?"wii":(s.ps?"ps":"unknown")))))))));
+  var e=engine;
+  engine.name=e.ie?"ie":(e.gecko?"gecko":(e.webkit?"webkit":(e.khtml?"khtml":(e.opera?"opera":"unknown"))));
+  return{
+  	name:browser.name,
+  	Engine:engine,
+  	Browser:browser,
+  	System:system,
+  	ver:function(){
+  		return this.Browser.ver
+  	},
+  	Request:function(){
+  		if(typeof XMLHttpRequest!="undefined"){
+  			return new XMLHttpRequest()
+  		}
+  		else
+  		{
+  			if(typeof ActiveXObject!="undefined"){
+  				if(typeof arguments.callee.activeXString!="string"){
+  					var versions=["MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP","MSXML2.XMLHttp.6.0"];
+  					for(var i=0,len=versions.length;i<len;i++){
+  						try{
+  							var xhr=new ActiveXObject(versions[i]);
+  							arguments.callee.activeXString=versions[i];
+  							return xhr
+  						}
+  						catch(ex){}
+  					}
+  				}
+  				return new ActiveXObject(arguments.callee.activeXString)
+  			}
+  			else
+  			{
+  				throw new Error("No XHR object available.")
+  			}
+  		}
+  	}
+  }
+}();
 arale.deps=(function(){
 	var all_modules={};
 	var LOAD={unload:0,loading:1,loaded:2};
@@ -917,7 +910,7 @@ arale.module("arale.loader",function(){
 			if(araleConfig.__tmp){
 				for(var i=0,l=files.length;i<l;i++){
 					var fileName=files[i];
-					if(fileName.indexOf("alice")>-1||fileName.indexOf("arale")>-1||fileName.indexOf("alipay")>-1){
+					if(fileName.indexOf("alice")>-1||fileName.indexOf("arale")>-1||fileName.indexOf("kirin")>-1){
 						files[i]="static/al/"+fileName
 					}
 					else
@@ -1723,7 +1716,10 @@ arale.deps.depsToModule("arale.array-1.1-src.js").moduleStatus(arale.deps.LOAD.l
 	Sizzle.uniqueSort=function(results){if(sortOrder){hasDuplicate=baseHasDuplicate;
 results.sort(sortOrder);if(hasDuplicate){for(var i=1;i<results.length;i++){if(results[i]===results[i-1]){results.splice(i--,1)
 }}}}return results};Sizzle.matches=function(expr,set){return Sizzle(expr,null,null,set)
-};Sizzle.find=function(expr,context,isXML){var set;if(!expr){return[]}for(var i=0,l=Expr.order.length;
+};
+
+
+Sizzle.find=function(expr,context,isXML){var set;if(!expr){return[]}for(var i=0,l=Expr.order.length;
 i<l;i++){var type=Expr.order[i],match;if((match=Expr.leftMatch[type].exec(expr))){var left=match[1];
 match.splice(1,1);if(left.substr(left.length-1)!=="\\"){match[1]=(match[1]||"").replace(/\\/g,"");
 set=Expr.find[type](match,context,isXML);if(set!=null){expr=expr.replace(Expr.match[type],"");

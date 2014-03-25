@@ -1,0 +1,1 @@
+light.has("/alipay/security/checkCode")||function(b){b.checkCode=light.deriveFrom(b.base,{ready:!0,render:function(a){light.isFunction(a)&&this._readyList.push(a);this.element=light.get(this.options.id);for(a=this._readyList;a.length;)a.shift().apply(this)},getValue:function(){return{check_code:this.element.value}}},{Name:"checkCode"})}(alipay.security);

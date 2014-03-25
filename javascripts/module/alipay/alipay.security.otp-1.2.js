@@ -1,0 +1,1 @@
+light.has("/alipay/security/otp")||function(b){members={ready:!0,render:function(a){light.isFunction(a)&&this._readyList.push(a);this.element=light.get(this.options.id);for(a=this._readyList;a.length;)a.shift().apply(this)},getValue:function(){return{otpPassword:this.element.value}}};b.otp=light.deriveFrom(b.base,members,{Name:"otp"})}(alipay.security);

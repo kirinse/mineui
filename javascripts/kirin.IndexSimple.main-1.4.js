@@ -51,9 +51,9 @@ kirin.index.adjust={
   },
   showLoginRecord:0,
   showLogin:function(){
-    0==alipay.index.adjust.showLoginRecord?
+    0==kirin.index.adjust.showLoginRecord?
 arale.isIE()?($("loginLoading")&&$("loginLoading").dispose(),$("loginIframe")&&$("loginIframe").setStyle("height","297px"),$("loginIframe")&&$("loginIframe").removeClass("fn-hide")):($("loginIframe")&&$("loginIframe").node.contentDocument&&$$(".alieditContainer",$($("loginIframe").node.contentDocument))[0]&&$$(".alieditContainer",$($("loginIframe").node.contentDocument))[0].setStyle("visibility","hidden"),$("loginIframe")&&$("loginIframe").setStyle("opacity","0"),$("loginIframe")&&$("loginIframe").removeClass("fn-hide"),
-++alipay.index.adjust.showLoginRecord):($("loginLoading")&&$("loginLoading").dispose(),$("loginIframe")&&$("loginIframe").removeClass("fn-hide"))
+++kirin.index.adjust.showLoginRecord):($("loginLoading")&&$("loginLoading").dispose(),$("loginIframe")&&$("loginIframe").removeClass("fn-hide"))
   },
   heightAdjust:function(){},
   iframeAdjust:function(a){
@@ -62,7 +62,8 @@ arale.isIE()?($("loginLoading")&&$("loginLoading").dispose(),$("loginIframe")&&$
 };
 
 kirin.index.lazyload=function(a,e,b,c){
-  for(var b=b||10,c=c||100,f=function(h){A(h).each(function(h){h&&alipay.index.utils.makePic(h,e.doing)})},g=a.length,j=Math.ceil(g/b),d=0,h=0;h<j;h++)(function(h){var o=h*b,k=(h+1)*b,k=k<g?k:g;setTimeout(function(){f(a.slice(o,k));d++;d==j&&e&&e.done()},c*h)})(h)
+  for(var b=b||10,c=c||100,f=function(h){A(h).each(function(h){h&&kirin.index.utils.makePic(h,e.doing)})},g=a.length,j=Math.ceil(g/b),d=0,h=0;h<j;h++)
+    (function(h){var o=h*b,k=(h+1)*b,k=k<g?k:g;setTimeout(function(){f(a.slice(o,k));d++;d==j&&e&&e.done()},c*h)})(h)
 };
 
 kirin.index.lazyloadBanner=function(a){
