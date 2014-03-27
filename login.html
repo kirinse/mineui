@@ -1,0 +1,706 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="GBK" />
+        <title>登录中心 － 支付宝</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        
+
+<link rel="icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon" />
+                    <link charset="utf-8" rel="stylesheet" href="https://a.alipayobjects.com/authcenter/login/1.1.2/css/homeB.css" media="all" />
+        
+                    <style type="text/css">
+.sl-delect {
+    zoom: 1;
+}
+</style>
+                        <link href="https://a.alipayobjects.com" rel="dns-prefetch" />
+<link href="https://app.alipay.com" rel="dns-prefetch" />
+<link href="https://my.alipay.com" rel="dns-prefetch" />
+<link href="https://lab.alipay.com" rel="dns-prefetch" />
+<link href="https://cashier.alipay.com" rel="dns-prefetch" />
+<link href="https://financeprod.alipay.com" rel="dns-prefetch" />
+<link href="https://shenghuo.alipay.com" rel="dns-prefetch" />
+
+
+<!-- uitpl:/component/trackerTime.vm -->
+    <!-- CMS:支付宝全站/监控埋点/iconfont开始:alipay/tracker/iconfont.vm --><style>
+@font-face {
+    font-family: "rei";
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20131015"); /* IE9 */
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20131015#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("https://i.alipayobjects.com/common/fonts/rei.woff?20131015") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.ttf?20131015")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.svg?20131015#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+    font-family:"rei";
+    font-style: normal;
+    font-weight: normal;
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+}
+</style><!-- CMS:支付宝全站/监控埋点/iconfont结束:alipay/tracker/iconfont.vm -->
+<script type="text/javascript">
+  window._to = { start: new Date() };
+</script>
+
+<!-- CMS:cms/监控埋点/前端监控前置脚本开始:tracker/monitor.vm --><script type="text/javascript">
+(function(e){if(!e.monitor){var a=e.monitor={};a._DATAS=[];var f=a._EVENTS=[];a.on=function(a,d){f.push([a,d])};a.off=function(){};a.log=function(c,d){if(c&&!(3<=arguments.length)){var b;"[object Object]"===Object.prototype.toString.call(c)?(b=c,b.profile=d||b.profile||"log"):b={profile:d||"log",seed:c};a._DATAS.push(b);return b}}}})(this);
+(function(h,c){function q(a){return(a=String(a).match(r))?a[0]:"global"}function f(a,m,n,g,f,d,k){if(!k&&arguments.callee.caller){for(var b=arguments.callee.caller,e=[],h=0;b.arguments&&b.arguments.callee&&b.arguments.callee.caller;){b=b.arguments.callee.caller;e.push("at "+q(b));if(b.caller===b)break;if(h++>s)break}k=e.join("\n")}b={profile:t,type:a,msg:m||"",file:n||"",line:g||0,col:f||0,num:d||"",stack:k||"",lang:navigator.language||navigator.browserLanguage||"",lost:l.join(",")};
+e=n+":"+g+":"+m;p.hasOwnProperty(e)||(b.uv=1,p[e]=!0);return c.log(b)}if(c){var t="jserror",s=20,r=/^\s*function\b[^\)]+\)/,l=[],d={};c.lost=function(a){if(!d.hasOwnProperty(a))return d[a]=!0,l.push(a),l};var p={};c.error=function(a){if(a instanceof Error)return f("catched",a.message||a.description,a.filename||a.fileName||a.sourceURL,a.lineno||a.lineNumber||a.line,a.colno||a.columnNumber,a.number,a.stack||a.stacktrace)};h.onerror=function(a,c,d,g){f("global",a,c,d,g);return!1}}})(this,this.monitor);
+</script><!-- CMS:cms/监控埋点/前端监控前置脚本结束:tracker/monitor.vm -->
+<!-- CMS:cms/监控埋点/seajs 部署开始:tracker/seajs.vm -->	
+<!-- monitor 防错代码 -->
+<script>
+(function(win){
+  if(!win.monitor){win.monitor = {};}
+
+  var METHODS = ["lost", "log", "error", "on", "off"];
+
+  for(var i=0,method,l=METHODS.length; i<l; i++){
+    method = METHODS[i];
+    if("function" !== typeof win.monitor[method]){
+      win.monitor[method] = function(){};
+    }
+  }
+})(window);
+</script>
+
+<!-- seajs以及插件 -->
+<script charset="utf-8" id="seajsnode" onerror="window.monitor && monitor.lost && monitor.lost(this.src)" src="https://a.alipayobjects.com/??seajs/seajs/2.1.1/sea.js,seajs/seajs-combo/1.0.0/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,seajs/seajs-log/1.0.0/seajs-log.js,jquery/jquery/1.7.2/jquery.js,gallery/json/1.0.3/json.js,alipay/request/1.0.4/request.js"></script>
+
+<!-- seajs config 配置 -->
+<script>
+seajs.config({
+  alias: {
+    '$': 'jquery/jquery/1.7.2/jquery',
+    '$-debug': 'jquery/jquery/1.7.2/jquery',
+    'jquery': 'jquery/jquery/1.7.2/jquery',
+    'jquery-debug': 'jquery/jquery/1.7.2/jquery-debug',
+    'seajs-debug': 'seajs/seajs-debug/1.1.1/seajs-debug'
+  },
+  vars: {
+    locale: 'zh-cn'
+  }
+});
+</script>
+
+<!-- 兼容原有的 plugin-i18n 写法 -->
+<!-- https://github.com/seajs/seajs/blob/1.3.1/src/plugins/plugin-i18n.js -->
+<script>
+// jquery.ajax patch
+seajs.use('alipay/request/1.0.4/request');
+
+seajs.pluginSDK = seajs.pluginSDK || {
+  Module: {
+    _resolve: function() {}
+  },
+  config: {
+    locale: ''
+  }
+};
+// 干掉载入 plugin-i18n.js，避免 404
+seajs.config({
+  map: [
+	[/^.*\/seajs\/plugin-i18n\.js$/, ''],
+	[/^.*\i18n!lang\.js$/, '']
+  ] 
+});
+</script>
+
+<!-- 路由旧 ID，解决 seajs.use('select/x.x.x/select') 的历史遗留问题 -->
+<script>
+(function(){
+
+var JQ = '/jquery/1.7.2/jquery.js';
+seajs.cache['https://a.alipayobjects.com/gallery' + JQ] = seajs.cache['https://a.alipayobjects.com/jquery' + JQ];
+
+var GALLERY_MODULES = [
+  'async','backbone','coffee','cookie','es5-safe','handlebars','iscroll',
+  'jasmine','jasmine-jquery','jquery','jquery-color','json','keymaster',
+  'labjs','less','marked','moment','mustache','querystring','raphael',
+  'socketio','store','swfobject','underscore','zepto','ztree'
+];
+
+var ARALE_MODULES = [
+  'autocomplete','base','calendar','class','cookie','dialog','easing',
+  'events','iframe-uploader','iframe-shim','messenger','overlay','popup',
+  'position','select','switchable','tip','validator','widget'
+];
+
+var util = {};
+util.indexOf = Array.prototype.indexOf ?
+  function(arr, item) {
+    return arr.indexOf(item);
+  } :
+  function(arr, item) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  };
+util.map = Array.prototype.map ?
+  function(arr, fn) {
+    return arr.map(fn);
+  } :
+  function(arr, fn) {
+    var ret = [];
+	for (var i = 0; i < arr.length; i++) {
+        ret.push(fn(arr[i], i, arr));
+    }
+    return ret;
+  };
+
+function contains(arr, item) {
+  return util.indexOf(arr, item) > -1
+}
+
+function map(id) {
+  id = id.replace('#', '');
+
+  var parts = id.split('/');
+  var len = parts.length;
+  var root, name;
+
+  // id = root/name/x.y.z/name
+  if (len === 4) {
+    root = parts[0];
+    name = parts[1];
+
+    // gallery 或 alipay 开头的没有问题
+    if (root === 'alipay' || root === 'gallery') {
+      return id;
+    }
+
+    // arale 开头的
+    if (root === 'arale') {
+      // 处理 arale/handlebars 的情况
+      if (contains(GALLERY_MODULES, name)) {
+        return id.replace('arale/', 'gallery/');
+      } else {
+        return id;
+      }
+    }
+  }
+  // id = name/x.y.z/name
+  else if (len === 3) {
+    name = parts[0]
+
+    // 开头在 GALLERY_MODULES 或 ARALE_MODULES
+    if (contains(GALLERY_MODULES, name)) {
+      return 'gallery/' + id;
+    } else if (contains(ARALE_MODULES, name)) {
+      return 'arale/' + id;
+    }
+  }
+
+  return id;
+}
+
+var _use = seajs.use;
+
+seajs.use = function(ids, callback) {
+  if (typeof ids === 'string') {
+    ids = [ids];
+  }
+
+  ids = util.map(ids, function(id) {
+    return map(id);
+  });
+
+  return _use(ids, callback);
+}
+
+})();
+</script><!-- CMS:cms/监控埋点/seajs 部署结束:tracker/seajs.vm -->
+<!-- CMS:cms/监控埋点/全站页面效率统计开始:tracker/tracker_time.vm --><meta name="ABTest" content="" />
+<script type="text/javascript">
+if (!window._to) {
+  window._to = { start: new Date() };
+}
+</script>
+
+
+<script charset="utf-8" src="https://a.alipayobjects.com/??static/ar/alipay.light.base-1.8.js,arale/name-storage/1.0.0/name-storage.js,alipay/tracker/1.12.0/tracker.js,static/ar/alipay.smartracker-1.6.js"></script>
+
+
+
+<!-- CMS:cms/监控埋点/全站页面效率统计结束:tracker/tracker_time.vm -->        <script>
+            araleConfig = {
+                combo_host: 'https://a.alipayobjects.com',
+                combo_path: '/??',
+                __tmp: true
+            }
+        </script>
+    </head>
+    <!--[if lt IE 7]>
+    <body class="ie6"><![endif]--><!--[if IE 7]>
+    <body class="ie7"><![endif]--><!--[if IE 8]>
+    <body class="ie8"><![endif]--><!--[if IE 9]>
+    <body class="ie9"><![endif]--><!--[if !IE]><!-->
+    <body><!--<![endif]--><!-- CMS:登录中心/登录/homeB语音校验码开关开始:authcenter/login/audioCheckSwitch.vm -->
+<!-- CMS:cms/监控埋点/um开始:tracker/um.vm -->
+
+
+
+<style type="text/css">
+.umidWrapper{display:block; height:1px;}
+</style>
+<span style="display:inline;width:1px;height:1px;overflow:hidden">
+
+<script type="text/javascript">
+var cimg = new Image(1,1);
+cimg.onload = function() {
+    cimg.onload = null;
+};
+cimg.src = "https://ynuf.alipay.com/service/clear.png?xt=HBbf73cc4b9c7aafb533790790dbfbc771&xa=0000000000000A2126231E1B";
+</script>
+
+<script type="text/javascript" src="https://s.tbcdn.cn/g/security/umscript/2.0.2/um.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+um.init({
+    enabled: 1, ratio: 1, timeout: 3000,
+    token: 'HBbf73cc4b9c7aafb533790790dbfbc771', timestamp: '7408065356585948514F607E',
+    serviceUrl: 'https://ynuf.alipay.com/service/um.json',
+	appName:'0000000000000A2126231E1B'
+});
+
+</script>
+</span>
+<!-- CMS:cms/监控埋点/um结束:tracker/um.vm --><div class="login login-modern" id="J-login">
+        <form name="loginForm" id="login" action="https://auth.alipay.com/login/homeB.htm" method="post" class="ui-form">
+        <fieldset>
+            <input type="hidden" name="support" value = "000001" />
+            <input type="hidden" name="needTransfer" value = "" />
+            <input type="hidden" name="CtrlVersion" value = "1,1,0,1" />
+            <input type="hidden" name="loginScene" value="home" />
+            <input type="hidden" name="redirectType" value="parent" />
+            <input type="hidden" name="personalLoginError" value="" />
+            <input type="hidden" name="goto" value="" id="goto"/>
+            <input type="hidden" name="errorGoto" value=""/>
+                        <input type="hidden" name="errorVM" value="scene/homeB.vm" />
+                        <input type="hidden" name="sso_hid" value=""/>
+                        <input type="hidden" name="site" value=""/>
+                        <input type="hidden" value="EKFMjYJI3PlnqHv8LeY3ZcjcldJGCV2D" name="rds_form_token"/>
+            <input type="hidden" id="json_tk" name="json_tk"/>
+                        <input type="hidden" name="method" value="" id="J-loginFormMethod" autocomplete="off" />
+
+                                    <h2 class='ui-form-title ' id="J-login-title">登录支付宝</h2>
+
+                        
+
+<div class="sl-error" id="J-errorBox" errorType="">
+    <i class="iconfont" title="出错">&#xF045;</i>
+    <span class="sl-error-text"></span>
+</div>
+<script type="text/javascript">
+        ACCOUNTTIPS = {
+        //未激活
+        "STATUS_NEED_ACTIVATE": '该账户信息不完整，暂不能登录，请完成<a href="https://lab.alipay.com/user/reg/activate/index.htm" target="_blank" seed="ajaxAccount-active">注册</a>后再登录。',
+        //密码上限
+        "PASSWORD_REACH_LIMIT": '该账户登录出错已达上限将锁定密码3小时，请<a href="https://lab.alipay.com/user/passwordfind/index.htm?type=Q" target="_blank" seed="ajaxAccount-findPWD">找回登录密码</a>后登录，或使用<span class="J-forQRLogin">扫码登录</span>。',
+        //不存在
+        "NOT_EXIST": '该账户不存在或登录密码出错已达上限，请更换账户。',
+        //海外用户
+        "OVERSEAS_MOBILE": '支付宝暂不支持海外手机用户直接登录，请从<a href="https://login.taobao.com" seed="ajaxAccount-loginTaobao">淘宝</a>入口登录。',
+        "INVALID_OVERSEAS_MOBILE": '账户名是电子邮箱或手机号码，国际手机号码请按照852-26888888的格式输入',
+        //ip地址不安全
+        "CLIENT_IP_NOT_THE_SAME": '当前环境可能存在风险，为了您的账户安全，请勿继续操作。',
+        "MOBILE_ACCOUNT_NEED_QRLOGON": '钱包注册用户仅限扫码登录'
+    };
+</script>
+    
+                        <div class="ui-form-item" id="J-username">
+    <label id="J-label-user" class="ui-label" seed="authcenter-switch-account">
+        <span class="ui-icon ui-icon-userDEF">账户名：</span>
+            </label>
+                            <input type="text" id="J-input-user" class="ui-input ui-input-normal" name="logonId" autocomplete="off" tabindex="1" value="" autocomplete="off" maxlength="100" placeholder="邮箱地址/手机号码" seed="authcenter-input-account">
+        </div>
+                        
+
+<div class="ui-form-item ui-form-item-20pd" id="J-password">
+    <label id="J-label-editer" class="ui-label" data-desc="登录密码" seed="authcenter-switch-aliedit">
+        <span class="ui-icon ui-icon-securityON" id="safeSignCheck">登录密码</span>
+                        <div id="J-label-editer-pop" class="ui-poptip fn-hide">
+            <div class="ui-poptip-container">
+                <div class="ui-poptip-arrow ui-poptip-arrow-7">
+                    <em></em>
+                    <span></span>
+                </div>
+                <div data-role="content" class="ui-poptip-content">点此选择密码控件登录</div>
+            </div>
+        </div>
+            </label>
+
+            <input type="hidden" name="superSwitch" value='true' id="J-superSwitch" />
+    
+        <input type="hidden" name="noActiveX" value="" id="J-noActiveX" />
+
+        <input type="hidden" name="passwordSecurityId" value="web|authcenter_querypwd_login|862d2d42-3e95-4207-965f-7868d141bbec" />
+
+        <input type="hidden" name="qrCodeSecurityId" value="web|authcenter_qrcode_login|4fc2c041-142b-417b-96a0-cf00c78b6395" />
+    <!-- CMS:cms/API入口/加密框开始:entrance/control.vm -->
+
+
+
+
+    	
+		
+    <!-- CMS:edit_input开始:securitycore/common/edit_input.vm -->
+<span class="standardPwdContainer" >
+  <input type="password" tabindex="2" id="password_input" name="password_input" class="ui-input" oncontextmenu="return false" onpaste="return false" oncopy="return false" oncut="return false" autocomplete="off" />
+</span>
+
+<!-- CMS:安全核心/公共模块/script_layout开始:securitycore/common/script_layout.vm --><!-- CMS:sSnapshot.vm开始:securitycore/common/script_snapshot.vm -->
+<!-- CMS:sSnapshot.vm结束:securitycore/common/script_snapshot.vm -->
+
+
+
+    
+    <script type="text/javascript">
+  (function() {
+      var alipay = window.alipay || (window.alipay = {});
+      alipay.security = alipay.security || {};
+      alipay.security.downloadServer = "https://download.alipay.com" || alipay.security.downloadServer;
+      alipay.security.securityCenterServer = "https://securitycenter.alipay.com" || alipay.security.securityCenterServer;
+  })();
+  </script>
+  <script type="text/javascript" charset="utf-8" src="https://a.alipayobjects.com/static/ar/??alipay.light.base-1.8.js,alipay.light.page-1.12-sizzle.js,alipay.security.base-1.6.js,alipay.security.edit-1.14.js,alipay.security.cert-1.5.js,alipay.security.otp-1.2.js,alipay.security.mobile-1.7.js,alipay.security.ctuMobile-1.2.js,alipay.security.riskMobileBank-1.3.js,alipay.security.riskMobileAccount-1.3.js,alipay.security.riskMobileCredit-1.2.js,alipay.security.riskCertificate-1.0.js,alipay.security.riskSecurityQa-1.0.js,alipay.security.riskExpressPrivacy-1.0.js,alipay.security.checkCode-1.1.js,alipay.security.rds-1.0.js,alipay.security.barcode-1.0.js,alipay.security.riskOneKeyConfirm-1.0.js,alipay.security.riskSudoku-1.0.js,alipay.security.core-1.14.js"></script>
+  <script>
+  light.has('page/products') || light.register('page/products');
+  light.has('page/scProducts') || light.register('page/scProducts', light, []);
+  </script>
+<!-- CMS:安全核心/公共模块/script_layout结束:securitycore/common/script_layout.vm --><script type="text/javascript">
+light.ready(function(){
+  var s = alipay.security;
+  var noedit = light.page.products['password_input'] = s.create(s.noedit, { 
+    id: 'password_input',
+    hidnId: 'password'
+  })
+  noedit.render();
+});
+</script><!-- CMS:edit_input结束:securitycore/common/edit_input.vm -->  <!-- CMS:安全核心/公共模块/edit_hidn开始:securitycore/common/edit_hidn.vm -->
+<input type="hidden" name="J_aliedit_using" value="false" />
+<input type="hidden" id="password" name="password" value="" />
+<input type="hidden" name="J_aliedit_key_hidn" value="password" />
+
+<input type="hidden" name="J_aliedit_uid_hidn" value="alieditUid" />
+<input type="hidden" id="alieditUid" name="alieditUid" value="c77499103221f8a05d5f6d27b6b54b24" />
+
+<input type="hidden" name="REMOTE_PCID_NAME" value="_seaside_gogo_pcid" />
+<input type="hidden" name="_seaside_gogo_pcid" value="" />
+<input type="hidden" name="_seaside_gogo_" value="" />
+<input type="hidden" name="_seaside_gogo_p" value="" />
+
+<input type="hidden" name="J_aliedit_prod_type" value="" /><!-- CMS:安全核心/公共模块/edit_hidn结束:securitycore/common/edit_hidn.vm -->
+<script type="text/javascript">
+light.ready(function(){
+  var s = alipay.security;
+        light.page.scProducts.push(light.page.products["password_input"]);
+  });
+</script>
+<!-- CMS:cms/API入口/加密框结束:entrance/control.vm -->
+    <p class="ui-form-other ui-form-other-fg">
+                <a class="textlink forgot" href="https://lab.alipay.com/user/passwordfind/index.htm?type=Q&amp;src=ui_help_password_m_03" tabindex='5' seed="authcenter-pwd-forget" target="_blank" seed="authcenter-pwd-forget">忘记登录密码？</a>
+    </p>
+</div>
+
+      
+    <div id="J-checkcode" class='ui-form-item fn-hide'>
+        <label id="J-label-checkcode" class="ui-label" seed="authcenter-switch-checkcode">
+            <span class="ui-icon ui-icon-checkcodeT" id="J-switchCheckcode">校验码</span>
+                        <div id="J-label-checkcode-pop" class="ui-poptip fn-hide">
+                <div class="ui-poptip-container">
+                    <div class="ui-poptip-arrow ui-poptip-arrow-7">
+                        <em></em>
+                        <span></span>
+                    </div>
+                    <div data-role="content" class="ui-poptip-content">点此选择语音校验码</div>
+                </div>
+            </div>
+                    </label>
+        <input type="text" placeholder="验证码" value="" class="ui-input ui-input-checkcode" id="J-input-checkcode" data-type="IMAGE" maxlength="4" name="checkCode" autocomplete="off" tabindex="3" data="" seed="authcenter-input-checkcode">
+        <input type="hidden" name="idPrefix" value=""/>
+        <span class="sl-checkcode" id="J-checkcodeIcon"></span>
+        <div class="ui-checkcode">
+                        <img class="ui-checkcode-img" id="J-checkcode-img" src="https://omeo.alipay.com/service/checkcode?sessionID=7eb0983155756e09c2cffbcd2f6f74c6&amp;t=0.8266528665865942" title="点击图片刷新验证码" alt="点击图片刷新验证码" seed="authcenter-img-checkcode">
+                        <div class="ui-checkcode-voice fn-hide" id="J-checkcode-voice" data-src='https://omeo.alipay.com/service/audiocode?sessionID=7eb0983155756e09c2cffbcd2f6f74c6&amp;r=0.8879745178225841' seed="authcenter-voice-checkcode">
+                <span class="sl-process" id="J-checkcode-voice-bg"></span>
+                <span class="sl-refresh" id="J-checkcode-voice-txt"><i class="ui-icon ui-icon-voicing" title="播放中"></i>播放中...</span>
+            </div>
+                    </div>
+                    </div>
+
+                        <div class="ui-form-item ui-form-item-30pd" id="J-submit">
+                <input type="submit" value="登 录" class="ui-button" id="J-login-btn" tabindex="4" seed='authcenter-submit-homeB'>
+                <p class="ui-form-other">
+                    <a href="https://login.taobao.com/member/login.jhtml?style=alipay&amp;goto=https%3A%2F%2Flab.alipay.com%2Fuser%2Fnavigate.htm%3Fsign_from%3D3000" seed="authcenter-taobaoMember" class="textlink" title="淘宝会员登录" tabindex="6" target="_blank">淘宝会员登录</a>
+                                        <a href="https://lab.alipay.com/user/reg/index.htm" seed="authcenter-active" class="textlink textlink-ml20" title="账户激活" tabindex="7" target="_blank">账户激活</a>
+                                        <a class="register" href="https://lab.alipay.com/user/reg/index.htm" target="_blank" seed="authcenter-register" title="免费注册" tabindex="8">免费注册</a>
+                </p>
+            </div><!-- //submit -->
+        </fieldset>
+    </form>
+</div><!-- //login -->
+    <div class="login login-sso login-modern fn-hide" id="J-ssoLogin" data-hide="true" data-state="start">
+    <div class="ui-form">
+        <h3 class="ui-form-title">欢迎回来</h3>
+        <div class="ui-form-item">
+            <p class="ui-form-text">检测到您已经登录的账户：</p>
+            <p class="ui-form-text">
+                <span class="icon-sso" id="J-ssoLogin-icon"></span>
+                <span class="login-sso-username" id="J-ssoLogin-name"></span>
+            </p>
+        </div>
+
+        <div class="ui-form-item ui-form-item-30pd">
+            <a href="#" class="ui-button"  id="J-ssoLogin-btn">进入支付宝</a>
+            <p class="ui-form-other">
+                <a class="textlink" href="#" tabindex="2" id="J-ssoLogin-change">使用其他账号登录</a>
+            </p>
+        </div>
+    </div>
+</div>    <a href="#" class="qrcode-target qrcode-target-show" id="J-qrcode-target" title="扫码登录" seed="authcenter-qrshow"></a>
+
+<div id="J-qrcode" class='qrcode qrcode-modern fn-hide' >
+    <span class="qrcode-tips" id="J-qrcode-tips"></span>
+    <h2 class="qrcode-title " id="J-qrcode-title">扫码登录</h2>
+    <div class="sl-error" id="J-qrcode-errorBox" errorType="">
+    <i class="iconfont" title="出错">&#xF045;</i>
+    <span class="sl-error-text"></span>
+</div>
+    <div class="qrcode-detail" id="J-qrcode-body">
+        <div class="qrcode-detail-img" id="J-qrcode-img">
+            <!-- CMS:安全核心/API入口/barcode开始:securitycore/entrance/barcode.vm -->
+
+  <!-- CMS:安全核心/公共模块/barcode_main开始:securitycore/common/barcode_main.vm -->
+
+
+<style>
+.barcode-container {display: inline-block;_display: inline-block;float: left;width:120px;height: 120px;}
+.barcode-container .status, .barcode-container .mask{display: none;position: absolute;top:0;left:0;z-index:999;color:#000;}
+.barcode-container .status {text-align: center;font-size:20px;font-weight:500;font-family: tahoma,arial,"Hiragino Sans GB","Microsoft Yahei",\5b8b\4f53;color:#4d4d4d;}
+.barcode-container .status .first {margin-top: 23%;}
+.barcode-container .status button {line-height: 1.5;height: 28px;color:#fff;border: 1px solid #d66500;background-color: #f57403;display: inline-block;text-align: center;text-decoration: none;vertical-align: middle;font-size: 14px;font-weight: 700;border-radius:2px;padding: 0 20px;cursor:pointer;}
+.barcode-container .status button:hover {background-color: #fb8318;}
+.barcode-container .status button:active {position:relative;top:1px;box-shadow: 1px 1px 3px #999 inset;}
+.barcode-container .mask{opacity: 0.9;filter:alpha(opacity=90);-moz-opacity:0.8;background: #fff;}
+.barcode-container .status, .barcode-container .mask{width:100%;height:100%;}
+.barcode-container.error .status.error, .barcode-container.error .mask {display: block;}
+.barcode-container.timeout .status.timeout, .barcode-container.timeout .mask {display: block;}
+.barcode-container.scanned .status.scanned, .barcode-container.scanned .mask {display: block;}
+.barcode-container.confirmed .status.confirmed, .barcode-container.confirmed .mask {display: block;}
+
+.barcode-container {position: relative;}
+
+</style>
+<div id="J-barcode-container" class="barcode-container">
+    <div class="mask"></div>
+    <div class="error status">
+        <p class="first">出错了</p>
+        <button type="button">重扫</button>
+    </div>
+    <div class="timeout status">
+        <p class="first">失效了</p>
+        <button type="button">刷新</button>
+    </div>
+    <div class="scanned status">
+        <p class="first">
+          <i class="iconfont" title="成功" style="color:green;font-size:29px;">&#xF049;</i>
+        </p>
+        <p>扫码成功</p>
+    </div>
+    <div class="confirmed status">
+        <p class="first">
+            <i class="iconfont" title="成功" style="color:green;font-size:29px;">&#xF049;</i>
+        </p>
+        <p>已确认</p>
+    </div>
+</div>
+
+<!-- CMS:安全核心/公共模块/script_layout开始:securitycore/common/script_layout.vm --><!-- CMS:sSnapshot.vm开始:securitycore/common/script_snapshot.vm -->
+<!-- CMS:sSnapshot.vm结束:securitycore/common/script_snapshot.vm -->
+
+
+
+<!-- CMS:安全核心/公共模块/script_layout结束:securitycore/common/script_layout.vm --><script type="text/javascript">
+    light.ready(function () {
+        var s = alipay.security;
+        var barcode = light.page.products['barcode'] = s.create(s.barcode, {
+            id: "barcode",
+            container: "J-barcode-container",
+            barcode: "https://qr.alipay.com/pla0e75omekfsi4b80",
+            width: 120,
+            height: 120,
+            securityId: "web|authcenter_qrcode_login|4fc2c041-142b-417b-96a0-cf00c78b6395",
+            queryUrl: "https://securitycore.alipay.com/barcode/barcodeProcessStatus.json"
+        });
+        barcode.onready(function() {
+            barcode.start();
+        });
+        setTimeout(function() {
+            barcode.render();
+        });
+        light.page.scProducts.push(barcode);
+
+    });
+</script><!-- CMS:安全核心/公共模块/barcode_main结束:securitycore/common/barcode_main.vm --><!-- CMS:安全核心/API入口/barcode结束:securitycore/entrance/barcode.vm -->        </div>
+        <div class="qrcode-detail-intro" id="J-qrcode-intro"></div>
+    </div>
+    <div class="qrcode-footer">
+        <p class="qrcode-footer-tips">请使用支付宝钱包扫码</p>
+        <p class="qrcode-footer-help">
+            <a href="http://help.alipay.com/lab/210227-236197/0-236197.htm" title="使用帮助" seed="authcenter-qrcode-gethelp" id="J-qrcode-gethelp" target="_blank">使用帮助</a>
+            <em>|</em>
+                        <a href="https://lab.alipay.com/user/reg/index.htm" title="免费注册" seed="authcenter-qrcode-register" target="_blank">免费注册</a>
+        </p>
+    </div>
+</div><script type="text/javascript">
+	var MERCHANTLOGINGOTOURL = 'https://shanghu.alipay.com/navigate.htm';
+</script>
+                            
+                    <script type="text/javascript">
+    var json_ua = null,
+    form_tk = (document.getElementsByName('rds_form_token')[0] && document.getElementsByName('rds_form_token')[0].value) || '';
+</script>
+
+<script type="text/javascript" charset="utf-8" src="https://rds.alipay.com/ua_authcenter_login.js?t=20140326 "></script><script type="text/javascript">
+    seajs.use(['$', 'authcenter/login/1.1.3/js/login'], function($, login) {
+        $(document).ready(function() {
+                        new system.auth.aliLogin({
+                formCont_: $("#J-login"),
+                havanaSsoUrl:"https://passport.alipay.com",
+                isHomePage: true,
+                autoLogin: false  ,
+                isShowQRLogin:  true ,
+                onFormShow:function(){
+                                        new system.auth.checkcode({
+                        needQrLogin:  true                     });
+                                    }
+            });
+            
+            //无控件登录
+            system.auth.switchaliedit();
+
+            //自动记住上一次登录的账号
+            system.auth.accountsaver();
+
+            new system.auth.autoComplete({
+                defaultData: [
+                    'qq.com',
+                    '163.com',
+                    '126.com',
+                    '189.cn',
+                    'sina.com',
+                    'hotmail.com',
+                    'gmail.com'
+                ]
+            });
+
+            //实时校验码
+            new system.auth.realtimeCheckcode();
+
+                            new system.auth.voiceCheckcode();
+            
+            //前端校验
+            system.auth.validator();
+
+            //校验码去空格
+            system.auth.ignoringSpaces($('#J-input-checkcode'));
+
+            system.auth.proxyid();
+
+            new system.auth.btnStyle({
+                'isNeedSub': true
+            });
+
+                                        new system.auth.qrCode({
+                    hasSSOLogin:  true                 });
+
+                
+                    });
+    });
+</script>
+        
+
+                
+ 
+<!-- uitpl:/component/tracker.vm -->
+<!-- CMS:cms/监控埋点/tracker js引用开始:tracker/tracker.vm -->
+<script type="text/javascript">
+window.Smartracker&&Smartracker.init&&Smartracker.init();
+</script>
+
+
+<script type="text/javascript">
+function _use_monitor(){
+
+  if(!window.seajs){return;}
+
+  // 命中率：[0,1]: 实际对应采样率：[0%,100%]
+  // 注意：sens_rate 跟 sens_rate 是有关联的。
+  //      实际设置的内容时，应该参考以下算法：
+  //      敏感信息监控实际采样率 = sens_rate * jserr_rate;
+  var jserr_rate = 0.1;
+  var sens_rate = 0.1;
+
+  // 随机采样命中算法。
+  // @param {Nuber} rate, 采样率，[0,1] 区间的数值。
+  // @return {Boolean}
+  function hit(rate){
+    return 0 === Math.floor(Math.random() / rate);
+  }
+
+  if(!hit(jserr_rate)){return;}
+
+  seajs.use(["$", "alipay/monitor/2.3.1/monitor",
+    "alipay/sensinfo/1.2.0/sensinfo"], function($, monitor, sensinfo){
+
+    if(!monitor){return;}
+
+    $(function(){
+      var sysName = "authcenter-70-368";
+
+      monitor.on("*", function(meta){
+        meta.sys = sysName;
+      });
+
+
+      if(!hit(sens_rate) || !sensinfo){return;}
+      try{
+        var html = (document.documentElement || document.body).innerHTML;
+        window.setTimeout(function(){
+          sensinfo.scan(html, {
+            "*": function(cardType, privacy_card, context) {
+              monitor.log(cardType+"="+privacy_card+"```"+context, "sens");
+            }
+          });
+        }, 1200);
+      }catch(ex){}
+
+    });
+  });
+
+}
+
+if(window._monitor_autoload !== false){
+  _use_monitor();
+}
+</script>
+
+
+<!-- CMS:cms/cmsbuffer/main开始:cmsbuffer/main.vm -->																				
+	
+<!-- CMS:cms/cmsbuffer/main结束:cmsbuffer/main.vm --><!-- CMS:cms/监控埋点/tracker js引用结束:tracker/tracker.vm -->                                <noscript>
+            <img src="https://kcart.alipay.com/web/bi.do?ref=-&pg=https%3A%2F%2Fauth.alipay.com%2Flogin%2Findex.htm%3Fseed%3Dauth-noscript&rnd=0.9612833544388487&v=0.9.2&BIProfile=clk" class="noscript" >
+        </noscript>
+    </body>
+</html>

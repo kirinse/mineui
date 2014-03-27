@@ -66,7 +66,7 @@
   <link href="styles/font-ie.css" rel="stylesheet" />
 </head>
 <body role="document">
-<!--[if lt IE 6]>
+<!--[if lt IE 8]>
   <div id="kie-bar" class="kie-bar">
       您使用的浏览器版本过低，建议立即升级到
       <a href="http://www.microsoft.com/zh-cn/download/internet-explorer-10-details.aspx" target="_blank" ><i class="kie-bar-icon-ie"></i>Internet Explorer 10</a>
@@ -289,8 +289,8 @@
 	<!-- banners -->
 	<div id="banner" class="slide-1" coor-rate="0.1" coor="default-banner" role="banner" data-banner="false">
 		<div class="login-box">
-	        <!-- <iframe class="fn-hide" allowTransparency="true" src="" width="286"  height="387" id="loginIframe" frameborder="0" scrolling="no" coor="aside-login"></iframe> -->
-			<!-- <div id="loginLoading"><img width="50" height="50" alt="加载中" src="https://i.alipayobjects.com/e/201206/2qz2UvlUVF.gif"></div> -->
+          <!-- <iframe class="fn-hide" allowTransparency="true" src="login.html" width="286"  height="387" id="loginIframe" frameborder="0" scrolling="no" coor="aside-login"></iframe> -->
+      <div id="loginLoading"><img width="50" height="50" alt="加载中" src="images/loading-modal.gif"></div>
 		</div>
 		<ul id="J-slide" >
 			<li class="slide" data-bg="" data-pic="" data-txt="" data-load="false" data-iebg="images/slide1.jpg">
@@ -365,23 +365,17 @@
   -->
 	<script type="text/javascript" charset="utf-8">
     araleConfig = {
-      combo_host: 'a.alipayobjects.com',
+      combo_host: 'https://a.alipayobjects.com',
       combo_path: '/ar/??/'
     }
 		HOMEINDEXBISLOGO = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s"];
 	</script>
-	<script type="text/javascript" charset="utf-8">
-	  araleConfig = {
-	    combo_host: 'https://a.alipayobjects.com',
-	    combo_path: '/ar/??/'
-	  }
-	</script>
-  <script type="text/javascript" charset="utf-8" src="javascripts/arale.core-1.1.js"></script>
 	<!--
+  <script type="text/javascript" charset="utf-8" src="javascripts/arale.core-1.1.js"></script>
 	<script type="text/javascript" charset="utf-8" src="javascripts/arale.class-1.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="javascripts/aralex.base-1.1.js"></script>
 	<script type="text/javascript" charset="utf-8" src="javascripts/arale.base-1.1.js"></script>
   -->
+	<script type="text/javascript" charset="utf-8" src="javascripts/arale.base-1.1.js"></script>
 	<script type="text/javascript" charset="utf-8" src="javascripts/kirin.IndexSimple.base-1.4.js"></script>
 	<script type="text/javascript" charset="utf-8" src="javascripts/kirin.IndexSimple.main-1.4.js"></script>
 	<script type="text/javascript">
