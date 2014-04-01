@@ -43,13 +43,15 @@
       alias: {
         "$": 'jquery/jquery/1.7.2/jquery',
         "hash": 'kirin/utils/1.0.0/hash',
+        "string": 'kirin/utils/1.0.0/string',
+        "array": 'kirin/utils/1.0.0/array',
         'position': 'arale/position/1.0.0/position'
       },
       paths: {
         // 'arale': 'http://assets.spmjs.org/arale',
         // 'gallery': 'http://static.alipayobjects.com/gallery',
         'kirin': './js/kirin'
-      },
+      }
     });
   </script>
 	<script type="text/javascript">
@@ -58,7 +60,7 @@
   //   var obj = $H({'name':'xuning', 'age':'27'});
   //   console.log(obj.extend({'livein':'hangzhou'})); //return {'name':'xuning', 'age':'27', 'livein':'hangzhou'}
   // });
-  seajs.use(['$', 'position'], function($, Position) {
+  seajs.use(['$', 'position', 'string', 'array'], function($, Position, String, Array) {
     var stop = false;
      var target = $('<div class="target"></div>')
        .hover(function(){stop = true;},function(){stop = false;})
