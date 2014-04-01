@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><html class="no-js"><![endif]-->
+<head>
+	<title>宝麟娱乐</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+	<!--[if lt IE 9]>
+	<script type="text/javascript">
+	  // html5shiv MIT @rem remysharp.com/html5-enabling-script
+	  // iepp v1.6.2 MIT @jon_neal iecss.com/print-protector
+	/*@cc_on(function(a,b){function r(a){var b=-1;while(++b<f)a.createElement(e[b])}if(!(!window.attachEvent||!b.createStyleSheet||!function(){var a=document.createElement("div");a.innerHTML="<elem></elem>";return a.childNodes.length!==1}())){a.iepp=a.iepp||{};var c=a.iepp,d=c.html5elements||"abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",e=d.split("|"),f=e.length,g=new RegExp("(^|\\s)("+d+")","gi"),h=new RegExp("<(/*)("+d+")","gi"),i=/^\s*[\{\}]\s*$/,j=new RegExp("(^|[^\\n]*?\\s)("+d+")([^\\n]*)({[\\n\\w\\W]*?})","gi"),k=b.createDocumentFragment(),l=b.documentElement,m=l.firstChild,n=b.createElement("body"),o=b.createElement("style"),p=/print|all/,q;c.getCSS=function(a,b){if(a+""===undefined)return"";var d=-1,e=a.length,f,g=[];while(++d<e){f=a[d];if(f.disabled)continue;b=f.media||b,p.test(b)&&g.push(c.getCSS(f.imports,b),f.cssText),b="all"}return g.join("")},c.parseCSS=function(a){var b=[],c;while((c=j.exec(a))!=null)b.push(((i.exec(c[1])?"\n":c[1])+c[2]+c[3]).replace(g,"$1.iepp_$2")+c[4]);return b.join("\n")},c.writeHTML=function(){var a=-1;q=q||b.body;while(++a<f){var c=b.getElementsByTagName(e[a]),d=c.length,g=-1;while(++g<d)c[g].className.indexOf("iepp_")<0&&(c[g].className+=" iepp_"+e[a])}k.appendChild(q),l.appendChild(n),n.className=q.className,n.id=q.id,n.innerHTML=q.innerHTML.replace(h,"<$1font")},c._beforePrint=function(){o.styleSheet.cssText=c.parseCSS(c.getCSS(b.styleSheets,"all")),c.writeHTML()},c.restoreHTML=function(){n.innerHTML="",l.removeChild(n),l.appendChild(q)},c._afterPrint=function(){c.restoreHTML(),o.styleSheet.cssText=""},r(b),r(k);if(c.disablePP)return;m.insertBefore(o,m.firstChild),o.media="print",o.className="iepp-printshim",a.attachEvent("onbeforeprint",c._beforePrint),a.attachEvent("onafterprint",c._afterPrint)}})(this,document)@*/
+	</script>
+	<![endif]-->
+	<!--[if IE]>
+	<style type="text/css">
+	  .pic, .txt, .bg {
+	    opacity: 1;
+	  }
+	  #banner .txt {
+	    top: 50px;
+	    left: 0;
+	  }
+	</style>
+	<![endif]-->
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link href="styles/home.css" rel="stylesheet" />
+  <link href="styles/font.css" rel="stylesheet" />
+  <link href="styles/font-ie.css" rel="stylesheet" />
+  <script src="http://assets.spmjs.org/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js"></script>
+  <style>
+    .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
+  </style>  
+</head>
+<body role="document">
+  
+  <script>
+  seajs.config({
+      alias: {
+        "$": 'gallery/jquery/1.7.2/jquery',
+        "hash": 'kirin/utils/1.0.0/hash',
+        'position': 'arale/position/1.0.0/position'
+      },
+      paths: {
+        'arale': 'http://assets.spmjs.org/arale',
+        'gallery': 'http://static.alipayobjects.com/gallery',
+        'kirin': './js/kirin'
+      },
+    });
+  </script>
+	<script type="text/javascript">
+  seajs.use(['$','hash'],function($, KHash){
+    $H = KHash;
+    var obj = $H({'name':'xuning', 'age':'27'});
+    console.log(obj.extend({'livein':'hangzhou'})); //return {'name':'xuning', 'age':'27', 'livein':'hangzhou'}
+  });
+  // seajs.use(['$', 'position'], function($, Position) {
+  //   var stop = false;
+  //    var target = $('<div class="target"></div>')
+  //      .hover(function(){stop = true;},function(){stop = false;})
+  //      .appendTo(document.body);
+  //    setInterval(function() {
+  //      if (stop) return;
+  //      var x = Math.floor(Math.random() * 100);
+  //      var y = Math.floor(Math.random() * 100);
+  //      Position.pin(
+  //        { element: target, x: 'center', y: 'center' }, 
+  //        { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
+  //      );
+  //    }, 800);    
+  // });
+	</script>
+</body>
+</html>
