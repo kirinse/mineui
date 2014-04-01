@@ -51,6 +51,12 @@
         // 'arale': 'http://assets.spmjs.org/arale',
         // 'gallery': 'http://static.alipayobjects.com/gallery',
         'kirin': './js/kirin'
+      },
+      comboExcludes: function(uri) {
+        // 某些特定目录下的文件不合并
+        if (uri.indexOf('kirin/utils') > 0) {
+          return true
+        }
       }
     });
   </script>
