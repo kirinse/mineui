@@ -31,7 +31,7 @@
 	<link href="styles/home.css" rel="stylesheet" />
   <link href="styles/font.css" rel="stylesheet" />
   <link href="styles/font-ie.css" rel="stylesheet" />
-  <script src="http://assets.spmjs.org/??seajs/seajs/2.2.0/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js"></script>
+  <script src="http://assets.spmjs.org/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js"></script>
   <style>
     .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
   </style>  
@@ -41,38 +41,38 @@
   <script>
   seajs.config({
       alias: {
-        "$": 'gallery/jquery/1.7.2/jquery',
+        "$": 'jquery/jquery/1.7.2/jquery',
         "hash": 'kirin/utils/1.0.0/hash',
         'position': 'arale/position/1.0.0/position'
       },
       paths: {
-        'arale': 'http://assets.spmjs.org/arale',
-        'gallery': 'http://static.alipayobjects.com/gallery',
+        // 'arale': 'http://assets.spmjs.org/arale',
+        // 'gallery': 'http://static.alipayobjects.com/gallery',
         'kirin': './js/kirin'
       },
     });
   </script>
 	<script type="text/javascript">
-  seajs.use(['$','hash'],function($, KHash){
-    $H = KHash;
-    var obj = $H({'name':'xuning', 'age':'27'});
-    console.log(obj.extend({'livein':'hangzhou'})); //return {'name':'xuning', 'age':'27', 'livein':'hangzhou'}
-  });
-  // seajs.use(['$', 'position'], function($, Position) {
-  //   var stop = false;
-  //    var target = $('<div class="target"></div>')
-  //      .hover(function(){stop = true;},function(){stop = false;})
-  //      .appendTo(document.body);
-  //    setInterval(function() {
-  //      if (stop) return;
-  //      var x = Math.floor(Math.random() * 100);
-  //      var y = Math.floor(Math.random() * 100);
-  //      Position.pin(
-  //        { element: target, x: 'center', y: 'center' }, 
-  //        { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
-  //      );
-  //    }, 800);    
+  // seajs.use(['$','hash'],function($, KHash){
+  //   $H = KHash;
+  //   var obj = $H({'name':'xuning', 'age':'27'});
+  //   console.log(obj.extend({'livein':'hangzhou'})); //return {'name':'xuning', 'age':'27', 'livein':'hangzhou'}
   // });
+  seajs.use(['$', 'position'], function($, Position) {
+    var stop = false;
+     var target = $('<div class="target"></div>')
+       .hover(function(){stop = true;},function(){stop = false;})
+       .appendTo(document.body);
+     setInterval(function() {
+       if (stop) return;
+       var x = Math.floor(Math.random() * 100);
+       var y = Math.floor(Math.random() * 100);
+       Position.pin(
+         { element: target, x: 'center', y: 'center' }, 
+         { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
+       );
+     }, 800);    
+  });
 	</script>
 </body>
 </html>
