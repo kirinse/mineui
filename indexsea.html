@@ -31,56 +31,76 @@
 	<link href="styles/home.css" rel="stylesheet" />
   <link href="styles/font.css" rel="stylesheet" />
   <link href="styles/font-ie.css" rel="stylesheet" />
-  <script src="http://assets.spmjs.org/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js"></script>
+  <script src="http://assets.spmjs.org/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js" id="seajsnode"></script>
   <style>
     .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
   </style>  
 </head>
 <body role="document">
-  
-  <script>
+  <!-- seajs 配置，可独立到 config.js -->
+  <script type="text/javascript">
   seajs.config({
-      alias: {
-        "$": 'jquery/jquery/1.7.2/jquery',
-        "hash": 'kirin/utils/1.0.0/hash',
-        "string": 'kirin/utils/1.0.0/string',
-        "array": 'kirin/utils/1.0.0/array',
-        'position': 'arale/position/1.0.0/position'
-      },
-      paths: {
-        // 'arale': 'http://assets.spmjs.org/arale',
-        // 'gallery': 'http://static.alipayobjects.com/gallery',
-        'kirin': './js/kirin'
-      },
-      comboExcludes: function(uri) {
-        // 某些特定目录下的文件不合并
-        if (uri.indexOf('kirin/utils') > 0) {
-          return true
-        }
+    alias: {
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "es5-safe": "gallery/es5-safe/0.9.2/es5-safe",
+      "json": "gallery/json/1.0.3/json",
+      "hash": 'kirin/utils/1.0.0/hash',
+      "string": 'kirin/utils/1.0.0/string',
+      "array": 'kirin/utils/1.0.0/array',
+      'position': 'arale/position/1.0.1/position'
+    },
+    paths: {
+      // 'arale': 'http://assets.spmjs.org/arale',
+      // 'gallery': 'http://static.alipayobjects.com/gallery',
+      'kirin': './js/kirin'
+    },
+    preload: [
+      (Array.isArray ? '' : 'es5-safe'),//arale/class/2.0.0 IE6,7,8下需要该插件
+      (this.JSON ? '' : 'json')
+    ],
+    // map: [
+    //   [ '.js', '-debug.js' ]
+    // ],
+    comboExcludes: function(uri) {
+      // 某些特定目录下的文件不合并
+      if (uri.indexOf('kirin/utils') > 0) {
+        return true
       }
-    });
-  </script>
-	<script type="text/javascript">
-  // seajs.use(['$','hash'],function($, KHash){
-  //   $H = KHash;
-  //   var obj = $H({'name':'xuning', 'age':'27'});
-  //   console.log(obj.extend({'livein':'hangzhou'})); //return {'name':'xuning', 'age':'27', 'livein':'hangzhou'}
-  // });
-  seajs.use(['$', 'position', 'string', 'array'], function($, Position, String, Array) {
-    var stop = false;
-     var target = $('<div class="target"></div>')
-       .hover(function(){stop = true;},function(){stop = false;})
-       .appendTo(document.body);
-     setInterval(function() {
-       if (stop) return;
-       var x = Math.floor(Math.random() * 100);
-       var y = Math.floor(Math.random() * 100);
-       Position.pin(
-         { element: target, x: 'center', y: 'center' }, 
-         { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
-       );
-     }, 800);    
+    }
   });
+  </script>
+  <!-- 页面 js 入口，可独立为页面相应的 js 文件 -->
+	<script type="text/javascript">
+  seajs.use(['$','string','hash','array'],function($, $S, $H, $A){
+    console.log($S("    iaaa").trimLeft());
+    var info = $H({
+     name : "xuning",
+     age : 27    
+    })
+    info.each(function(key,value){
+     console.log(key+' = '+value);
+    });
+    var arr = $A(['apple', 'banana', 'lemon']);
+    arr.each(function(item, index){
+       console.log(index + " = " + item);
+    });
+    // $H = KHash;
+  });
+  // seajs.use(['$', 'position', 'string', 'array'], function($, Position, String, Array) {
+  //   var stop = false;
+  //   var target = $('<div class="target"></div>')
+  //    .hover(function(){stop = true;},function(){stop = false;})
+  //    .appendTo(document.body);
+  //   setInterval(function() {
+  //    if (stop) return;
+  //    var x = Math.floor(Math.random() * 100);
+  //    var y = Math.floor(Math.random() * 100);
+  //    Position.pin(
+  //      { element: target, x: 'center', y: 'center' }, 
+  //      { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
+  //    );
+  //   }, 800);    
+  // });
 	</script>
 </body>
 </html>
