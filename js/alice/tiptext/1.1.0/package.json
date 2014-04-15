@@ -1,0 +1,24 @@
+{
+    "name": "tiptext",
+    "version": "1.1.0",
+    "family": "alice",
+    "description": "提示文本组件。",
+    "keywords": [
+        "提示文本"
+    ],
+    "homepage": "http://aliceui.org/tiptext",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aliceui/tiptext"
+    },
+    "bugs": {
+        "url": "https://github.com/aliceui/tiptext/issues"
+    },
+    "license": "MIT",
+    "spm": {
+        "alias": {
+        },
+        "output": ["tiptext.css"]
+    }
+}

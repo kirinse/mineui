@@ -1,0 +1,23 @@
+{
+    "name": "step",
+    "version": "1.0.3",
+    "family": "alice",
+    "description": "通用步骤条。",
+    "keywords": [
+        "步骤"
+    ],
+    "homepage": "http://aliceui.org/step",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aliceui/step"
+    },
+    "bugs": {
+        "url": "https://github.com/aliceui/step/issues"
+    },
+    "license": "MIT",
+    "tests": ["step"],
+    "spm": {
+        "output": ["step.css"]
+    }
+}
