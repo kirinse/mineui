@@ -1,0 +1,789 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>kirin/deposit - Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!-- <link type="text/css" media="screen" charset="utf-8" rel="stylesheet" href="/static/??kirin/common/1.0.0/iconfont.css,kirin/deposit/1.0.0/deposit.css" /> -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/static/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,config.js"></script>
+    <script>
+    seajs.config({
+      alias: {
+        "deposit": "kirin/deposit/1.0.0/deposit"
+        ,"deposit.css": "kirin/deposit/1.0.0/deposit.css"
+        ,"iconfont.css": "kirin/common/1.0.0/iconfont.css"
+      }
+    });
+    seajs.use(["deposit.css", "iconfont.css"]);
+    </script>
+  </head>
+  <body class="deposit">
+    <div class="ui-title">
+      充值到宝麟
+    </div>
+    <div id="container">
+      <div id="content">
+        <ol class="ui-step ui-step-blue ui-step-5 fn-mt-20 fn-clear">
+          <li class="ui-step-start">
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <i class="iconfont"></i>
+              <span class="ui-step-text">选钱包</span>
+            </div>
+          </li>
+          <li>
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <i class="iconfont"></i>
+              <span class="ui-step-text">选银行</span>
+            </div>
+          </li>
+          <li>
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <span class="ui-step-text">填金额</span>
+              </div>
+          </li>
+          <li>
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <span class="ui-step-text">[支付]转账</span>
+              </div>
+          </li>
+          <li class="ui-step-end">
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <!-- <i class="iconfont ui-step-number">&#xF029;</i> -->
+                  <span class="ui-step-text">完成</span>
+              </div>
+          </li>
+        </ol>
+        <form name="depositForm" id="depositForm" action="/ajax/balance/deposit.json" method="get" class="fm-input" data-widget="validator">
+          <!-- 频道 -->
+          <div class="ui-tab-deposit-type fn-clear">
+            <ul class="ui-tab-items">
+              <li class="ui-tab-item">
+                <input type="radio" name="destination" value="lobby" id="dest-lobby" required data-rule="radio" data-display="要充值的钱包">
+                <label for="dest-lobby" class="ui-tipbox ui-tipbox-success ui-tipbox-notselected">
+                  <div class="ui-tipbox-icon">
+                    <i class="iconfont" title="大厅"></i>
+                  </div>
+                  <div class="ui-tipbox-content">
+                    <h3 class="ui-tipbox-title"><em>充值到</em>宝麟大厅
+                      <!-- <span id="J-MFTip"></span> -->
+                    </h3>
+                    <!-- <p class="ui-tipbox-explain"></p> -->
+                    <span class="ui-tip-amount"><em>0.00</em>元</span>
+                  </div>
+                </label>
+                <div id="J-MFTip-tmpl" class="fn-hide">
+                  <ul style="padding: 4px 8px;">
+                    <li>
+                      1、
+                    </li>
+                    <li>
+                      2、
+                    </li>
+                    <li>
+                      3、
+                    </li>
+                    <li style="text-align: right;">
+                      <a href="###" target="_blank"></a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="ui-tab-item">
+                <input type="radio" name="destination" value="lotto" id="dest-lotto">
+                <label class="ui-tipbox ui-tipbox-success" for="dest-lotto">
+                  <div class="ui-tipbox-icon">
+                    <i class="iconfont" title="彩票"></i>
+                  </div>
+                  <div class="ui-tipbox-content">
+                    <h3 class="ui-tipbox-title"><em>充值到</em>彩票</h3>
+                    <!-- <p class="ui-tipbox-explain"></p> -->
+                    <span class="ui-tip-amount"><em>672.93</em>元</span>
+                  </div>
+                </label>
+              </li>
+            </ul>
+            <div class="ui-poptip fn-hide">
+              <div class="ui-poptip-shadow">
+                <div class="ui-poptip-container">
+                    <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                        <em></em>
+                        <span></span>
+                    </div>
+                    <div class="ui-poptip-content"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /频道 -->
+          <div class="ui-tab ui-boxes channel-tab" id="channel">
+            <!-- 渠道 tab -->
+            <div class="fn-clear ui-tab-trigger">
+              <h3 class="ui-tab-title">选择方式</h3>
+              <ul class="ui-tab-trigger-mf">
+                <li class="current">
+                  <input type="radio" name="method" value="bank" id="method-bank" checked="checked" required>
+                  <label for="method-bank">网银转账</label>
+                </li>
+                <li>
+                  <input type="radio" name="method" value="online" id="method-online">
+                  <label for="method-online">在线支付</label>
+                </li>
+                <li>
+                  <input type="radio" name="method" value="3rd" id="method-3rd">
+                  <label for="method-3rd">第三方支付</label>
+                </li>
+              </ul>
+              <div class="ui-poptip fn-hide">
+                <div class="ui-poptip-shadow">
+                  <div class="ui-poptip-container">
+                      <div class="ui-poptip-arrow ui-poptip-arrow-7">
+                          <em></em>
+                          <span></span>
+                      </div>
+                      <div class="ui-poptip-content"></div>
+                  </div>
+                </div>
+              </div>
+              <i class="iconfont" title="充值历史" id="J-depositHistory">&#xf000f;</i>
+            </div>
+            <!-- /渠道 tab -->
+        		<div class="cashier-box ui-tab-cnt" id="J-chooseBankList-cashier">
+              <div class="ui-tab-cnt-item j-rtab" id="J-DEbank">
+                <div class="ui-form">
+                  <p class="loading-text fn-hide">
+                    <span>加载中...</span>
+                    <a href="###">刷新</a>
+                  </p>
+                  <div class="ajax-DEbank">
+                    <div class="kj-area fn-mb-10">
+                      <div class="long-logo">
+                        <ul class="ui-list-icons ui-four-icons fn-mt-20 fn-clear">
+                          <li class="cashier-bank-kj">
+                            <input type="radio" name="bank" id="Jbank-abc" value="1" required data-min="100" data-max="50000" data-steps=2>
+                            <label class="icon-box" for="Jbank-abc">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon ABC" title="中国农业银行"></span>
+                              <span class="bank-name">中国农业银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj">
+                            <input type="radio" name="bank" id="Jbank-icbc" value="2" data-min="100" data-max="50000" data-steps=2>
+                            <label class="icon-box " for="Jbank-icbc">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon ICBC" title="中国工商银行"></span>
+                              <span class="bank-name">中国工商银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jbank-ccb" value="3" data-min="100" data-max="50000" data-steps=2>
+                            <label class="icon-box" for="Jbank-ccb">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon CCB" title="中国建设银行"></span>
+                              <span class="bank-name">中国建设银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jbank-cmb" value="4" data-min="100" data-max="50000" data-steps=2>
+                            <label class="icon-box" for="Jbank-cmb">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon CMB" title="招商银行"></span>
+                              <span class="bank-name">招商银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jbank-comm" value="5" data-min="100" data-max="50000" data-steps=2>
+                            <label class="icon-box" for="Jbank-comm">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon COMM" title="交通银行"></span>
+                              <span class="bank-name">交通银行</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-tab-cnt-item j-rtab" id="J-DPcard">
+                <div class="ui-form">
+                  <p class="loading-text fn-hide">
+                    <span>加载中...</span>
+                    <a href="###">刷新</a>
+                  </p>
+                  <div class="ajax-DEbank">
+                    <div class="kj-area fn-mb-10">
+                      <div class="long-logo">
+                        <ul class="ui-list-icons ui-four-icons fn-mt-20 fn-clear">
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jcard-icbc" value="5" data-min="100" data-max="40000" data-steps=1>
+                            <label class="icon-box" for="Jcard-icbc">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon ICBC" title="中国工商银行"></span>
+                              <span class="bank-name">中国工商银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jcard-ccb" value="7" data-min=100 data-max=49000 data-steps=1>
+                            <label class="icon-box" for="Jcard-ccb">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon CCB" title="中国建设银行"></span>
+                              <span class="bank-name">中国建设银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jcard-cmb" value="8" data-min=10 data-max=45000 data-steps=1>
+                            <label class="icon-box" for="Jcard-cmb">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon CMB" title="招商银行"></span>
+                              <span class="bank-name">招商银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jcard-comm" value="9" data-min=100 data-max=30000 data-steps=1>
+                            <label class="icon-box" for="Jcard-comm">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon COMM" title="交通银行"></span>
+                              <span class="bank-name">交通银行</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="Jcard-abc" value="10" data-min=300 data-max=50000 data-steps=1>
+                            <label class="icon-box" for="Jcard-abc">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon ABC" title="中国农业银行"></span>
+                              <span class="bank-name">中国农业银行</span>
+                            </label>
+                          </li>
+                          <li class="more">
+                            <a class="j-xbox fn-mt-10" href="javascript:;" seed="ccRecord-a-more">
+                              选择其他
+                              <b></b>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-tab-cnt-item j-rtab" id="J-DConsume">
+                <div class="ui-form">
+                  <p class="loading-text fn-hide">
+                    <span>加载中...</span>
+                    <a href="###">刷新</a>
+                  </p>
+                  <div class="ajax-DEbank">
+                    <div class="kj-area fn-mb-10">
+                      <div class="long-logo">
+                        <ul class="ui-list-icons ui-four-icons fn-mt-20 fn-clear">
+                          <li class="cashier-bank-kj ">
+                            <input type="radio" name="bank" id="J3rd-alipay" value="11" data-min=100 data-max=10000 data-steps=2>
+                            <label class="icon-box selected" for="J3rd-alipay">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon ALIPAY" title="支付宝"></span>
+                              <span class="bank-name">支付宝</span>
+                            </label>
+                          </li>
+                          <li class="cashier-bank-kj">
+                            <input type="radio" name="bank" id="J3rd-tenpay" value="12" data-min=100 data-max=5000 data-steps=2>
+                            <label class="icon-box" for="J3rd-tenpay">
+                              <span class="icon-box-sparkling" bbd="false"></span>
+                              <span class="false icon TENPAY" title="财付通"></span>
+                              <span class="bank-name">财付通</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-tab-cnt-item j-rtab" id="J-DHistory">
+                <h4>充值历史记录</h4>
+                <div class="ui-line"></div>
+                <p class="loading-text fn-hide">
+                  <span>加载中...</span>
+                  <a href="###" seed="loadingText-linkT1" smartracker="on">刷新</a>
+                </p>
+                <div class="ajax-DPcard">
+                  <div datatab:url="###" class="j-loading"></div>
+                </div>
+                <div class="ui-table-container">
+                  <table class="ui-table ui-table-inbox">
+                    <thead>
+                      <tr>
+                        <th>创建时间</th>
+                        <th>名称<em class="ft-bar">|</em>交易号</th>
+                        <th>金额<em class="ft-bar">|</em>明细</th>
+                        <th>状态</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div id="form-other">
+              <div class="ui-fm-item ui-fm-amount"> 
+                <label class="ui-fm-label">充值金额：</label>
+                <input type="text" id="J-depositAmount" tabindex="1" name="amount" class="ui-input ui-input-amount" autocomplete="off" required>
+                元
+                <span id="J-amount-explain">
+                 充值限额: 
+                 <span class="min"></span>
+                 <em> - </em>
+                 <span class="max"></span>
+                </span>
+                <div class="ui-poptip fn-hide">
+                  <div class="ui-poptip-shadow">
+                    <div class="ui-poptip-container">
+                        <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                            <em></em>
+                            <span></span>
+                        </div>
+                        <div class="ui-poptip-content">ads</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-fm-item ui-fm-amount"> 
+                <label class="ui-fm-label">资金密码：</label>
+                <input type="password" id="J-securityPwd" tabindex="2" name="securityPwd" class="ui-input ui-input-amount" autocomplete="off" required>
+                <div class="ui-poptip fn-hide">
+                  <div class="ui-poptip-shadow">
+                    <div class="ui-poptip-container">
+                        <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                            <em></em>
+                            <span></span>
+                        </div>
+                        <div class="ui-poptip-content">ads</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-fm-item ui-fm-action fn-pb-15" id="J-land-ebank">
+                <span class="ui-btn ui-btn-ok">
+                  <input tabindex="102" type="submit" value="登录到网上银行充值" class="ui-btn-text" id="J-deposit-submit" data-xbox="depositConfirm.htm?orderId=04143ad2878bf3570820376014376084&amp;instId=ICBC&amp;payTabName=debitCardPay" autocomplete="off">
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="text/x-handlebars-template" id="J-deposit-step2" charset="utf-8">
+      <div id="J-DEbank-step-2">
+        <div class="ui-tipbox ui-tipbox-message fn-hide fn-mb-10">
+            <div class="ui-tipbox-icon">
+                <i class="iconfont" title="提示">&#xe650;</i>
+            </div>
+            <div class="ui-tipbox-content">
+                <h3 class="ui-tipbox-title">温馨提示</h3>
+                <p class="ui-tipbox-explain">您当前使用的不是 IE 浏览器。</p>
+                <p class="ui-tipbox-explain">请使用 IE 登录 ${bankName}(${bankURL}) 完成转账/支付</p>
+            </div>
+        </div>
+        <div class="ui-fm-item ui-fm-amount">
+          <label class="ui-fm-label ui-fm-label-reset">转账到：</label>
+          <div class="ui-fm-row cashier-bank">
+            <a id="targetBank" href="${bankURL}" target="_blank">
+              <span class="long-logo">
+                <label class="icon-box">
+                  <span class="icon ${bankCode}">
+                    ${bankName}
+                  </span>
+                </label>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="check-limit">
+          <div class="tb-inner tb-bank-intro">
+            <table>
+              <caption>
+                <p class="fn-right bank-tip"><i class="iconfont">&#xf00b6;</i></p>
+                <p class="bank-tip">请登录${bankName}网银转账到</p>
+              </caption>
+              <tbody>
+                <tr>
+                  <td>账户名</td>
+                  <td>${accName}</td>
+                  <td width="60px" id="J-AccountName-Container">
+                    <a id="J-AccountName" href="javascript:;" data-clipboard-text="${accName}" title="${accName}">
+                      点击复制
+                    </a>
+                  </td>
+                  <td rowspan="4" width="50%">
+                    <!-- 演示动画/指引 -->
+                  </td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>${accNumber}</td>
+                  <td id="J-AccountEmail-Container">
+                    <a id="J-AccountEmail" href="javascript:;" data-clipboard-text="${accNumber}" title="${accNumber}">
+                      点击复制
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>金额</td>
+                  <td>${amount}</td>
+                  <td id="J-Amount-Container">
+                    <a id="J-Amount" href="javascript:;" data-clipboard-text="${amount}" title="${amount}">
+                      点击复制
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>订单号</td>
+                  <td>${orderId}</td>
+                  <td id="J-Order-Container">
+                    <a id="J-Order" href="javascript:;" data-clipboard-text="${orderId}" title="${orderId}">
+                      点击复制
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script>
+    seajs.use(['deposit'], function(Deposit){
+      var $ = Deposit.$, Tabs = Deposit.arale.Tabs, Validator = Deposit.arale.Validator, clipboard = Deposit.gallery.zeroclipboard, ConfirmBox = Deposit.arale.ConfirmBox, Overlay = Deposit.arale.Overlay;
+      /*标签切换(含历史)*/
+      tabs = new Tabs({
+        element: '#channel',
+        triggers: '.ui-tab-trigger-mf li, .ui-tab-trigger i',
+        panels: '#J-chooseBankList-cashier .ui-tab-cnt-item',
+        activeIndex: 0,
+        activeTriggerClass: 'current',
+        triggerType: 'click'
+      });
+      tabs.on("switch", function(toIndex, fromIndex){
+        var panels = this.get('panels');
+        if(toIndex == 3) {
+          $('#form-other').hide();
+          $('#J-chooseBankList-cashier').height('420px');
+        } else {
+          $(panels[fromIndex]).find('input').removeAttr('checked');
+          $(panels[fromIndex]).find('label').removeClass('selected');
+          // $(panels[toIndex]).find('input').removeAttr('disabled');
+          $('#form-other').show();
+          $('#J-chooseBankList-cashier').height('166px');
+        }
+      })
+      /* 目标钱包 radio 点击 */
+      $('.ui-tab-deposit-type li').click(function(){
+        if($(this).hasClass('ui-tab-item-current')) return;
+        //样式
+        $('.ui-tab-deposit-type li').removeClass('ui-tab-item-current');
+        $(this).addClass('ui-tab-item-current');
+        //进度
+        $('#content .ui-step .ui-step-start').addClass('ui-step-done');
+      });
+      /* 银行 radio 点击 */
+      $('input[name=bank]').change(function(){
+        $('input[name=bank]').next('label').removeClass('selected');
+        $(this).next('label').addClass('selected');
+        min = $(this).attr('data-min');
+        max = $(this).attr('data-max');
+        $('#J-amount-explain .min').html(min);
+        $('#J-amount-explain .max').html(max);
+        $('#J-amount-explain').show();
+        $('#content .ui-step li').eq(1).addClass('ui-step-done');
+      });
+      //金额输入框焦点事件
+      $('#J-depositAmount').focusin(function(e){
+        $('#content .ui-step li').eq(2).addClass('ui-step-active');
+      })
+      .focusout(function(e){
+        $('#content .ui-step li').eq(2).removeClass('ui-step-active');        
+      });
+      /* Validator 表单校验*/      
+      Validator.addRule('amountRange', function(options) {
+        var bank = $('#depositForm input[name=bank]:checked');
+        var min = parseFloat(bank.attr('data-min')), max = parseFloat(bank.attr('data-max')), amount = parseFloat(options.element.val());
+        var result = amount >= min && amount <= max;
+        if(result)  $('#content .ui-step li').eq(2).removeClass('ui-step-active').addClass('ui-step-done');
+        return result;
+      }, '请输入正确的充值金额。');
+      validator = new Validator({
+        element: '#depositForm',
+        autoSubmit: false,
+        failSilently: false,
+        onFormValidated: function(err, results, form) {
+          window.console && console.log && console.log('error='+err);
+          if(!err) {
+            $('#J-deposit-submit').attr('disabled',true);
+            $('#J-land-ebank span').addClass('ui-btn-ok-disabled');
+            $.ajax({
+              url: $(form[0]).attr('action'),
+              data: $(form[0]).serialize(),
+              dataType: 'json',
+              type: 'get',
+              async: false,
+              success: function(result){
+                //获得订单号, 显示转账指引
+                if (result.stat == 'ok') {
+                  //表单重置
+                  form[0].reset();
+                  //模版内容替换
+                  var tpl = $('#J-deposit-step2').html().replace(/[$]{([^{}]+)}/g, function(match, key){
+                    return result.data[key];
+                  });
+                  var confirmBox = new ConfirmBox({
+                    message: tpl
+                    ,title: '请在新开窗口内完成转账'
+                    ,closeTpl: ''
+                    ,confirmTpl: '<a class="ui-dialog-button-orange" href="javascript:;">已完成转账/支付</a>'
+                    // ,cancelTpl: ''
+                    ,afterShow: function(){
+                      $('.ui-dialog-message .tb-inner a').each(function(i, trigger) {
+                        trigger = $(trigger);
+                        var triggerContainer = trigger.parent('td');
+                        var clip = new clipboard.Client();
+                        clip.setHandCursor(true);
+                        clip.setText(trigger.attr('title'));
+                        clip.addEventListener( 'onComplete', function() {
+                            // 复制成功后显示复制成功提示
+                            var o = new Overlay({
+                              template: '<div class="ui-tiptext-container ui-tiptext-container-success" style="padding:5px 8px;width:67px;">'
+                               + '<p class="ui-tiptext ui-tiptext-success" style="padding:0 0 0 17px;"><i class="iconfont ui-tiptext-icon" style="position:absolute;top:1px;left:0">&#xf0156;</i>复制成功</p>'
+                               + '</div>',
+                              parentNode: triggerContainer,
+                              align: {
+                                selfXY: [-12, 20],
+                                baseElement: trigger,
+                                baseXY: ['100%', '100%']
+                              }
+                            });
+                            o.show();
+                            setTimeout(function() {
+                              o.destroy();
+                            }, 1500);
+                        });
+                        clip.glue(trigger.attr('id'), triggerContainer.attr('id'));
+                        trigger.click(function(e) {
+                            e.preventDefault();
+                        });
+                      });
+                      if(!$.browser.msie) {
+                        $('#J-DEbank-step-2 .ui-tipbox').removeClass("fn-hide");
+                      }                      
+                    }
+                    ,onConfirm: function() {
+                      //点击完成执行的操作
+                      location.reload();
+                    }
+                    ,onCancel: function() {
+                      //点击取消执行的操作
+                      location.reload();
+                    }
+                  });
+                  confirmBox.undelegateEvents(document, 'keyup.esc').show();
+                  //弹出窗口
+                  if($.browser.msie) {
+                    window.open('https://mybank.icbc.com.cn');                    
+                  }
+                }
+              },
+              error: function(){
+                ConfirmBox.alert('系统充值功能当前不可用，请稍后重试。',function(){location.reload();});
+              }
+            });
+          }
+        }
+      });
+      validator.addItem({
+        element: '[name=destination]',
+        required: true,
+        rule: 'radio',
+        errormessageRequired: '请选择要充值的钱包。',
+        showMessage: function(message, element) {
+          var err_box = $('.ui-tab-deposit-type .ui-poptip'), items = $('.ui-tab-deposit-type .ui-tab-item'), left = 0;
+          items.each(function(i,ele){
+            left += $(ele).width();
+          })
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.css({'left':left}).removeClass('fn-hide');
+        },
+        hideMessage: function(message, element) {
+          $('.ui-tab-deposit-type .ui-poptip').addClass('fn-hide');
+        }
+      })
+      .addItem({
+        element: '[name=method]',
+        required: true,
+        rule: 'radio',
+        errormessageRequired: '请选择充值方式。'
+      })
+      .addItem({
+        element: '[name=bank]',
+        required: true,
+        rule: 'radio',
+        errormessageRequired: '请选择银行。',
+        showMessage: function(message, element) {
+          var err_box = $('.ui-tab-trigger .ui-poptip'), items = $('.ui-tab-trigger li'), left = 110;
+          items.each(function(i,ele){
+            left += $(ele).width();
+          })
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.css({'left':left}).removeClass('fn-hide');
+        },
+        hideMessage: function(message, element) {
+          $('.ui-tab-trigger .ui-poptip').addClass('fn-hide');
+        }        
+      })
+      .addItem({
+        element: '#J-depositAmount',
+        required: true,
+        rule:'amountRange',
+        errormessageRequired: '请输入金额',
+        showMessage: function(message, element) {
+          var err_box = $(element).parent('div').children('.ui-poptip');
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.removeClass('fn-hide').addClass('fn-show');
+        },
+        hideMessage: function(message, element) {
+          $(element).parent('div').children('.ui-poptip').removeClass('fn-show').addClass('fn-hide');
+        }        
+      })
+      .addItem({
+        element: '#J-securityPwd',
+        required: true,
+        rule:'password',
+        errormessageRequired: '请输入资金密码',
+        showMessage: function(message, element) {
+          var err_box = $(element).next('.ui-poptip');
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.removeClass('fn-hide').addClass('fn-show');
+        },
+        hideMessage: function(message, element) {
+          $(element).next('.ui-poptip').removeClass('fn-show').addClass('fn-hide');
+        }        
+      });      
+      /*复制收款信息*/
+      clipboard.setMoviePath(seajs.data.base+'zeroclipboard10.swf');
+      // 限制金额范围 input 只能输入数字
+      $('#J-depositAmount').keydown(function(e) {
+          var target = $(e.target);
+          var val = target.val();
+          if (!(isNaN(val) || /[a-zA-Z-]/.test(val))) {
+              target.data('old_value', val)
+          }
+      });
+      $('#J-depositAmount').keyup(function(e) {
+          var target = $(e.target);
+          var val = target.val();
+          if (isNaN(val) || /[a-zA-Z-]/.test(val)) {
+              target.val(target.data('old_value'));
+          }
+      });
+    	tryToCloseXbox = function(){
+    		try{
+          window.parent.AP.widget.xBox.hide()
+    		} catch(e){}
+    		try{
+    			window.parent.xbox.hide();
+    		} catch(e){ }
+        try {
+          window.frameElement.trigger('close')
+    		} catch(e){ }
+    	}
+
+    	//close xbox
+      // E.connect("J-close-xbox", "click", tryToCloseXbox);
+
+      if($("#J-MFTip").length && $("#J-MFTip-tmpl").length) {
+        var t = new Tip({
+          trigger: '#J-MFTip',
+          content: $("#J-MFTip-tmpl").html(),
+          theme: 'blue',
+          inViewport: true,
+        	align: {
+        	  baseXY: [0, 110],
+        	  selfXY: [0, '100%+8px']
+          }
+        });
+      }
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>kirin/deposit - Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!-- <link type="text/css" media="screen" charset="utf-8" rel="stylesheet" href="/static/??kirin/common/1.0.0/iconfont.css,kirin/deposit/1.0.0/deposit.css" /> -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/static/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,config.js"></script>
+    <script>
+    seajs.config({
+      alias: {
+        "validator": "arale/validator/0.9.7/validator"
+        ,"transfer.css": "kirin/transfer/1.0.0/transfer.css"
+        ,"iconfont.css": "kirin/common/1.0.0/iconfont.css"
+      }
+    });
+    seajs.use(["transfer.css", "iconfont.css"]);
+    </script>
+  </head>
+  <body class="transfer">
+    <div class="ui-title">
+      钱包转账
+    </div>
+    <div id="container">
+      <div id="content">
+        <form name="transferForm" id="J-transferForm" class="ui-form-large" method="get" action="" data-widget="validator">
+          <div class="ui-form-item direction">
+            <label class="ui-label">转入转出</label>
+            <div class="fn-clear">
+              <div class="fromto from">
+                <ul class="ui-list-icons">
+                  <li>
+                    <input type="radio" name="from" value="lobby" id="from-lobby">
+                    <label for="from-lobby" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#x3432;</i>
+                        大厅
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">39023.03</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" name="from" value="lotto" id="from-lotto">
+                    <label for="from-lotto" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#xf003b;</i>
+                        彩票
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">2392039023.00</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" name="from" value="lotto2" id="from-lotto2">
+                    <label for="from-lotto2" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#xf003b;</i>
+                        彩票2
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">9023.00</span>
+                      </span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div class="arrow">
+                <i class="iconfont">&#x3464;</i>
+              </div>
+              <div class="fromto to">
+                <ul class="ui-list-icons">
+                  <li>
+                    <input type="radio" name="to" value="lobby" id="to-lobby">
+                    <label for="to-lobby" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#x3432;</i>
+                        大厅
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">2392039023.00</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" name="to" value="lotto" id="to-lotto">
+                    <label for="to-lotto" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#xf003b;</i>
+                        彩票
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">2392039023.00</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" name="to" value="lotto2" id="to-lotto2">
+                    <label for="to-lotto2" class="icon-box">
+                      <span class="name">
+                        <i class="iconfont">&#xf003b;</i>
+                        彩票2
+                      </span>
+                      <span class="amount">
+                        <i class="iconfont">&#xf0035;</i>
+                        <span class="big">9023.00</span>
+                      </span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="ui-form-item">
+            <label for="J-amount" class="ui-label">转账金额</label>
+            <input class="ui-input ui-input-large" type="text" name="amount" id="J-amount" required data-rule="number" min="1" max="10000">
+          </div>
+          <div class="ui-form-item">
+            <label for="J-password" class="ui-label">资金密码</label>
+            <input class="ui-input ui-input-large" type="password" name="spassword" id="J-password" required data-rule="password">
+          </div>
+          <div class="ui-form-item">
+            <input type="submit" class="ui-button ui-button-mblue" value="确定">
+            <input type="reset" class="ui-button ui-button-mwhite" value="取消">
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+    seajs.use(['$', "validator"],function($, Validator){
+      $(function() {
+        //from 列表点击事件
+        $('#J-transferForm .from input[name=from]').change(function(e){
+          if($(this).next('label').hasClass("selected")) return false;
+          //清除转出钱包 selected 样式
+          $('#J-transferForm .from .icon-box').removeClass("selected");
+          //自身添加 selected 样式
+          $(this).next('label').addClass("selected");
+        });
+        //to 列表点击事件
+        $('#J-transferForm .to input[name=to]').change(function(e){
+          if($(this).next('label').hasClass("selected")) return false;
+          $('#J-transferForm .to .icon-box').removeClass("selected");
+          $(this).next('label').addClass("selected");
+        });
+
+        Validator.addRule('notSame', function(options){
+          var from = $('#J-transferForm input[name=from]:checked').val();
+          var to = $('#J-transferForm input[name=to]:checked').val();
+          if(from == to){
+            options.element.each(function(o, ele){
+              $(ele).removeAttr('checked');
+              $(ele).next('label').removeClass("selected");
+            });
+            options.element.blur();
+            return false;
+          }
+          return true;
+        }, '转出和转入不能是同一个频道。');
+        Validator.addRule('lobbyOnly', function(options){
+          var from = $('#J-transferForm input[name=from]:checked').val();
+          var to = $('#J-transferForm input[name=to]:checked').val();
+          if(from != 'lobby' && to != 'lobby'){
+            options.element.each(function(o, ele){
+              $(ele).removeAttr('checked');
+              $(ele).next('label').removeClass("selected");
+            });
+            options.element.blur();
+            return false;
+          }
+          return true;
+        }, '其他钱包只能直接转入到大厅钱包。');
+        Validator.addRule('lessThan', function(options){
+          // console.log(options.element);
+          var fromAmount = parseFloat($('#J-transferForm input[name=from]:checked').next('label').find('.amount .big').text())
+          ,inputAmount = parseFloat(options.element[0].value);
+          if(isNaN(fromAmount)) {
+            console.log('from='+fromAmount, 'input='+inputAmount);
+          }
+          return inputAmount <= fromAmount;
+        }, '金额不足。');
+        var validator = new Validator({
+            element: '#J-transferForm',
+            onFormValidated: function(err, results, form) {
+              // var from = $('#J-transferForm .from input:radio:checked').val();
+              // var to = $('#J-transferForm .to input:radio:checked').val();
+              // window.console && console.log && console.log('from='+from, 'to='+to, 'error='+err);
+              // return false;
+            },
+            failSilently: false,
+            autoSubmit: false
+        });
+        validator.addItem({
+          element: '[name=from]',
+          required: true,
+          rule: 'notSame',
+          errormessageRequired: '请选择要转出的频道。'
+        })
+        .addItem({
+          element: '[name=to]',
+          required: true,
+          rule: 'notSame lobbyOnly',
+          errormessageRequired: '请选择要转入的频道。'
+        })
+        .addItem({
+          element: '#J-amount',
+          required: true,
+          errormessageRequired: '请输入转账金额。',
+          rule: 'number lessThan' //@todo 动态 max
+        })
+        .addItem({
+          element: '#J-password',
+          required: true,
+          errormessageRequired: '请输入资金密码。',
+          rule: ''
+        })
+      });
+    })
+    </script>
+  </body>
+</html>

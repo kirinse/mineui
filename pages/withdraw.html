@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>kirin/deposit - Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!-- <link type="text/css" media="screen" charset="utf-8" rel="stylesheet" href="/static/??kirin/common/1.0.0/iconfont.css,kirin/deposit/1.0.0/deposit.css" /> -->
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/static/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,config.js"></script>
+    <script>
+    seajs.config({
+      alias: {
+        "withdraw": "kirin/withdraw/1.0.0/withdraw"
+        ,"withdraw.css": "kirin/withdraw/1.0.0/withdraw.css"
+        ,"sbank.css": "kirin/withdraw/1.0.0/sbank.css"
+        ,"iconfont.css": "kirin/common/1.0.0/iconfont.css"
+      }
+    });
+    seajs.use(["withdraw.css", "sbank.css", "iconfont.css"]);
+    </script>
+  </head>
+  <body class="withdraw">
+    <div class="ui-title">
+      宝麟提款
+    </div>
+    <div id="container">
+      <div id="content">
+        <ol class="ui-step ui-step-blue ui-step-4 fn-mt-20 fn-clear">
+          <li class="ui-step-start">
+            <div class="ui-step-line">-</div>
+            <div class="ui-step-icon">
+              <i class="iconfont"></i>
+              <span class="ui-step-text">选银行</span>
+            </div>
+          </li>
+          <li>
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <span class="ui-step-text">填金额</span>
+              </div>
+          </li>
+          <li>
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <span class="ui-step-text">资金密码</span>
+              </div>
+          </li>
+          <li class="ui-step-end">
+              <div class="ui-step-line">-</div>    
+              <div class="ui-step-icon">
+                  <i class="iconfont"></i>
+                  <span class="ui-step-text">完成</span>
+              </div>
+          </li>
+        </ol>
+        <form name="withdrawForm" action="./withdraw.json" method="post" class="ui-form" id="J-withdrawForm">
+          <div class="ui-tab ui-boxes channel-tab" id="channel">
+            <!-- 渠道 tab -->
+            <div class="fn-clear ui-tab-trigger">
+              <h3 class="ui-tab-title"></h3>
+              <ul class="ui-tab-trigger-mf">
+                <li class="current">
+                  <input type="radio" name="method" value="lobby" id="method-lobby" checked>
+                  <label for="method-lobby">向平台提款</label>
+                </li>
+                <!-- !!无上级不显示 -->
+                <li>
+                  <input type="radio" name="method" value="superior" id="method-superior">
+                  <label for="method-superior">向上级提款</label>
+                </li>
+              </ul>
+              <div class="ui-poptip fn-hide">
+                <div class="ui-poptip-shadow">
+                  <div class="ui-poptip-container">
+                      <div class="ui-poptip-arrow ui-poptip-arrow-7">
+                          <em></em>
+                          <span></span>
+                      </div>
+                      <div class="ui-poptip-content"></div>
+                  </div>
+                </div>
+              </div>
+              <i class="iconfont" title="提款历史" id="J-withdrawHistory">&#xf000f;</i>
+            </div>
+            <!-- /渠道 tab -->
+        		<div class="cashier-box ui-tab-cnt" id="J-chooseBankList-cashier">
+              <div class="ui-tab-cnt-item j-rtab current" id="J-WEbank">
+                <div class="ui-form fn-mt-20">
+                  <p class="loading-text fn-hide">
+                    <span>加载中...</span>
+                    <a href="###" id="loadingText-link">刷新</a>
+                  </p>
+                  <div class="ajax-DEbank">
+                    <div class="kj-area fn-mb-10">
+                      <div class="card-box-list">
+                        <label class="card-box" for="Jcard-121">
+                          <input type="radio" name="card" value="121" id="Jcard-121" data-min="100" data-max="50000">
+                          <div class="card-box-name">
+                            <span class="bank-logo ccb"></span>
+                            <span class="bank-name" title="中国建设银行">中国建设银行</span>
+                            <span class="bank-num4">尾号2222</span>
+                          </div>
+                          <div class="card-box-express">
+                            <div class="express-status">
+                              <span class="asset-icon asset-icon-express-s">
+                                <span class="iconfont">&#xf0156;</span>
+                              </span>
+                              <span>生效时间: 2014.04.17</span>
+                            </div>
+                            <div class="express-else">
+                              <!-- 已生效 -->
+                            </div>
+                          </div>
+                          <span>
+                            <i class="iconfont mark">&#xf01a7;</i>
+                            <i class="iconfont check">&#x3448;</i>
+                          </span>
+                        </label>
+                        <label class="card-box" for="Jcard-122">
+                          <input type="radio" name="card" value="122" id="Jcard-122" data-min="100" data-max="50000">
+                          <div class="card-box-name">
+                            <span class="bank-logo abc"></span>
+                            <span class="bank-name" title="中国农业银行">中国农业银行</span>
+                            <span class="bank-num4">尾号2222</span>
+                          </div>
+                          <div class="card-box-express">
+                            <div class="express-status">
+                              <span class="asset-icon asset-icon-express-s">
+                                <span class="iconfont">&#xf0156;</span>
+                              </span>
+                              <span>生效时间: 2014.04.17</span>
+                            </div>
+                            <div class="express-else">
+                              <!-- 已生效 -->
+                            </div>
+                          </div>
+                          <span>
+                            <i class="iconfont mark">&#xf01a7;</i>
+                            <i class="iconfont check">&#x3448;</i>
+                          </span>
+                        </label>
+                        <label class="card-box" for="Jcard-123">
+                          <input type="radio" name="card" value="123" id="Jcard-123" data-min="100" data-max="50000">
+                          <div class="card-box-name">
+                            <span class="bank-logo icbc"></span>
+                            <span class="bank-name" title="中国工商银行">中国工商银行</span>
+                            <span class="bank-num4">尾号2222</span>
+                          </div>
+                          <div class="card-box-express">
+                            <div class="express-status">
+                              <span class="asset-icon asset-icon-express-s">
+                                <span class="iconfont">&#xf0156;</span>
+                              </span>
+                              <span>生效时间: 2014.04.17</span>
+                            </div>
+                            <div class="express-else">
+                              <!-- 已生效 -->
+                            </div>
+                          </div>
+                          <span>
+                            <i class="iconfont mark">&#xf01a7;</i>
+                            <i class="iconfont check">&#x3448;</i>
+                          </span>
+                        </label>
+                        <label class="card-box" for="Jcard-124">
+                          <input type="radio" name="card" value="124" id="Jcard-124" data-min="100" data-max="50000">
+                          <div class="card-box-name">
+                            <span class="bank-logo boc"></span>
+                            <span class="bank-name" title="中国银行">中国银行</span>
+                            <span class="bank-num4">尾号2222</span>
+                          </div>
+                          <div class="card-box-express">
+                            <div class="express-status">
+                              <span class="asset-icon asset-icon-express-s">
+                                <span class="iconfont">&#xf0156;</span>
+                              </span>
+                              <span>生效时间: 2014.04.17</span>
+                            </div>
+                            <div class="express-else">
+                              <!-- 已生效 -->
+                            </div>
+                          </div>
+                          <span>
+                            <i class="iconfont mark">&#xf01a7;</i>
+                            <i class="iconfont check">&#x3448;</i>
+                          </span>
+                        </label>
+                        <label class="card-box" for="Jcard-125">
+                          <input type="radio" name="card" value="125" id="Jcard-125" data-min="100" data-max="50000">
+                          <div class="card-box-name">
+                            <span class="bank-logo comm"></span>
+                            <span class="bank-name" title="交通银行">交通银行</span>
+                            <span class="bank-num4">尾号2222</span>
+                          </div>
+                          <div class="card-box-express">
+                            <div class="express-status">
+                              <span class="asset-icon asset-icon-express-s">
+                                <span class="iconfont">&#xf0156;</span>
+                              </span>
+                              <span>生效时间: 2014.04.17</span>
+                            </div>
+                            <div class="express-else">
+                              <!-- 已生效 -->
+                            </div>
+                          </div>
+                          <span>
+                            <i class="iconfont mark">&#xf01a7;</i>
+                            <i class="iconfont check">&#x3448;</i>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- !!无上级不显示 -->
+              <div class="ui-tab-cnt-item j-rtab" id="J-WSuper">
+                <div class="ui-form">
+                  <div class="ui-tipbox ui-tipbox-warning fn-mt-20 fn-mb-30">
+                      <div class="ui-tipbox-icon">
+                          <i class="iconfont" title="警告">&#xe64f;</i>
+                      </div>
+                      <div class="ui-tipbox-content">
+                          <h3 class="ui-tipbox-title">温馨提示</h3>
+                          <p class="ui-tipbox-explain">向上级提款资金将从您的账户直接转入您上级的账户，请确保该操作不会带来资金安全问题。</p>
+                          <p class="ui-tipbox-explain">提款限额：{min} - {max}，如有疑问，请停止操作并咨询我们的客服专员。</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-tab-cnt-item j-rtab" id="J-WHistory">
+                <h4>提款历史记录</h4>
+                <div class="ui-line"></div>
+                <p class="loading-text fn-hide">
+                  <span>加载中...</span>
+                  <a href="###" seed="loadingText-linkT1" smartracker="on">刷新</a>
+                </p>
+                <div class="ajax-DPcard">
+                  <div datatab:url="###" class="j-loading"></div>
+                </div>
+                <div class="ui-table-container">
+                  <table class="ui-table ui-table-inbox">
+                    <thead>
+                      <tr>
+                        <th>提现时间</th>
+                        <th>交易号</th>
+                        <th>金额</th>
+                        <th>状态</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td>Data</td>
+                        <td class="ui-table-action">Data</td>
+                      </tr>
+                      <tr class="ui-table-split">
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td>Data</td>
+                          <td class="ui-table-action">Data</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="form-inputs">
+                <div class="ui-form-item">
+                  <label for="J-amount" class="ui-label">
+                    提现金额
+                  </label>
+                  <input class="ui-input ui-input-large" type="text" name="amount" id="J-amount">
+                  <span id="J-amount-explain">
+                   提款限额: 
+                   <span class="min"></span>
+                   <em> - </em>
+                   <span class="max"></span>
+                  </span>
+                  <div class="ui-poptip fn-hide">
+                      <div class="ui-poptip-shadow">
+                        <div class="ui-poptip-container">
+                            <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                                <em></em>
+                                <span></span>
+                            </div>
+                            <div class="ui-poptip-content"></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="ui-form-item">
+                  <label for="J-spassword" class="ui-label">
+                    资金密码
+                  </label>
+                  <input class="ui-input ui-input-large" type="password" name="spassword" id="J-spassword">
+                  <div class="ui-poptip fn-hide">
+                    <div class="ui-poptip-shadow">
+                      <div class="ui-poptip-container">
+                        <div class="ui-poptip-arrow ui-poptip-arrow-10">
+                          <em></em>
+                          <span></span>
+                        </div>
+                        <div class="ui-poptip-content"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-form-item">
+                  <input type="submit" class="ui-button ui-button-mblue" value="确认无误，提现" id="J-withdrawSubmit">
+                  <input type="reset" class="ui-button ui-button-mwhite" value="重新填写">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+    seajs.use(['withdraw'], function(Withdraw) {
+      var $ = jquery = Withdraw.$, Tip = Withdraw.arale.Tip, Validator = Withdraw.arale.Validator, Tabs = Withdraw.arale.Tabs, ConfirmBox = Withdraw.arale.ConfirmBox;
+      /*标签切换(含历史)*/
+      tabs = new Tabs({
+        element: '#channel',
+        triggers: '.ui-tab-trigger-mf li, .ui-tab-trigger i',
+        panels: '#J-chooseBankList-cashier .ui-tab-cnt-item',
+        activeIndex: 0,
+        activeTriggerClass: 'current',
+        triggerType: 'click'
+      });
+      // var panels = tabs.get('panels');
+      tabs.on("switched", function(toIndex, fromIndex){
+        if(toIndex == 2)
+        {
+          $('#form-inputs').addClass('fn-hide');
+        } else if(toIndex == 1) {
+          //取消银行卡校验框
+          var item = validator.query('[name=card]');
+          item.element.removeAttr('checked');
+          item.element.parent('label').removeClass('sel');
+          item.get("hideMessage").call(validator, item.getMessage('required'), item.element);
+          //提款限额(页面加载时已从服务器获取)
+          $('#J-amount-explain .min').html('100');
+          $('#J-amount-explain .max').html('9999999');
+          $('#J-amount-explain').show();
+        } else {
+          $('#J-amount-explain .min').html('');
+          $('#J-amount-explain .max').html('');
+          $('#J-amount-explain').hide();
+          $('#form-inputs').removeClass('fn-hide');
+        }
+      })
+      /* 银行卡 radio 点击 */
+      $('input[name=card]').change(function(){
+        $('input[name=card]').parent('label').removeClass('sel');
+        $(this).parent('label').addClass('sel');
+        min = $(this).attr('data-min');
+        max = $(this).attr('data-max');
+        $('#J-amount-explain .min').html(min);
+        $('#J-amount-explain .max').html(max);
+        $('#J-amount-explain').show();
+        $('#content .ui-step li').eq(0).addClass('ui-step-done');
+      });
+      //金额输入框焦点事件
+      $('#J-amount').focusin(function(e){
+        $('#content .ui-step li').eq(1).addClass('ui-step-active');
+      });
+      $('#J-amount').focusout(function(e){
+        $('#content .ui-step li').eq(1).removeClass('ui-step-active');
+      });
+      //密码输入框焦点事件
+      $('#J-spassword').focusin(function(e){
+        $('#content .ui-step li').eq(2).addClass('ui-step-active');
+      })
+      .focusout(function(e){
+        $('#content .ui-step li').eq(2).removeClass('ui-step-active');
+      });
+      /* Validator */
+      Validator.addRule('amountRange', function(options) {
+        var card = $('#J-withdrawForm input[name=card]:checked');
+        var min = parseFloat($('#J-amount-explain .min').html()), max = parseFloat($('#J-amount-explain .max').html()), amount = parseFloat(options.element.val());
+        if(!min||!max) {
+          var item = validator.query('[name=card]');
+          item.get("showMessage").call(validator, item.getMessage('required'), item.element);
+        }
+        var result = amount >= min && amount <= max;
+        if(result)  $('#content .ui-step li').eq(1).removeClass('ui-step-active').addClass('ui-step-done');
+        return result;
+      }, '请输入正确的充值金额。');
+      validator = new Validator({
+        element: '#J-withdrawForm',
+        autoSubmit: false,
+        failSilently: false,
+        onFormValidated: function(err, results, form) {
+          window.console && console.log && console.log('error='+err);
+          if(!err) {
+            $('#J-withdrawSubmit').attr('disabled',true).removeClass('ui-button-mblue').addClass('ui-button-mdisable');
+            $.ajax({
+              url: $(form[0]).attr('action'),
+              data: $(form[0]).serialize(),
+              dataType: 'json',
+              type: 'get',
+              async: false,
+              success: function(result){
+                //获取返回结果
+                if (result.stat == 'ok') {
+                  //表单重置
+                  form[0].reset();
+                  var msg = (result.data.step == 'done') ? '您的提现已经成功处理。'/*上级提现直接结束*/ : '您的提现正在处理中，请稍后查询状态。'/*平台提现需有中间步骤*/;
+                  var confirmBox = new ConfirmBox({
+                    message: msg
+                    ,title: '温馨提示'
+                    ,closeTpl: ''
+                    ,cancelTpl: ''
+                    ,onConfirm: function() {
+                      //点击完成执行的操作
+                      location.reload();
+                    }
+                    ,onCancel: function() {
+                      //点击取消执行的操作
+                      location.reload();
+                    }
+                  });
+                  confirmBox.undelegateEvents(document, 'keyup.esc').show();
+                }
+              },
+              error: function(){
+                ConfirmBox.alert('网络传输出现问题，请稍后重试。',function(){location.reload()});
+              }
+            });            
+          }
+        }
+      });
+      validator.addItem({
+        element: '[name=method]',
+        required: true,
+        rule: 'radio',
+        errormessageRequired: '请选择提款方式。'
+      })
+      .addItem({
+        element: '[name=card]',
+        required: function(){return $('[name=method]:checked').val() == 'lobby'},
+        rule: 'radio',
+        errormessageRequired: '请选择银行。'
+        ,showMessage: function(message, element) {
+          var err_box = $('.ui-tab-trigger .ui-poptip'), items = $('.ui-tab-trigger li'), left = 110;
+          items.each(function(i,ele){
+            left += $(ele).width();
+          })
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.css({'left':left}).removeClass('fn-hide');
+        }
+        ,hideMessage: function(message, element) {
+          $('.ui-tab-trigger .ui-poptip').addClass('fn-hide');
+        }
+      })
+      .addItem({
+        element: '#J-amount',
+        required: true,
+        rule:'amountRange',
+        errormessageRequired: '请输入金额',
+        showMessage: function(message, element) {
+          var err_box = $(element).parent('div').find('.ui-poptip');
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.removeClass('fn-hide').addClass('fn-show');
+          $('#content .ui-step li').eq(1).removeClass('ui-step-done').addClass('ui-step-active');
+        },
+        hideMessage: function(message, element) {
+          $(element).parent('div').find('.ui-poptip').removeClass('fn-show').addClass('fn-hide');
+          $('#content .ui-step li').eq(1).removeClass('ui-step-active').addClass('ui-step-done');
+        }        
+      })      
+      .addItem({
+        element: '#J-spassword',
+        required: true,
+        rule:'password',
+        errormessageRequired: '请输入资金密码',
+        showMessage: function(message, element) {
+          var err_box = $(element).next('.ui-poptip');
+          err_box.find('.ui-poptip-content').html(message);
+          err_box.removeClass('fn-hide').addClass('fn-show');
+          $('#content .ui-step li').eq(2).removeClass('ui-step-done').addClass('ui-step-active');
+        },
+        hideMessage: function(message, element) {
+          $(element).next('.ui-poptip').removeClass('fn-show').addClass('fn-hide');
+          $('#content .ui-step li').eq(2).removeClass('ui-step-active').addClass('ui-step-done');
+        }        
+      });      
+      // 限制金额范围 input 只能输入数字
+      $('#J-amount').keydown(function(e) {
+          var target = $(e.target);
+          var val = target.val();
+          if (!(isNaN(val) || /[a-zA-Z-]/.test(val))) {
+              target.data('old_value', val)
+          }
+      });
+      $('#J-amount').keyup(function(e) {
+          var target = $(e.target);
+          var val = target.val();
+          if (isNaN(val) || /[a-zA-Z-]/.test(val)) {
+              target.val(target.data('old_value'));
+          }
+      });
+    });
+    </script>
+  </body>
+</html>

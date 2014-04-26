@@ -1,0 +1,13 @@
+<?php echo $_GET['_callback']?>({
+  stat: "ok"
+  ,infos: [
+    {
+      "app":"大厅"
+      ,"balance": "123456.7089"
+    }
+    ,{
+      "app":"彩票"
+      ,"balance": "2323242.8907"
+    }
+  ]
+})

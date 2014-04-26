@@ -1,0 +1,20 @@
+<?php echo $_GET['_callback']?>({
+  stat: "ok",
+  infos: [
+   {
+     level:1,
+     id: 203321,
+     content: 'testing22342....'
+   }
+   ,{
+     level:3,
+     id: 203321,
+     content: 'testing34534....'
+   }
+   ,{
+     level:2,
+     id: 203321,
+     content: 'testing5435....'
+   }
+  ]
+})

@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>kirin/Common - Header</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/static/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,config.js"></script>
+    <script>
+    seajs.config({
+      alias: {
+        "common": "kirin/common/1.0.0/common"
+        ,"common.css": "kirin/common/1.0.0/common.css"
+        ,"header.css": "kirin/common/1.0.0/header.css"
+        ,"iconfont.css": "kirin/common/1.0.0/iconfont.css"
+      }
+    });
+    seajs.use(["common.css", "header.css", "iconfont.css"]);
+    </script>
+  </head>
+  <body role="document">
+    <!-- 页眉 -->
+  	<header class="header" coor="header">
+  		<div class="ui-grid-25 header-wrap fn-clear">
+  			<figure id="kirin-img-logo" class="fn-left">
+  				<a href="/" class="ui-logo-kirin">宝麟娱乐</a>
+  			</figure>
+        <div class="header-link the-kirin-global">
+          <!-- global-toplink -->
+          <div class="global-toplink">
+            <!-- global-dropdown-user -->
+            <div id="global-header-user" class="global-dropdown">
+              <div class="global-dropdown-hd">
+                <div class="global-dropdown-hd-normal">
+                  <a href="#" class="global-toplink-user global-toplink-link">
+                    <i class="iconfont user"></i>
+                    <span id="global-toplink-username" class="global-toplink-username" title="{昵称}">{昵称}</span>
+                  </a>
+                </div>
+              </div>
+              <div class="global-dropdown-bd global-dropdown-bd-pl sl-alpha global-hide">
+                <div class="global-dropdown-bd-cnt global-dropdown-user">
+                  <h3 class="global-tit" id="global-username" title="{用户名}">{用户名}</h3>
+                  <div class="global-button-box">
+                    <a href="deposit.html" class="global-button global-button-sorange" data-height="600">
+                      <span class="global-button-text">充 值</span>
+                    </a>
+                    <a href="withdraw.html" class="global-button global-button-swhite" data-height="640">
+                      <span class="global-button-text">提 现</span>
+                    </a>
+                    <a href="transfer.html" class="global-button global-button-swhite" data-height="460">
+                      <span class="global-button-text" seed="global-button-transfer">转 账</span>
+                    </a>
+                  </div>
+                  <div id="global-users" class="global-hide daparser-0" data-user="">
+                    <h3 class="global-tit global-tit-line">切换用户</h3>
+                    <ul id="global-list-user" class="global-list global-loading">
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /global-dropdown-user -->
+            <em class="global-separator">|</em>
+            <!-- global-dropdown-messages -->
+            <div id="global-header-msg" class="global-dropdown" data-msg="Y">
+              <div class="global-dropdown-hd">
+                <div class="global-dropdown-hd-msg">
+                  <a href="/auth/mykirin.html#/messages" class="global-toplink-msg">消息</a>
+                </div>
+              </div>
+              <div class="global-dropdown-bd global-dropdown-bd-pl sl-alpha fn-hide">
+                <div class="global-dropdown-bd-cnt global-dropdown-msg">
+                  <h3 class="global-tit global-tit-line">
+                    <div class="global-tit-action">
+                      <a href="/auth/mykirin.html#/messages">查看所有</a><em class="global-txt-fg">|</em><a href="#" id="global-header-msg-hide">暂不显示</a>
+                    </div>
+                    您有<a href="/auth/mykirin.html#/messages" class="global-tit-link global-toplink-msgCount">0</a>条未读消息
+                  </h3>
+                  <ul id="global-list-msg" class="global-list global-loading"></ul>
+                </div>
+              </div>
+            </div>
+            <!-- /global-dropdown-messages -->
+            <em class="global-separator">|</em>
+            <a href="###" class="global-toplink-link">退出</a>
+            <em class="global-separator">|</em>
+            <!-- global-dropdown-i -->
+            <div id="global-header-i" class="global-dropdown">
+              <div class="global-dropdown-hd">
+                <div class="global-dropdown-hd-normal">
+                  <a href="/auth/mykirin.html" class="global-toplink-i global-toplink-link">我的宝麟</a>
+                </div>
+              </div>
+              <div class="global-dropdown-bd global-dropdown-bd-pl sl-alpha global-hide">
+                <div class="global-dropdown-bd-cnt global-dropdown-i">
+                  <ul id="global-list-i" class="global-list">
+                    <li><a href="/auth/mykirin.html#/security">安全设置</a></li>
+                    <li><a href="/auth/mykirin.html#/cards">银行卡</a></li>
+                    <li><a href="/auth/mykirin.html#/team">我的团队</a></li>
+                    <li><a href="/auth/mykirin.html#/messages">消息中心</a></li>
+                    <li><a href="/auth/report.html">交易记录</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /global-dropdown-i -->
+            <em class="global-separator">|</em>
+            <a href="javascript" class="global-toplink-link global-toplink-link-last">提建议</a>
+            <em class="global-separator">|</em>
+            <!-- global-dropdown-balance -->
+            <div id="global-header-more" class="global-dropdown">
+              <div class="global-dropdown-hd">
+                <div class="global-dropdown-hd-normal">
+                  <a href="javascript:;" class="global-toplink-more global-toplink-link">
+                    <i class="iconfont balance"></i>
+                    钱包
+                  </a>
+                </div>
+              </div>
+              <div class="global-dropdown-bd global-dropdown-bd-pr sl-alpha global-hide">
+                <div class="global-dropdown-bd-cnt global-dropdown-more">
+                  <ul id="global-list-more" class="global-list global-loading">
+                  </ul>
+                  <div><a href="javascript:;" id="global-refresh-balance" title="刷新余额"><i class="iconfont">&#xf004b;</i>刷新余额</a></div>
+                </div>
+              </div>
+            </div>
+            <!-- /global-dropdown-balance -->
+          </div>
+          <!-- /global-toplink -->
+          <script type="text/x-handlebars-template" id="global-template-birth" charset="utf-8">
+            <div class="global-birth">
+              <a href="#" class="global-birth-icon global-toplink-link" seed="birthdayicon_02">生日快乐</a>
+              <div class="global-birth-tip" style="display:none">
+                <div class="global-birth-tip-content">点击生日祝福</div>
+                <div class="global-birth-tip-shadow"></div>
+                <div class="global-birth-tip-angle"></div>
+              </div>
+              <div id="global-birthSwf">
+                <div id="global-swfObj"></div>
+              </div>
+            </div>
+          </script>
+        </div>
+  			<nav id="J-nav" role="navigation">
+  				<ul class="nav" coor="nav">
+  					<li class="nav-item" id="home">
+  						<a href="/" class="nav-item-link">首页</a>
+  					</li>
+  					<li class="nav-item" id="lotto">
+  						<a href="/lotto" class="nav-item-link">彩票</a>
+              <div class="nav-item-sub">
+                <div class="ui-grid-25 fn-clear sub-container">
+                  <article class="sub-item" id="digital">
+                    <i class="icon-sub-item sub-item-digital"></i>
+                    <ul class="ui-link">
+                      <li class="sub-item-item" style="padding:2px 0;">
+                        <a href="###">重庆时时彩</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">江西时时彩</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">新疆时时彩</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">上海时时乐</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">天津时时彩</a>
+                      </li>
+                    </ul>
+                  </article>
+                  <article class="sub-item" id="11x5">
+                    <i class="icon-sub-item sub-item-11x5"></i>
+                    <!-- <h3 class="title icon-title-shishicai">11选5</h3> -->
+                    <ul class="ui-link">
+                      <li class="sub-item-item" style="padding:2px 0;">
+                        <a href="###">山东11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">江西11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">广东11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">重庆11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">山西11选5</a>
+                      </li>
+                    </ul>
+                  </article>
+                  <article class="sub-item" id="kl8">
+                    <i class="icon-sub-item sub-item-kl8"></i>
+                    <!-- <h3 class="title icon-title-shishicai">快乐8</h3> -->
+                    <ul class="ui-link">
+                      <li class="sub-item-item" style="padding:2px 0;">
+                        <a href="###">北京快乐8</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">深圳快乐8</a>
+                      </li>
+                      <!-- <li style="padding:2px 0;">
+                        <a href="###">广东11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">重庆11选5</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">山西11选5</a>
+                      </li> -->
+                    </ul>
+                  </article>
+                  <article class="sub-item" id="3d">
+                    <i class="icon-sub-item sub-item-3d"></i>
+                    <!-- <h3 class="title icon-title-shishicai">3D</h3> -->
+                    <ul class="ui-link">
+                      <li class="sub-item-item" style="padding:2px 0;">
+                        <a href="###">三星</a>|<a href="###">五码</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">二星</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">一星</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">不定位</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">大小单双</a>
+                      </li>
+                    </ul>
+                  </article>
+                  <article class="sub-item sub-item-last" id="p3">
+                    <i class="icon-sub-item sub-item-p3"></i>
+                    <!-- <h3 class="title icon-title-shishicai">排3</h3> -->
+                    <ul class="ui-link">
+                      <li class="sub-item-item" style="padding:2px 0;">
+                        <a href="###">三星</a>|<a href="###">五码</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">二星</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">一星</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">不定位</a>
+                      </li>
+                      <li style="padding:2px 0;">
+                        <a href="###">大小单双</a>
+                      </li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+              <!-- <div class="angle sl-angle"></div> -->
+  					</li>
+  					<li class="nav-item" id="casino">
+  						<a href="###" class="nav-item-link">娱乐城</a>
+  					</li>
+  					<li class="nav-item" id="sports">
+  						<a href="###" class="nav-item-link">体育</a>
+  					</li>
+  					<li class="nav-item" id="game">
+  						<a href="###" class="nav-item-link">电子游戏</a>
+  					</li>
+  					<li class="nav-item" id="promo">
+  						<a href="###" class="nav-item-link">活动</a>
+  					</li>
+  					<li class="nav-item" id="help">
+  						<a href="###" class="nav-item-link">帮助</a>
+  					</li>
+  				</ul>
+  			</nav>
+  		</div>
+  	</header>
+    <!-- /页眉 -->
+    <script type="text/javascript">
+      MSGSWITCH = true;
+      (function(doc) {
+          // document.domain = document.domain.split(".").slice(-2).join(".");
+          window.GLOBAL = {
+            system: {
+              personal: location.protocol+'//'+location.hostname,
+              personalportal: "/auth/mykirin",
+              authcenter: "/idp",
+              apimg: "/static",
+              assets: "/static"
+            },
+            today:'20140420',
+            birthday: '0420'
+          };
+          seajs.use(['common', '$'],function(Common, $){
+            var Birthday = Common.Birthday;
+            var Account = Common.Account;
+            var Count = Common.Count;
+            var Message = Common.Message;
+            var Robot = Common.Robot;
+            var Dropdown = Common.Dropdown;
+            var Popup = Common.Popup;
+            var Xbox = Common.Xbox;
+            var Balance = Common.Balance;
+            var msgEl = $('#global-header-msg');
+            var accountEl = $('#global-header-user');
+            var moreEl = $('#global-header-more');
+            var iEl = $('#global-header-i');
+            var robotEl = $('#global-header-robot');
+            GLOBAL.isBirthday = Birthday.isBirthday;
+            if(Birthday.isBirthday){
+              GLOBAL.Birthday = new Birthday({
+                template: $('#global-template-birth').html(),
+                parentNode: $('#global-header-area')[0]
+              }).render();
+              // flash要获取的数据
+              window.J_ConstellData = function(){
+                return GLOBAL.Birthday.param;
+              };
+              // 关闭flash调用
+              window.foldFlash = function(){
+                GLOBAL.Birthday.hideFlash();
+              };
+            }
+            function afterShow() {
+              this.get('trigger').parent().addClass('global-dropdown-active');
+            };
+            function afterHide() {
+              this.get('trigger').parent().removeClass('global-dropdown-active');
+            };
+            if (msgEl[0]) {
+              // 是否发送消息，由服务端返回
+              if (window.MSGSWITCH && msgEl.attr('data-msg') !== 'N') {
+                Message.getMessageCount(function(data) {
+                  var msgTrigger = msgEl.find('.global-dropdown-hd');
+                  var message = new Message({
+                    trigger: msgTrigger,
+                    element: msgEl.find('.global-dropdown-bd')[0],
+                    align: {
+                      baseXY: [-2, msgTrigger.height()-2]
+                    },
+                    afterShow: function(){
+                      if (Count.getCount() > 0) {
+                        afterShow.call(this);
+                        this.element.find('.global-toplink-msgCount').html(Count.getCount());
+                      }
+                    },
+                    afterHide: function(){
+                      afterHide.call(this);
+                    }
+                  }).render();
+                  if (data.popMsg && data.infos.length) {
+                    message.renderMsg(data);
+                    // 消息中心的页面不直接显示浮层
+                    if (!(/\#\/message/i.test(location.href))) {
+                      message.show();
+                    }
+                  }
+                });
+              } else {
+                Count.hideCount();
+              }
+            }
+            if (accountEl[0]) {
+              var accountTrigger = accountEl.find('.global-dropdown-hd');
+              var account = new Account({
+                trigger: accountTrigger[0],
+                element: accountEl.find('.global-dropdown-bd')[0],
+                align: {
+                  baseXY: [-2, accountTrigger.height()-2]
+                },
+                afterShow: afterShow,
+                afterHide: afterHide
+              }).render();
+              //充、提、转
+              accountEl.find('.global-button').click(function(e){
+                e.preventDefault();
+                var url = './'+$(this).attr('href'), height = $(this).attr('data-height');
+                new Xbox({
+                  content: url
+                  ,width:720
+                  ,height: height
+                }).show();
+              });
+            }
+            if(moreEl[0]) {
+              var balanceTrigger = moreEl.find('.global-dropdown-hd');
+              var balance = new Balance({
+                trigger: balanceTrigger[0],
+                element: moreEl.find('.global-dropdown-bd')[0],
+                align: {
+                  selfXY: ['100%-4px',0],
+                  baseXY: ['100%-2px',balanceTrigger.height()-2]
+                },
+                afterShow: afterShow,
+                afterHide: afterHide
+              }).render();
+            }
+            moreEl.find('#global-list-more li').hover(
+              function(e) {
+                $(e.currentTarget).addClass('global-list-hover');
+              }, function(e) {
+                $(e.currentTarget).removeClass('global-list-hover');
+              }
+            );
+            if (iEl[0]) {
+              var iTrigger = iEl.find('.global-dropdown-hd');
+              var i = new Dropdown({
+                trigger: iTrigger[0],
+                element: iEl.find('.global-dropdown-bd')[0],
+                align: {
+                  baseXY: [-2, iTrigger.height()-2]
+                },
+                afterShow: afterShow,
+                afterHide: afterHide
+              }).render();
+            }
+            if (robotEl[0]) {
+              var robotTrigger = robotEl.find('.global-dropdown-hd');
+              var i = new Robot({
+                trigger: robotTrigger[0],
+                template: $('#global-template-robot').html().replace(/@if/g,'#'+'if'),
+                model: {isLogin: robotEl.attr('data-login')==='true'},
+                parentNode: robotEl[0],
+                align: {
+                  baseXY: [-2, robotTrigger.height()-2]
+                },
+                afterShow: afterShow,
+                afterHide: afterHide
+              }).render();
+            }
+            //导航菜单下滑
+            new Popup({
+              trigger: '#lotto',
+              element: '#lotto .nav-item-sub',
+              effect: 'fade slide',
+              align: {
+                baseXY: [0, '100%-1'],
+                baseElement: 'header'
+              }
+            });
+          });
+      })(document);
+    </script>
+    <script>
+      GLOBAL.BIRTHURL = seajs.data.base + seajs.data.alias.common.split('/').slice(0,-1).join('/') + '/images/bday.swf';
+      window.getUrl = function(){
+        window.open("/auth/shengri.html");
+      };
+    </script>
+  </body>
+</html>
