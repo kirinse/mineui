@@ -47,13 +47,13 @@
                 <div class="global-dropdown-bd-cnt global-dropdown-user">
                   <h3 class="global-tit" id="global-username" title="{用户名}">{用户名}</h3>
                   <div class="global-button-box">
-                    <a href="deposit.html" class="global-button global-button-sorange" data-height="600">
+                    <a href="/auth/deposit.html" class="global-button global-button-sorange" data-height="600">
                       <span class="global-button-text">充 值</span>
                     </a>
-                    <a href="withdraw.html" class="global-button global-button-swhite" data-height="640">
+                    <a href="/auth/withdraw.html" class="global-button global-button-swhite" data-height="640">
                       <span class="global-button-text">提 现</span>
                     </a>
-                    <a href="transfer.html" class="global-button global-button-swhite" data-height="460">
+                    <a href="/auth/transfer.html" class="global-button global-button-swhite" data-height="460">
                       <span class="global-button-text" seed="global-button-transfer">转 账</span>
                     </a>
                   </div>
@@ -285,7 +285,6 @@
   			</nav>
   		</div>
   	</header>
-    <!-- /页眉 -->
     <script type="text/javascript">
       MSGSWITCH = true;
       (function(doc) {
@@ -384,7 +383,7 @@
               //充、提、转
               accountEl.find('.global-button').click(function(e){
                 e.preventDefault();
-                var url = './'+$(this).attr('href'), height = $(this).attr('data-height');
+                var url = $(this).attr('href'), height = $(this).attr('data-height');
                 new Xbox({
                   content: url
                   ,width:720
@@ -457,5 +456,4 @@
         window.open("/auth/shengri.html");
       };
     </script>
-  </body>
-</html>
+    <!-- /页眉 -->
