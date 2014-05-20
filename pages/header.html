@@ -319,7 +319,7 @@
             if(Birthday.isBirthday){
               GLOBAL.Birthday = new Birthday({
                 template: $('#global-template-birth').html(),
-                parentNode: $('#global-header-area')[0]
+                parentNode: $('.header')[0]
               }).render();
               // flash要获取的数据
               window.J_ConstellData = function(){
