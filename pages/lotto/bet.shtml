@@ -1,6 +1,290 @@
 <!--#include virtual="/pages/header.html"-->
-<!-- 内容 -->
+<!-- 主体 -->
+    <section id="container" class="container ui-grid-row">
+      <div class="ui-grid-25 ui-content">
+        <!-- 主导航/玩法切换 -->
+        <h2 class="lotto-title cqssc">
+          重庆时时彩
+        </h2>
+        <div class="hd-content">
+          <div class="hd">
+            <h3 id="lotto-title">
+              重庆时时彩
+              <i class="iconfont dropdown"></i>
+            </h3>
+            <div id="lotto-all" class="ui-list-lottos fn-hide">
+              <ul class="ui-list ui-list-nosquare">
+                <li class="ui-list-item ui-list-item-first">
+                  <a href="javascript:;">
+                    <em class="logo35 logo35-3d"></em>
+                    <strong>福彩3D</strong>
+                    <span class="redWords">
+                      <i class="arrowsIcon"></i>
+                      中2亿
+                    </span>
+                  </a>
+                </li>
+                <li class="ui-list-item">
+                  <a href="javascript:;">
+                    <em class="logo35 logo35-p3"></em>
+                    <strong>体彩P3</strong>
+                  </a>
+                </li>
+                <li class="ui-list-item ui-list-multigames">
+                  <div class="multiple-wrapper">
+                    <em class="logo35 logo35-ssc"></em>
+                    <div class="lots-wrapper">
+                      <a href="javascript:;" class="lots-name">重庆时时彩</a>
+                      <a href="javascript:;"class="lots-name">江西时时彩</a>
+                      <a href="javascript:;"class="lots-name">新疆时时彩</a>
+                      <a href="javascript:;"class="lots-name">天津时时彩</a>
+                      <a href="javascript:;"class="lots-name">上海时时乐</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="ui-list-item ui-list-multigames">
+                  <div class="multiple-wrapper">
+                    <em class="logo35 logo35-11x5"></em>
+                    <div class="lots-wrapper">
+                      <a href="javascript:;" class="lots-name">重庆11选5</a>
+                      <a href="javascript:;"class="lots-name">江西11选5</a>
+                      <a href="javascript:;"class="lots-name">山东11选5</a>
+                      <a href="javascript:;"class="lots-name">山西11选5</a>
+                      <a href="javascript:;"class="lots-name">广东11选5</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="ui-list-item ui-list-multigames">
+                  <div class="multiple-wrapper">
+                    <em class="logo35 logo35-keno"></em>
+                    <div class="lots-wrapper">
+                      <a href="javascript:;" class="lots-name">北京快乐8</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <p>第<span><em class="basic-issue">20140428</em><em class="issue">049</em></span>期</p>
+            <div class="ui-countdown">
+              投注还剩：
+              <em>--时--分--秒</em>
+            </div>
+          </div>
+          <div class="ui-nav ui-nav-nosub" id="J-Method-Nav">
+            <ul class="ui-nav-main">
+            </ul>
+          </div>
+        </div>
+        <!-- /主导航/玩法切换 -->
+        <!-- 左侧投注区 -->
+        <div class="ui-grid-19">
+          <div class="ui-box number-area">
+            <div class="ui-box-container">
+              <div class="ui-box-content global-loading" id="bet-area">
+                <div class="ui-box-play fn-hide">
+                  <div class="ui-radio-methods">
 
+                  </div>
+                  <div class="ui-play-block">
+                    <div class="ui-num-block">
+                      <div class="ui-radio-info">
+                      </div>
+                      <div class="ui-select-nums">
+                        <div class="bd">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-box-content ft fn-hide">
+                <div class="prize_info">
+                  <span class="p1">奖金设置<span class="caret"></span></span>
+                  <ul id="method-prize-wrapper"></ul>
+                  返点: <em id="method-rebate"></em>%
+                </div>
+                <div class="sel_info fn-clear">
+                  <span class="p1">模式<span class="caret"></span></span>
+                  <div class="sel_modes" id="J-Bet-Modes">
+                  </div>
+                  <span class="p1">倍数<span class="caret"></span></span>
+                  <div class="sel_times"><input type="text" maxlength="5" name="times" class="times-input" id="J-bet-times"></div>
+                  <span class="p1">返点<span class="caret"></span></span>
+                  <div class="slide-wrapper">
+                    <div class='ui-slider-line'></div>
+                    <span class="ui-slider-handle-data" id="J-slider-handle-date-0">0</span>
+                  </div>
+                </div>
+                <div class="amount">
+                  您选了 <b id="method-count">0</b> 注, 共 <b id="method-subtotal">0</b> 元, 
+                  <em>中奖将盈利 <ul id="method-profit-wrapper">-</ul></em>
+                </div>
+              </div>
+              <div class="add_button fn-hide">
+                <button id="J-AddtoBetlist">添加到投注列表</button>
+                <button id="J-CleanAllSelect" class="ui-button ui-button-swhite">清空选号</button>
+              </div>
+            </div>
+          </div>
+          <div class="bet-extra"></div>
+          <div class="ui-box bets-area">
+            <div class="ui-box-container">
+              <div class="ui-box-content fn-clear">
+                <div class="ui-grid-16">
+                  <ul class="ui-list-bets" id="J-Bets-List">
+
+                  </ul>
+                </div>
+                <div class="ui-grid-3">
+                  <ul class="ui-list-randoms">
+                    <li><a class="ui-button ui-button-swhite" data-count="1" href="#">机选1注</a></li>
+                    <li><a class="ui-button ui-button-swhite" data-count="5" href="#">机选5注</a></li>
+                    <li><a class="ui-button ui-button-swhite" data-count="10" href="#">机选10注</a></li>
+                    <li><a class="ui-button ui-button-swhite" data-count="0" href="#">清空列表</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bet-extra"></div>
+          <div class="cfm-buttons">
+            <a class="ui-button ui-button-lblue" id="J-Bet-submit">立即投注</a>
+            <a class="ui-button ui-button-lwhite" id="J-Bet-trace">我要追号</a>
+          </div>
+        </div>
+        <!-- /左侧投注区 -->
+        <!-- 右侧开奖区 -->
+        <div class="ui-grid-6 sidebar">
+          <div class="ui-box">
+              <div class="ui-box-head">
+                  <h3 class="ui-box-head-title">第 <em>20140428</em><b>001</b> 期开奖号码</h3>
+              </div>
+              <div class="ui-box-container">
+                <div class="ui-box-content">
+                  <div class="ball-num fn-clear">
+                    <ul id="open_code_list">
+                      <li class="ico-ball3">5</li>
+                      <li class="ico-ball3">9</li>
+                      <li class="ico-ball3">5</li>
+                      <li class="ico-ball3">7</li>
+                      <li class="ico-ball3">2</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="ui-box ui-box-follow">
+              <div class="ui-box-head">
+                <h3 class="ui-box-head-title">今日开奖</h3>
+                <span class="ui-box-head-text"></span>
+                <a href="#" class="ui-box-head-more"></a>
+              </div>
+              <div class="ui-box-container">
+                <div class="ui-box-content ui-today-issue" id="J-Issue-carousel">
+                  <div class="scroller global-loading">
+                    <ul class="ui-list ui-list-nosquare ui-list-issues" id="J-Today-issue" data-switchable-role="content">
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- /右侧开奖区 -->
+      </div>
+    </section>
+    <script type="text/x-handlebars-template" id="issue-list-template">
+      <li class="{{issueClass}}" data-id="{{issue}}"><div class="ui-list-item-issue"><span class="list-issue">{{issue}}</span><em class="list-draw">{{draw}}</em>{{#if isSelling}}<i class="iconfont list-issue-status selling" title="正在销售"></i>{{/if}}{{#if isWin}}<i class="iconfont list-issue-status win" title="已中奖"></i>{{/if}}{{#if isLose}}<i class="iconfont list-issue-status lose" title="未中奖"></i>{{/if}}{{#if isNormal}}<i class="iconfont list-issue-status normal" title="未参与"></i>{{/if}}{{#if isDrawing}}<i class="iconfont list-issue-status drawing" title="正在开奖"></i>{{/if}}{{#if isWaiting}}<i class="iconfont list-issue-status wait" title="等待开奖"></i>{{/if}}</div><div class="ui-list-item-issue-sub">{{#if isWin}}盈利 <em class="prize">{{profit}}</em> 元{{/if}}<em class="pattern">{{#if isSelling}}{{else}}{{pattern}}{{/if}}</em>{{#if isNormal}}{{else}}<a href="javascript:;" class="ui-button ui-button-swhite ui-bet-details">投注详情</a>{{/if}}</div></li>
+    </script>
+    <script type="text/x-handlebars-template" id="nav-template">
+      <li class="ui-nav-item" data-index="{{@index}}"><a href="javascript:;">{{nav}}</a></li>
+    </script>
+    <script type="text/x-handlebars-template" id="nav-panel-template">
+      <div class="ui-box-play fn-hide"><div class="ui-radio-methods"></div><div class="ui-play-block"></div></div>
+    </script>
+    <script type="text/x-handlebars-template" id="label-template">
+      <div style="padding:5px 0;"><span class="ui-group">{{label}}</span><div class="ui-radios">{{#methods}}<label data-id="{{id}}">{{methodName}}</label>{{/methods}}</div></div>
+    </script>
+    <script type="text/x-handlebars-template" id="ticket-template">
+      <li data-code={{code}}>
+        <div class="code">
+          <span class="bet-list-method">{{method}}</span>
+          <span class="em">{{code}}</span>
+          <span class="bet-details">
+            [{{nums}}注|
+            <em class="bet-list-mode">{{mode}}</em>模式|
+            <em class="bet-list-times">{{times}}</em>倍|
+            <em class="bet-list-money">{{amount}}</em>元|
+            <em class="bet-list-rebate">{{rebate}}</em>%
+            ]
+          </span>
+        </div>
+        {{#if actions}}
+        <div class="actions">
+          <i class="iconfont modi" count="{{nums}}" title="修改"></i>
+          <i class="iconfont del" title="删除"></i>
+        </div>
+        {{/if}}
+      </li>
+    </script>
+    <script type="text/x-handlebars-template" id="number-place-template">
+      <div class="ball-item ball-item-col3" data-rule-big-start="{{../bigStartIndex}}">
+        <div class="k">
+          <span class="k1">{{tag}}<span class="caret"></span></span>
+          <span class="k2">遗漏</span>
+        </div>
+        <div class="v">
+          <div class="ball-list">
+            <ul class="fn-clear">
+              {{#each no}}
+              <li>
+                <em class="btn-ball">{{this}}</em>
+                <span class="red">23</span>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+        {{#if ../shortcut}}
+        <div class="t">
+          <div class="tool-list">
+            <ul class="fn-clear dxjo">
+              <li><a href="javascript:;" class="ui-button ui-button-swhite" data-func="all">全</a></li>
+              <li><a href="javascript:;" class="ui-button ui-button-swhite" data-func="big">大</a></li>
+              <li><a href="javascript:;" class="ui-button ui-button-swhite" data-func="small">小</a></li>
+              <li><a href="javascript:;" class="ui-button ui-button-swhite" data-func="odd">奇</a></li>
+              <li><a href="javascript:;" class="ui-button ui-button-swhite" data-func="even">偶</a></li>
+              <li class="last"><a href="javascript:;" class="ui-button ui-button-swhite" data-func="clean">清</a></li>
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </script>
+    <script type="text/x-handlebars-template" id="number-input-template">
+      <div class="ui-box">
+        <div class="ui-box-container">
+          <div class="ui-box-content fn-clear">
+            <div class="ui-grid-16">
+              <textarea class="ui-textarea"></textarea>
+              <p class="ui-form-explain">每一注号码之间请用半角空格 [ ] 隔开。</p>
+            </div>
+            <div class="ui-grid-buttons">
+              <ul class="ui-dlist">
+                <li><a class="ui-button ui-button-swhite" data-func="uniqfy" href="javascript:;">去重</a></li>
+                <li><a class="ui-button ui-button-swhite ui-uploader" data-data="methodid={{methodid}}" data-func="upload" href="javascript:;">上传</a></li>
+                <li><a class="ui-button ui-button-swhite" data-func="empty" href="javascript:;">清空</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/x-handlebars-template" id="bet-modes">
+      <label><input type="radio" name="rates" value="{{rates}}">{{label}}</label>
+    </script>
 <!-- /内容 -->
+<!--#include virtual="/pages/footer.html"-->
   </body>
 </html>
