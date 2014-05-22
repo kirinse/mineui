@@ -1,0 +1,204 @@
+<!--#include virtual="/pages/header.html"-->
+	<div id="banner" class="slide-1" coor-rate="0.1" coor="default-banner" role="banner" data-banner="false">
+		<div class="login-box">
+      <iframe class="fn-hide" allowTransparency="true" src="/auth/login.html" width="286"  height="387" id="loginIframe" frameborder="0" scrolling="no" coor="aside-login"></iframe>
+      <div id="loginLoading"><img width="50" height="50" alt="加载中" src="/static/images/loading-modal.gif"></div>
+		</div>
+		<ul id="J-slide" >
+			<li class="slide" data-bg="" data-pic="" data-txt="" data-load="false" data-iebg="/static/images/slide1.jpg">
+				<div class="bg" data-load="false"></div>
+				<div class="pic anim-left" data-load="false" data-anim="left" style="height:358px"></div>
+				<div class="txt-wrap">
+					<div class="txt anim-up" data-load="false" data-anim="up">
+						<h3>你好 你的新钱包</h3>
+						<p>支付宝钱包 全新功能等你体验</p>
+						<a href="###" target="_blank" title="立即体验" hidefocus="true">立即体验</a>
+					</div>
+				</div>
+			</li>
+			<li class="slide" data-bg="" data-pic="" data-txt="" data-load="false" data-iebg="/static/images/slide2.jpg">
+				<div class="bg" data-load="false"></div>
+				<div class="pic anim-left" data-load="false" data-anim="left" style="height:302px"></div>
+				<div class="txt-wrap">
+					<div class="txt anim-down" data-load="false" data-anim="down">
+						<h3>心动 只需指动</h3>
+						<p>支付宝钱包 让你购物随心所欲</p>
+						<a href="###" target="_blank" title="了解更多" hidefocus="true">了解更多</a>
+					</div>
+				</div>
+			</li>
+			<li class="slide" data-bg="" data-pic="" data-txt="" data-load="false" data-iebg="/static/images/slide3.jpg" >
+				<div class="bg" data-load="false"></div>
+				<div class="pic anim-left" data-load="false" data-anim="left" style="height:302px"></div>
+				<div class="txt-wrap">
+					<div class="txt anim-down" data-load="false" data-anim="down">
+						<h3>生活 简单一点</h3>
+						<p>支付宝钱包 一站式汇聚生活、娱乐</p>
+						<a href="###" target="_blank" title="立即体验" hidefocus="true">立即体验</a>
+					</div>
+				</div>
+			</li>
+			<li class="slide" data-bg="" data-pic="" data-txt="" data-load="false" data-iebg="/static/images/slide4.jpg">
+				<div class="bg bg-4"  data-load="false"></div>
+				<div class="pic pic-4 anim-left"  data-load="false" data-anim="left" style="height:337px"></div>
+				<div class="txt-wrap">
+					<div class="txt txt-4 anim-right"  data-load="false" data-anim="right">
+						<h3>守护 你的信任</h3>
+						<p>用支付宝钱包 享受会员保障</p>
+						<a href="###" target="_blank" title="立即体验" hidefocus="true">立即体验</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slide-number-box">
+			<div id="J-slide-number" class="slide-number" style="-webkit-transform: translateZ(0);">
+				<a href="#" hidefocus="true">1</a>
+				<a href="#" hidefocus="true">2</a>
+				<a href="#" hidefocus="true">3</a>
+				<a href="#" hidefocus="true">4</a>
+			</div>
+		</div>
+		<div id="server-link">
+      <!-- <div style="float:left;line-height:30px;">aaa:</div> -->
+			<ul class="ui-link" id="J-views">
+				<li class="ui-link-item"><a href="###">【招募】不一样的战场，需要你来实现</a></li>
+				<li class="ui-link-item"><a href="###">风云联赛 全服赛17日赛况激烈</a></li>
+				<li class="ui-link-item ui-link-item-last"><a href="###">网银、财付通充值网络波动公告</a></li>
+			</ul>
+		</div>
+	</div>
+	<section class="main" role="main">
+		<div class="grid-990 product fn-clear" coor="product">
+			<article class="product-item" id="product-lotto" style="background:url(/static/images/stage-curtains.jpg) top center no-repeat;">
+				<h2 class="title">
+					<a href="/lotto" class="title-link">彩票</a>
+				</h2>
+				<!-- <ul class="ui-link fn-clear">
+          <li class="ui-link-item ui-link-item-first"><a href="/lotto/bet.html?CQSSC">重庆时时彩</a></li>
+          <li class="ui-link-item"><a href="/lotto/bet.html?JXSSC">江西时时彩</a></li>
+          <li class="ui-link-item ui-link-item-last"><a href="/lotto/bet.html?XJSSC">新疆时时彩</a></li>
+        </ul>
+        <ul class="ui-link fn-clear">
+          <li class="ui-link-item ui-link-item-first"><a href="/lotto/bet.html?SD11x5">山东11运</a></li>
+          <li class="ui-link-item"><a href="/lotto/bet.html?GD11x5">广东11选5</a></li>
+          <li class="ui-link-item"><a href="/lotto/bet.html?3D">3D</a></li>
+          <li class="ui-link-item ui-link-item-last"><a href="/lotto/bet.html?P3">P3(5)</a></li>
+        </ul>
+        <p class="link"><i class="icon-youhui"></i><a href="###">彩票优惠活动</a></p> -->
+				<p class="link" style="margin-top:61px;color:#fff;text-align:center;">即将开启，敬请期待</p>
+			</article>
+			<article class="product-item" id="product-casino" style="background:url(/static/images/stage-curtains.jpg) top center no-repeat;">
+				<h2 class="title">
+					<a href="/casino" class="title-link">娱乐城</a>
+				</h2>
+				<p class="link" style="margin-top:61px;color:#fff;text-align:center;">即将开启，敬请期待</p>
+			</article>
+			<article class="product-item" id="product-sports" style="background:url(/static/images/stage-curtains.jpg) top center no-repeat;">
+				<h2 class="title">
+					<a href="/sports" class="title-link">体育</a>
+				</h2>
+				<p class="link" style="margin-top:61px;color:#fff;text-align:center;">即将开启，敬请期待</p>
+			</article>
+			<article class="product-item product-item-last" id="product-game" style="background:url(/static/images/stage-curtains.jpg) top center no-repeat;">
+				<h2 class="title">
+					<a href="/game" class="title-link">电子游戏</a>
+				</h2>
+				<p class="link" style="margin-top:61px;color:#fff;text-align:center;">即将开启，敬请期待</p>
+			</article>
+		</div>
+	</section>	
+	<footer class="footer" coor="footer">
+      <div class="footer-line">
+		  <div class="grid-990 cnt"></div>
+	  </div>
+	  <div class="grid-990 partner fn-clear" coor="partner" role="complementary">
+		  <article class="partner-item">
+			  <h4 class="title">
+				  <span>合作机构</span>
+			  </h4>
+			  <div class="cnt">
+				  <span class="icon-partner-bank"></span>
+			  </div>
+		  </article>
+		  <article class="partner-item">
+			  <h4 class="title">
+				  <span>关注宝麟</span>
+			  </h4>
+			  <div class="cnt fn-clear">
+				  <a class="business-pic fn-left" href="javascript:void(0);"><i class="iconfont qq"></i>QQ</a>
+				  <a class="business-pic fn-left" href="javascript:void(0);" target="_blank"><i class="iconfont weibo"></i>新浪微博</a>
+          <a class="follow_btn" href="javascript:void(0);" title="关注宝麟娱乐的新浪微博" target="_blank"><span><em class="icon">+</em>关注</span></a>
+        </div>
+			  <div class="cnt fn-clear">
+				  <a class="business-pic fn-left" href="javascript:void(0);"><i class="iconfont wechat"></i>微信</a>
+				  <a class="business-pic fn-left" href="javascript:void(0);" target="_blank"><i class="iconfont tweibo"></i>腾讯微博</a>
+          <a class="follow_btn" href="javascript:void(0);" title="关注宝麟娱乐的腾讯微博" target="_blank"><span><em class="icon">+</em>关注</span></a>
+			  </div>
+		  </article>
+		  <article class="partner-item partner-item-last">
+			  <h4 class="title">
+				  <span>推荐浏览器</span>
+			  </h4>
+			  <div class="cnt fn-clear">
+				  <a class="browser-pic fn-left" href="http://chrome.360.cn/" target="_blank"><i class="iconfont c360"></i>360 极速浏览器</a>
+				  <a class="browser-pic fn-left" href="http://www.microsoft.com/zh-cn/download/internet-explorer-10-details.aspx" target="_blank"><i class="iconfont ie"></i>Internet Explorer 10</a>
+			  </div>
+			  <div class="cnt fn-clear">
+				  <a class="browser-pic fn-left" href="https://www.google.com/intl/zh-CN/chrome/browser/?hl=zh-CN" target="_blank"><i class="iconfont chrome"></i>谷歌浏览器</a>
+				  <a class="browser-pic fn-left" href="https://www.mozilla.org/zh-CN/firefox/new/" target="_blank"><i class="iconfont firefox"></i>火狐浏览器</a>				  
+			  </div>
+		  </article>
+	  </div>
+	  <div class="grid-990 sitelink fn-clear" coor="sitelink" role="contentinfo">
+		  <ul class="ui-link fn-clear">
+			  <li class="ui-link-item"><a href="###" title="关于宝麟">关于宝麟</a></li>
+			  <li class="ui-link-item"><a href="###" title="官方博客">官方博客</a></li>
+			  <li class="ui-link-item"><a href="###" title="诚征英才">诚征英才</a></li>
+			  <li class="ui-link-item"><a href="###" title="开放平台">开放平台</a></li>
+			  <li class="ui-link-item"><a href="###" title="联系我们">联系我们</a></li>
+			  <li class="ui-link-item"><a href="###" title="网站地图">网站地图</a></li>
+			  <li class="ui-link-item ui-link-item-last">宝麟娱乐版权所有 2011-2014</li>
+		  </ul>
+	  </div>
+  </footer>
+  <script type="text/javascript">
+  seajs.config({
+    alias: {
+      "slide": "arale/switchable/1.0.2/slide"
+      ,"index.css": "kirin/index/1.0.0/index.css"
+    }
+  });
+  seajs.use(['slide','$','index.css'],function(Slide,$){
+    /* banner */
+    var banners = new Slide({
+      element: '#banner'
+      ,panels: '#J-slide li'
+      ,triggers: '#J-slide-number a'
+      ,triggerType: 'click'
+      ,activeTriggerClass: 'slide-number-active'
+      ,effect: 'fade'
+      ,interval: 5000
+      ,activeIndex: -999
+    });
+    setTimeout(function() {
+      banners.set("activeIndex", 0);
+    }, 100);
+    banners.on('switch',function(toIndex,fromIndex){
+      var panel = $(this.get('panels')[toIndex]);
+      if(panel.attr('data-load') === 'false'){
+        panel.children('.bg').css({'backgroundImage':'url('+panel.attr('data-iebg')+')'}).attr('data-load', 'true');
+        panel.attr('data-load', 'true');
+      }
+    })
+    /* text */
+    var annons = new Slide({
+      element: '#server-link'
+      ,panels: '#J-views li'
+      ,effect: 'scrolly'
+      ,hasTriggers: false
+      ,interval: 6000
+    })
+  });
+  </script>
+</body>
+</html>
