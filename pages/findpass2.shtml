@@ -1,0 +1,114 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "findpass.css":"kirin/findpass/1.0.0/findpass.css"
+  }
+});
+seajs.use(['findpass.css']);
+</script>
+<div class="container">
+  <div class="content">
+    <p class="ft-14">
+      您正在为账户 <em class="ft-green">m06***@163.com</em> 重置登录密码，请选择找回方式：
+    </p>
+    <div class="infobox">
+      <div class="ui-tipbox ui-tipbox-message" id="J-check-wait">
+        <div class="ui-loading"></div>
+        <div class="ui-tipbox-content">
+          <h3 class="ui-tipbox-title">正在为您检测安全环境...</h3>
+        </div>
+      </div>
+      <div class="ui-tipbox ui-tipbox-success fn-hide" id="J-check-ok">
+        <div class="ui-tipbox-icon ui-icon-success">
+          <i class="iconfont success"></i>
+        </div>
+        <div class="ui-tipbox-content">
+          <h3 class="ui-tipbox-title">基于对您账户及操作环境的检测，我们将提供以下方式供您选择</h3>
+        </div>
+      </div>
+      <div class="ui-tipbox ui-tipbox-error fn-hide" id="J-check-fail">
+        <div class="ui-tipbox-icon ui-icon-error">
+          <i class="iconfont error"></i>
+        </div>
+        <div class="ui-tipbox-content">
+          <h3 class="ui-tipbox-title">抱歉，暂时无法操作，请稍后再试。</h3>
+        </div>
+      </div>
+    </div>
+    <ol class="select-strategy fn-hide" id="J-select-strategy">
+      <li class="fn-clear">
+        <i class="icon iconfont ico-safeguard"></i>
+        <div class="desc desc-hasnotice">
+          <h3 class="title"><span class="text">通过电子邮箱</span><i class="iconfont recommend"></i></h3>
+          <p class="notice">如果您的 m06***@163.com 账户邮箱还在使用，请选择此方式</p>
+        </div>
+        <a class="ui-button ui-button-mblue j-strategy" data-method="id_card_raw-email" href="###">立即找回</a>
+      </li>
+      <li class="fn-clear">
+        <i class="icon iconfont ico-mobile"></i>
+        <div class="desc desc-hasnotice">
+          <h3 class="title"><span class="text">通过手机</span><i class="iconfont recommend"></i></h3>
+          <p class="notice">如果您的 136***098 账户手机还在使用，请选择此方式</p>
+        </div>
+        <a class="ui-button ui-button-mblue j-strategy" data-method="id_card_raw-email" href="###">立即找回</a>
+      </li>
+      <li class="fn-clear">
+        <i class="icon iconfont question"></i>
+        <div class="desc desc-hasnotice">
+          <h3 class="title"><span class="text">通过安全问题</span></h3>
+          <p class="notice">回答您在宝麟预设的安全问题，完全正确后直接重设密码。</p>
+        </div>
+        <a class="ui-button ui-button-mblue j-strategy" data-method="privacy_question_low" href="###">立即找回</a>
+      </li>
+      <li class="fn-clear">
+        <i class="icon iconfont manual"></i>
+        <div class="desc desc-hasnotice">
+          <h3 class="title"><span class="text">通过人工服务</span></h3>
+          <p class="notice">直接联系我们的在线客服专员，请耐心等待</p>
+        </div>
+        <a class="ui-button ui-button-mblue j-strategy" data-method="manual" href="###">立即找回</a>
+      </li>
+    </ol>
+  </div>
+</div>
+<script type="text/javascript">
+seajs.use('$',function($){
+  $(document).ready(function() {
+    if($("#J-check-wait").length > 0 && $("#J-check-ok").length > 0 && $("#J-check-fail").length > 0) {
+      setTimeout(function(){
+        $.ajax({
+          type:"POST",
+          dataType:"json",
+          url: "/ajax/security/resetpwdStrategy.json",
+          data: {
+            "sp": "1-resetQueryPwd-fullpage"
+          },
+          success:function (data) {
+            if(data.stat == "fail") {
+              $("#J-check-wait").addClass("fn-hide");
+              $("#J-check-fail").removeClass("fn-hide");
+              $("#J-select-strategy").empty();
+            } else if(data.stat == "ok") {
+              $("#J-check-wait").addClass("fn-hide");
+              $("#J-check-ok").removeClass("fn-hide")
+              $("#J-select-strategy").removeClass("fn-hide");
+            }
+          },
+          error: function(){
+            $("#J-check-wait").addClass("fn-hide");
+            $("#J-check-fail").removeClass("fn-hide");
+            $("#J-select-strategy").empty();            
+          }
+        });
+      }, 1000);
+    }
+    else {
+      $("#J-select-strategy").removeClass("fn-hide");
+    }
+  });  
+})
+</script>
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>

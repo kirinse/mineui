@@ -1,0 +1,69 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "findpass.css":"kirin/findpass/1.0.0/findpass.css"
+    ,"findpass":"kirin/findpass/1.0.0/findpass"
+  }
+});
+seajs.use(['findpass.css']);
+</script>
+<div class="container">
+  <div class="content">
+    <div class="maincenter">
+      <div class="maincenter-box">
+        <div class="maincenter-box-tip">
+            <p class="ui-tiptext ui-tiptext-message">
+                <i class="iconfont ui-tiptext-icon info"></i>
+                请输入您需要找回登录密码的用户名
+            </p>
+        </div>
+        <form class="ui-form" id="J-findPwdForm" method="post" action="findpass2.shtml">
+          <div class="ui-form-item">
+            <label class="ui-label">用户名</label>
+            <input id="J-accName" name="logonId" class="ui-input" type="text" placeholder="用户名" maxlength="100" value="" data-explain=" " autocomplete="off">
+            <i class="loading"></i>
+            <a href="javascript:;" class="ui-form-other" id="J-forgetAccount">忘记用户名？</a>
+          </div>
+          <div class="ui-form-item ui-form-item-last">
+            <input type="submit" value="下一步" class="ui-button ui-button-mblue">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+seajs.use(['findpass'],function(Findpass){
+  var Validator = Findpass.Validator;
+  /* Validator 表单校验*/
+  Validator.addRule('checkUsername', function(options, commit) {
+    var element = options.element,item = Validator.query('#J-findPwdForm').getItem(element);
+    item.addClass('ui-form-item-loading');
+    jQuery.getJSON('/ajax/username.json', function(data) {
+      item.removeClass('ui-form-item-loading');
+      commit(data.valid, data.message);
+    });
+  });
+  validator = new Validator({
+    element: '#J-findPwdForm',
+    autoSubmit: true,
+    failSilently: false,
+    onFormValidated: function(err, results, form){
+      if(!err){
+        jQuery('.ui-form-item-last .ui-button-mblue').attr('disabled','disabled').val('跳转中...').removeClass('ui-button-mblue').addClass('ui-button-mdisable');
+      }
+    }
+  });
+  validator.addItem({
+    element: '[name=logonId]',
+    required: true,
+    rule: 'checkUsername',
+    errormessageRequired: '请输入用户名。'
+  })
+})
+</script>
+
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>
