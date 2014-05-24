@@ -1,7 +1,7 @@
 <!--#include virtual="/pages/header.html"-->
 	<div id="banner" class="slide-1" coor-rate="0.1" coor="default-banner" role="banner" data-banner="false">
 		<div class="login-box">
-      <iframe class="fn-hide" allowTransparency="true" src="/auth/login.html" width="286"  height="387" id="loginIframe" frameborder="0" scrolling="no" coor="aside-login"></iframe>
+      <iframe class="fn-hide" allowTransparency="true" src="auth/login.html" width="286"  height="387" id="loginIframe" frameborder="0" scrolling="no" coor="aside-login"></iframe>
       <div id="loginLoading"><img width="50" height="50" alt="加载中" src="/static/images/loading-modal.gif"></div>
 		</div>
 		<ul id="J-slide" >
@@ -162,6 +162,23 @@
 	  </div>
   </footer>
   <script type="text/javascript">
+  var showLoginIframe = function(){
+    if(document.getElementById("loginLoading") && document.getElementById("loginIframe")){
+      document.getElementById("loginLoading").style.display = "none";
+      document.getElementById("loginIframe").style.display = "block";
+    }
+  };
+  var xbox;
+  var getXbox = function() {
+    if (!xbox) {
+      seajs.use('alipay/xbox/1.0.3/xbox',function(Xbox){
+        xbox = new Xbox({
+          width:720
+        }).render();
+      });
+    }
+    return xbox;
+  };
   seajs.config({
     alias: {
       "slide": "arale/switchable/1.0.2/slide"

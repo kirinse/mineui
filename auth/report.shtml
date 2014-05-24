@@ -1,0 +1,392 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "report.css":"kirin/report/1.0.0/report.css"
+  }
+});
+seajs.use(['report.css']);
+</script>
+  <div id="container" class="ui-container">
+    <div id="content" class="ui-content fn-clear" coor-rate="0.02" coor="default">
+      <div class="ui-grid-25 fn-clear">
+        <!-- 标题 -->
+        <div class="ui-title fn-clear">
+          <h2 class="fn-left">交易记录</h2>
+          <div class="link">
+            <a href="###"></a>
+          </div>
+          <div class="action">
+            <i class="iconfont moneybag">(大厅)</i>
+            <em class="ft-green"><strong>67200000.93</strong></em> 元
+            <em class="ft-bar">|</em>
+            <i class="iconfont moneybag">(彩票)</i>
+            <em class="ft-green"><strong>672.93</strong></em> 元
+            <!--<a href="###" class="trash-index">
+              <i class="iconfont icon-trash"></i>
+              回收站
+            </a>-->
+          </div>
+        </div>
+        <!-- /标题 -->
+        <div class="ui-tab ui-recordtab">
+            <ul class="ui-tab-items fn-clear">
+                <li class="ui-tab-item ui-recordtab-item ui-recordtab-item-current">
+                    <a href="javascript:;">大厅明细</a>
+                </li>
+                <li class="ui-tab-item ui-recordtab-item">
+                    <a href="javascript:;">彩票明细</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 条件表单 -->
+        <form coor="form" name="topSearchForm" id="topSearchForm" class="record-search-form record-search-max" action="" method="get">
+        <!--大C的搜索-->
+          <div class="record-search-option fn-clear">
+            <div class="record-search-option-date fn-clear">
+              <!--交易时间start-->
+              <div class="ui-form-item fn-left" id="J-search-date-container">
+                <label class="ui-form-label">交易时间：</label>
+                <div class="ui-form-item-content " id="J-datetime-select">
+                  <div class="inline-block custom-date-input" id="J-custom-date">
+                    <input readonly="readonly" class="ui-input ui-input-len10" id="beginDate" value="2014.04.03" name="beginDate" autocomplete="off" data-widget-cid="widget-5">
+                    <select id="beginTime" name="beginTime" class="ui-form-select fn-hide" autocomplete="off" style="display: none;">
+                      <!-- 服务端根据 beginTime 参数确定是否 selected -->
+                      <option value="00:00" selected="">00:00</option>
+                      <option value="01:00">01:00</option>
+                      <option value="02:00">02:00</option>
+                      <option value="03:00">03:00</option>
+                      <option value="04:00">04:00</option>
+                      <option value="05:00">05:00</option>
+                      <option value="06:00">06:00</option>
+                      <option value="07:00">07:00</option>
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                      <option value="24:00">24:00</option>
+                    </select>
+                    <em class="ft-bar">-</em>
+                    <input readonly="readonly" class="ui-input ui-input-len10" id="endDate" value="2014.04.09" name="endDate" autocomplete="off">
+                    <select id="endTime" name="endTime" class="ui-form-select fn-hide" autocomplete="off" style="display: none;">
+                      <!-- 服务端根据 endTime 参数确定是否 selected -->
+                      <option value="00:00">00:00</option>
+                      <option value="01:00">01:00</option>
+                      <option value="02:00">02:00</option>
+                      <option value="03:00">03:00</option>
+                      <option value="04:00">04:00</option>
+                      <option value="05:00">05:00</option>
+                      <option value="06:00">06:00</option>
+                      <option value="07:00">07:00</option>
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                      <option value="24:00" selected="">24:00</option>
+                    </select>
+                  </div>
+                  <select id="J-select-range" class="ui-form-select fn-hide" name="dateRange" autocomplete="off">
+                    <!-- 服务端根据 dateRange 参数确定是否 selected, 默认为“最近一周” -->
+                    <option value="today" selected>今天</option>
+                    <option value="sevenDays">最近一周</option>
+                    <option value="oneMonth">最近一个月</option>
+                    <option value="threeMonths">最近三个月</option>
+                    <option id="J-custom-date-trigger" class="J-date-trigger" value="customDate">自定义时间</option>
+                  </select>
+                  <a href="#" class="ui-select-trigger ui-select-middle-trigger J-select-fake" style="width: 63px;">最近一周</a>
+                  <p id="J-critical-date-notice" class="ui-tiptext ui-tiptext-message mt-15 fn-hide">
+                    <span class="iconfont ui-tiptext-icon info"></span>
+                    查询 2013.05.01 以前的交易，请<a href="###">点击历史记录</a>
+                  </p>
+                  <p id="J-start-earlier-notice" class="ui-tiptext ui-tiptext-error mt-15 ft-red fn-hide">
+                    <span class="iconfont ui-tiptext-icon error"></span>
+                    开始日期不能晚于结束日期，请重新选择。
+                  </p>
+                </div>
+              </div>
+              <!--交易时间end-->
+              <!--金额范围start-->
+              <div class="ui-form-item fn-left " id="J-search-amount-container">
+                <label class="ui-form-label">金额范围：</label>
+                <div class="ui-form-item-content">
+                  <input type="text" id="minAmount" value="{minAmount}" name="minAmount" autocomplete="off" style="ime-mode: disabled" class="ui-input ui-input-len10">
+                  <span class="ui-separator-pd">-</span>
+                  <input type="text" id="maxAmount" value="{maxAmount}" name="maxAmount" autocomplete="off" style="ime-mode: disabled" class="ui-input ui-input-len10">
+                </div>
+              </div>
+              <!--金额范围end-->
+            </div>
+            <div class="record-search-option-type pt-15 fn-clear">
+              <!--交易范围 start-->
+              <div class="record-search-cate">
+                <div class="ui-form-item">
+                  <label class="ui-form-label ui-label-text">交易范围：</label>
+                  <div class="fn-left ui-form-item-content" id="J-tradescope-select">
+                    <div class="fn-left record-type-list gray-links">
+                      <input type="checkbox" name="tradeScopes" value="self" id="self" autocomplete="off" checked>
+                      <label for="self">自身</label>
+                      <input type="checkbox" name="tradeScopes" value="dsub" id="dsub" autocomplete="off" checked>
+                      <label for="dsub">直接下级</label>
+                      <input type="checkbox" name="tradeScopes" value="allsub" id="allsub" autocomplete="off" checked>
+                      <label for="allsub">全部下级</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--交易范围 end-->
+            </div>
+            <div class="record-search-cate pt-15 fn-clear">
+              <div class="ui-form-item">
+                <label class="ui-form-label ui-label-text">收入：</label>
+                <div class="fn-left ui-form-item-content">
+                  <div class="fn-left record-type-list gray-links" id="J-fundin-type">
+                    <input type="checkbox" name="fundinType" value="SJCZ" id="SJCZ" autocomplete="off" checked>
+                    <label>上级充值</label>
+                    <input type="checkbox" name="fundinType" value="KJCZ" id="KJCZ" autocomplete="off" checked>
+                    <label>跨级充值</label>
+                    <input type="checkbox" name="fundinType" value="XYCZ" id="XYCZ" autocomplete="off" checked>
+                    <label>信用充值</label>
+                    <input type="checkbox" name="fundinType" value="LPCZ" id="LPCZ" autocomplete="off" checked>
+                    <label>理赔充值</label>
+                    <input type="checkbox" name="fundinType" value="RGCZ" id="RGCZ" autocomplete="off" checked>
+                    <label>人工充值</label>
+                    <input type="checkbox" name="fundinType" value="ZXCZ" id="ZXCZ" autocomplete="off" checked>
+                    <label>在线充值</label>
+                    <input type="checkbox" name="fundinType" value="SXFFH" id="SXFFH" autocomplete="off" checked>
+                    <label>手续费返还</label>
+                    <input type="checkbox" name="fundinType" value="XJTK" id="XJTK" autocomplete="off" checked>
+                    <label>下级提款</label>
+                    <input type="checkbox" name="fundinType" value="ZRDT" id="ZRDT" autocomplete="off" checked>
+                    <label>转入大厅</label>
+                  </div>
+                  <!-- <a id="J-consume-category-more" href="javascript:;" class="record-type-more">其他</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="record-search-cate pt-15 fn-clear">
+              <div class="ui-form-item">
+                <label class="ui-form-label ui-label-text">支出：</label>
+                <div class="fn-left ui-form-item-content">
+                  <div class="fn-left record-type-list gray-links" id="J-fundout-type">
+                    <input type="checkbox" name="fundoutType" value="WXJCZ" id="WXJCZ" autocomplete="off" checked>
+                    <label>为下级充值</label>
+                    <input type="checkbox" name="fundoutType" value="XSJTK" id="XSJTK" autocomplete="off" checked>
+                    <label>向上级提款</label>
+                    <input type="checkbox" name="fundoutType" value="XYKJ" id="XYKJ" autocomplete="off" checked>
+                    <label>信用扣减</label>
+                    <input type="checkbox" name="fundoutType" value="XTKJ" id="XTKJ" autocomplete="off" checked>
+                    <label>系统扣减</label>
+                    <input type="checkbox" name="fundoutType" value="WYTK" id="WYTK" autocomplete="off" checked>
+                    <label>网银提款</label>
+                    <input type="checkbox" name="fundoutType" value="ZCDT" id="ZCDT" autocomplete="off" checked>
+                    <label>转出大厅</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="J-submit-form" class="record-search-submit">
+              <div class="ui-button ui-button-sblue">
+                <input id="J-set-query-form" class="ui-button-text" type="submit" value="搜 索">
+              </div>
+            </div>
+            <a class="record-history-link" href="###">一年前记录&gt;&gt;</a>
+          </div>
+        </form>
+        <!-- 结果列表 -->
+        <table class="ui-table ui-table-inbox" id="tradeRecordsIndex" width="100%">
+          <colgroup>
+            <col width="">
+            <col width="4%">
+            <col width="">
+            <col width="12%">
+            <col width="12%">
+            <col width="5%">
+            <col width="13%">
+            <col width="15%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="time">交易时间</th>
+        			<th class="memo"></th>
+              <th class="name">名称<em class="ft-bar">|</em>交易号</th>
+        			<th class="other">用户</th>
+        			<th class="amount">金额</th>
+        			<th class="detail"><em class="ft-bar">|</em>明细</th>
+        			<th class="status">状态</th>
+        			<th class="action">操作</th>
+        		</tr>
+          </thead>
+          <tbody>
+            <tr id="J-item-1" class="J-item  ">
+              <td class="time">
+                <p class="time-d">2014.04.07</p>
+                <p class="time-h ft-gray">11:54</p>
+              </td>
+              <td class="memo"></td>
+              <td class="name">
+                <p class="consume-title">
+                  <a href="###" title="淘宝购物-海外服务器">淘宝购物-海外服务器</a>
+                </p>
+                <div class="consume-bizNo ft-gray fn-pr J-tradeNo-container" id="J-tradeNo-container-1">
+                  交易号
+                  <a class="J-tradeNo-copy J-tradeNo" id="J-tradeNo-1" href="javascript:;" data-clipboard-text="2014040711001001080050842137" title="2014040711001001080050842137">
+                    2014...137
+                  </a>
+                </div>
+              </td>
+              <td class="other">
+                <p class="name">xiao55555fei</p>
+                <p class="fn-clear mt-5">
+                  <a class="J-open-msg  mr-10 fn-left iconfont icon-msg icon-msg-online" href="###" data-account="xiao55555fei" title="当前在线, 发送消息"></a>
+                </p>
+              </td>
+              <td class="amount">
+                <span class="amount-pay-out">-21500.00</span>
+              </td>
+              <td class="detail">
+                <a class="J-amount-more mr-10 iconfont icon-detail J-details-trigger" href="./funditem.json" onclick="return false;"></a>
+              </td>
+              <td class="status">
+                <p>交易成功</p>
+                <p class="ft-gray"></p>
+              </td>
+              <td class="action">
+                <select id="J-operation-select-1" class="fn-hide J-operation-select">
+                  <option seed="trade-detail"  data-link="###" data-target="_blank">详情</option>
+                  <option class="split" seed="trade-memo" data-action="edit-memo" data-link="./editMemo.html?bizInNo=2014041214842408&createDate=20140412184151&bizType=TRADE" rel-id="" data-tip="请勿备注个人敏感信息">备注</option>
+                  <option seed="trade-delete" data-action="delete" data-link="delete.json?record=2014-04-12 18:41:51|2014041214842408|TRADE"  rel-id="">删除</option>
+                </select>
+                <div class="operation-menu-trigger J-operation-menu-trigger" id="J-operation-menu-1">
+                  <div class="current-item">
+                    <span class="item-text"></span>
+                    <i class="iconfont icon-pull-down"></i>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr id="J-item-2" class="J-item  split">
+              <td class="time">
+                <p class="time-d">2014.04.07</p>
+                <p class="time-h ft-gray">11:54</p>
+              </td>
+              <td class="memo"></td>
+              <td class="name">
+                <p class="consume-title">
+                  <a href="###" title="淘宝购物-海外服务器">淘宝购物-海外服务器</a>
+                </p>
+                <div class="consume-bizNo ft-gray fn-pr J-tradeNo-container" id="J-tradeNo-container-2">
+                  交易号
+                  <a class="J-tradeNo-copy J-tradeNo" id="J-tradeNo-2" href="javascript:;" data-clipboard-text="2014040711001001080050842258" title="2014040711001001080050842258">
+                    2014...258
+                  </a>
+                </div>
+              </td>
+              <td class="other">
+                <p class="name">xiao55555fei</p>
+                <p class="fn-clear mt-5">
+                  <a class="J-open-msg  mr-10 fn-left iconfont icon-msg icon-msg-offline" href="./funditem.json" data-account="xiao55555fei" title="当前离线, 发送消息"></a>
+                </p>
+              </td>
+              <td class="amount">
+                <span class="amount-pay-out">-21500.00</span>
+              </td>
+              <td class="detail">
+                <a class="J-amount-more mr-10 iconfont icon-detail J-details-trigger" href="###" onclick="return false;"></a>
+              </td>
+              <td class="status">
+                <p>交易成功</p>
+                <p class="ft-gray"></p>
+              </td>
+              <td class="action">
+                <select id="J-operation-select-2" class="fn-hide J-operation-select">
+                  <option seed="trade-detail"  data-link="###" data-target="_blank">详情</option>
+                  <option class="split" seed="trade-memo" data-action="edit-memo" data-link="./editMemo.html?bizInNo=2014041214842408&createDate=20140412184151&bizType=TRADE" rel-id="" data-tip="请勿备注个人敏感信息">备注</option>
+                  <option seed="trade-delete" data-action="delete" data-link="delete.json?record=2014-04-12 18:41:51|2014041214842408|TRADE"  rel-id="">删除</option>
+                </select>
+                <div class="operation-menu-trigger J-operation-menu-trigger" id="J-operation-menu-2">
+                  <div class="current-item">
+                    <span class="item-text"></span>
+                    <i class="iconfont icon-pull-down"></i>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- /结果列表 -->
+        <!-- 无结果提示 -->
+        <div id="searchResultTip">
+          <div class="have-no-result border-b">
+        		<div class="module-myrecord-msg fn-clear">
+        			<img src="/static/images/empty.jpg" alt="没有交易记录" class="fn-left">
+        			<p class="module-myrecord-msg-txt fn-left">没有找到记录，请调整搜索条件。</p>
+        		</div>
+        	</div>
+        </div>
+        <!-- /无结果提示 -->
+        <!-- 列表底部 -->
+        <div class="amount-bottom">
+        	<div class="action-content">
+            <a class="amount-links" href="###">
+              <i class="iconfont icon-count"></i>
+              统计金额
+            </a>
+        		<div class="amount-detail">
+              <img style="vertical-align:middle;" src="/static/images/loading-small.gif" width="16" height="16" alt="载入中">
+            </div>
+            <div class="fn-clear action-other action-other-show">
+              <div class="fn-left">
+                <em class="ft-bar first-bar">|</em>
+                <a class="mr-20" href="###">
+                  <i class="iconfont icon-download"></i>
+                  下载查询结果
+                </a>
+                <span class="iconTip">
+                  图释:
+                  <em class="ml-5"><i class="iconfont icon-detail"></i>支付明细</em>
+                  <em class="ml-5"><i class="iconfont icon-memo"></i>备注</em>
+                  <em class="ml-5"><i class="iconfont icon-fee"></i>服务费</em>
+                </span>
+              </div>
+              <div class="page fn-right">
+                <div class="page-link">
+                  1 - 20条，共89条
+                  <a class="page-next" href="###2">下一页&gt;</a>
+                  <a class="page-end" href="###end">尾页&gt;&gt;</a>
+                </div>
+              </div>
+            </div>
+          </div>	
+        </div>
+        <!-- /列表底部 -->
+      </div>
+    </div>
+  </div>
+<!--#include virtual="/pages/footer.html"-->
+<!-- @TODO: http://aralejs.org/select/examples/cascade.html -->
+</body>
+</html>

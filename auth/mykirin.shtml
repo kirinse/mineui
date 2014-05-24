@@ -1,0 +1,811 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "mykirin.css":"kirin/mykirin/1.0.0/mykirin.css"
+  }
+});
+seajs.use(['mykirin.css']);
+</script>
+  <!-- 通栏用户信息 -->
+  <div class="i-banner night">
+    <div class="i-banner-content ui-grid-25 fn-clear">
+      <div class="i-banner-portrait">
+        <a href="###" class="userInfo-portrait">
+          <i class="iconfont avatar"></i>
+        </a>
+      </div>
+      <div class="i-banner-main">
+        <div class="i-banner-main-hello fn-clear">
+          <p class="userName fn-left">
+            <span class="hello">上午<!--[下午|凌晨]-->好,</span><a href="###" title="{昵称}">{昵称}</a>
+          <span class="ui-list-img">
+             <a href="###" title="会员等级：金账户">
+               <img src="/static/images/vip/ico-vip.gif" alt="会员等级：金账户">
+             </a>
+           </span>
+          </p>
+          <div class="notice fn-left">
+            每一天，努力让梦想更近一些<!--[喝杯茶吧，让精神抖擞起来|早点睡觉，美梦会陪伴着你]-->
+          </div>
+        </div>
+        <div class="i-banner-main-detail fn-clear">
+          <div class="fn-left fn-mr-5">
+            用户名：<a href="###" title="{用户名}" id="J-userInfo-account-userEmail">{用户名}</a>
+          </div>
+          <ul class="i-banner-stat fn-left">
+            <li>
+              <a class="j-atip i-banner-stat-certify-1" data-content="您已通过宝麟实名认证" data-content-link-text="查看详情" data-content-link="###" href="###">
+                <i class="iconfont"></i>
+                <span>已认证</span>
+              </a>
+            </li>
+            <li>
+              <a class="j-atip i-banner-stat-safeguard-0" href="###" data-content="您的账户资金未受保障" data-content-link="###" data-content-link-text="查看详情">
+                <i class="iconfont"></i>
+                <span>未保障</span>
+              </a>
+            </li>
+            <li>
+              <a class="j-atip i-banner-stat-mobile-0" href="###" data-content="绑定手机后可实时了解账户资金变动情况" data-content-link="###" data-content-link-text="立即绑定">
+                <i class="iconfont"></i>
+                <span>未绑定</span>
+              </a>
+            </li>
+          </ul>
+          <i class="separator-20 fn-left">|</i>
+          <div class="fn-left safety">
+            安全等级：<a class="userInfo-securelevel-low" href="###">低</a>
+            <a href="###">提升</a>
+          </div>
+          <i class="separator-20 fn-left">|</i>
+          <div class="fn-right ">
+            上次登录时间：<span class="lastlogintime">2014.04.03 20:58:41</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /通栏用户信息 -->
+<div id="container" class="ui-container fn-clear">
+  <div id="content" class="ui-grid-25 fn-clear">
+    <div id="account-lside-btLine"></div>
+    <div id="account-lside" coor="asidenav">
+      <div id="thirdNav">
+        <ul class="third-nav">
+          <li class="third-nav-item  third-nav-item-current">
+            <a href="#/lobby" class="third-nav-link">
+              <i class="iconfont home"></i>
+              我的宝麟
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a href="#/security" class="third-nav-link">
+              <i class="iconfont safe"></i>
+              安全设置
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a onclick="javascript:;" id="cards-trigger" class="third-nav-link">
+              <i class="iconfont bankcard"></i>
+              银行卡
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a href="#/team" class="third-nav-link">
+              <i class="iconfont team"></i>
+              我的团队
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a href="#/messages" class="third-nav-link">
+              <i class="iconfont message"></i>
+              消息中心
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 大厅首页面板 -->
+    <div id="lobby-panel" data-route="lobby" class="account-main new-channel-main">
+      <div class="i-assets-balance mr-t30">
+        <div class="wrap ui-bookblock-bookblock" id="J-assets-balance">
+          <div class="i-assets-container ui-bookblock-item">
+            <div class="i-assets-content">
+              <ul class="channel-amounts fn-clear">
+                <li class="channel-amounts-item lobby">
+                  <div class="i-assets-header fn-clear">
+                    <h3 class="fn-left">大厅余额</h3>
+                  </div>
+                  <div class="i-assets-body fn-clear">
+                    <div class="i-assets-balance-amount fn-left">
+                      <strong class="amount"><span class="yuan">1212313</span><span class="fen">.234</span></strong> 元
+                    </div>
+                    <ul class="i-assets-balance-actions fn-left">
+                      <li>
+                        <a class="ui-button ui-button-swhite j-deposit-link" title="充值" href="javascript:gRecharge();">
+                          充 值
+                        </a>
+                      </li>
+                      <li>
+                        <a class="ui-button ui-button-swhite" title="提现"  href="javascript:gWithdraw();">
+                          提 现
+                        </a>
+                      </li>
+                      <li>
+                        <a class="ui-button ui-button-swhite" title="转账" href="javascript:gTransfer();">
+                          转 账
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="channel-amounts-item channel-amounts-last-item">
+                  <div class="i-assets-header fn-clear">
+                    <h3 class="fn-left">彩票余额</h3>
+                  </div>
+                  <div class="i-assets-body fn-clear">
+                    <div class="i-assets-balance-amount fn-left">
+                      <strong class="amount">672<span class="fen">.93</span></strong> 元
+                    </div>
+                    <!--
+                    <ul class="i-assets-balance-actions fn-left">
+                      <li>
+                        <a class="ui-button ui-button-sblue" title="转入" href="###">
+                          转 入
+                        </a>
+                      </li>
+                    </ul>
+                    -->
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-border mr-t20">
+     
+        <ul class="account-status fn-clear" id="J_used_pro">
+          <li class="account-status-item account-status-authen">
+            <div class="account-status-img">
+              <i class="iconfont ico-authen"></i>
+            </div>
+            <div class="account-status-det">
+              <h4 class="tit">实名认证</h4>
+              <p class="descript">
+                <i class="iconfont fn-left yes"></i>
+                <span class="fn-left">已认证</span>
+                <a class="fn-left" href="#/lobby/idvalid" title="查看">查看</a>
+              </p>
+            </div>
+            <p class="account-status-info">您已享有大额收付款服务</p>
+          </li>
+          <li class="account-status-item account-status-certify">
+            <div class="account-status-img">
+              <i class="iconfont ico-safeguard-no"></i>
+            </div>
+            <div class="account-status-det">
+              <h4 class="tit">邮箱</h4>
+              <p class="descript">
+                <i class="iconfont fn-left no"></i>
+                <span class="fn-left">未绑定</span>
+                <a class="fn-left" href="#/security/mail" title="立即绑定">立即绑定</a>
+              </p>
+            </div>
+            <p class="account-status-info account-status-infoB">绑定后可通过 Email 找回密码</p>
+          </li>
+          <li class="account-status-item account-status-mobile">
+            <div class="account-status-img  account-status-pop">
+              <i class="iconfont ico-mobile-no"></i>
+            </div>
+            <div class="account-status-det">
+              <h4 class="tit">手机</h4>
+              <p class="descript">
+                <i class="iconfont fn-left no"></i>
+                <span class="fn-left">未绑定</span>
+                <a class="fn-left" href="#/security/mobile" title="立即绑定">立即绑定</a>
+              </p>
+            </div>
+            <p class="account-status-info account-status-infoP">绑定后可设置资金变动的短信提醒</p>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-border mr-t20">
+        <ul class="account-information fn-clear">
+          
+          <li class="fn-clear bc idvalid-head">
+            <div class="item-name">身份验证：</div>
+            <div class="item-text idcard-num">
+              身份证号码 2****************6
+            </div>
+            <div class="item-action trigger validated">已验证</div>
+          </li>
+          <li class="fn-clear idvalid-panel" style="display: none;">
+          <form data-widget="validator" class="ui-form" >
+           
+	            <div class="ui-tiptext-container ui-tiptext-container-error fn-hide">
+				    <p class="ui-tiptext ui-tiptext-error">
+				        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					    <span></span> 
+				    </p>
+				</div>
+				<div class="ui-tiptext-container ui-tiptext-container-success fn-hide">
+				    <p class="ui-tiptext ui-tiptext-success">
+				        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+				        身份验证成功。
+				    </p>
+				</div>
+				<br />
+			<div class="ui-form-item">
+		        <label for="idreal_name" class="ui-label"><span class="ui-form-required">*</span>真实姓名：</label>
+		        <input id="idreal_name" name="真实姓名" class="ui-input" required type="text" minlength="2" maxlength="20" />
+		        <div class="ui-form-explain">请输入真实姓名。</div>
+		    </div>
+		    	
+		    <div class="ui-form-item">
+		        <label for="idcard_num" class="ui-label"><span class="ui-form-required">*</span>身份证号码：</label>
+		        <input id="idcard_num" name="身份证号码" class="ui-input" required type="text" minlength="15" maxlength="20" />
+		        <div class="ui-form-explain">请输入身份证号码。</div>
+		    </div>
+		
+		    <div class="ui-form-item">
+		        <span class="ui-button-sblue ui-button pos" >确定</span>
+		        <span class="ui-button-swhite ui-button neg" >取消</span>
+		    </div>
+		</form>
+          </li>
+          <li class="fn-clear">
+            <div class="item-name">注册时间：</div>
+            <div class="item-text register-time">2011年11月01日</div>
+            <div class="item-action"></div>
+          </li>
+        </ul>
+      </div>
+      <div class="ui-box account-relation">
+        <div class="ui-box-head account-relation-tit fn-clear">
+          <h4>关联第三方账户</h4>
+          <p class="ui-box-head-text">已关联<span class="number">0</span>个账户，最多可关联 5 个账户</p>
+        </div>
+        <div class="ui-box-container account-relation-det fn-clear">
+          <ul class="relation-list">
+            <li>
+              <i class="iconfont qq"></i><span class="nickname">easy rider</span>
+            </li>
+            <li>
+              <i class="iconfont weibo"></i><span class="nickname">easy rider</span>
+            </li>
+            <li>
+              <i class="iconfont taobao"></i><span class="nickname">easy rider</span>
+            </li>
+            <li>
+              <i class="iconfont alipay"></i><span class="nickname">easy rider</span>
+            </li>
+          </ul>
+          <p class="relation-add">
+            <a href="###" title="添加第三方账户">+ 添加第三方账户</a>
+            <span class="tips">请不要添加陌生人的账号，以防资金损失。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- 大厅首页面板 end-->
+    <!-- 安全设置面板 -->
+    <div id="security-panel" data-route="security" class="account-main new-channel-main">
+      <div class="ui-block ui-block-title ui-block-robot">
+        <div class="ui-title ui-title-line fn-clear">
+          <h2>安全设置</h2>
+        </div>
+      </div>
+      <div class="ui-border mr-t30">
+        <ul class="account-information fn-clear">
+          <li class="fn-clear">
+            <div class="item-name">登录密码：</div>
+            <div class="item-text">登录宝麟时需要输入的密码</div>
+            <div class="item-action">
+              <a href="#/security/setpwd" title="修改登录密码" id="change_pwd_trigger">修改登录密码</a>
+            </div>
+          </li>
+          <li class="fn-clear" style="display: none;" id="pwd_panel">
+          <form data-widget="validator" class="ui-form" id="pwd_form">
+           
+	            <div class="ui-tiptext-container ui-tiptext-container-error fn-hide">
+				    <p class="ui-tiptext ui-tiptext-error">
+				        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					    <span></span> 
+				    </p>
+				</div>
+				<div class="ui-tiptext-container ui-tiptext-container-success fn-hide">
+				    <p class="ui-tiptext ui-tiptext-success">
+				        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+				        密码修改成功。
+				    </p>
+				</div>
+				<br />
+		    <div class="ui-form-item">
+		        <label for="oldpwd" class="ui-label"><span class="ui-form-required">*</span>原密码：</label>
+		        <input id="oldpwd" name="原密码" class="ui-input" required type="password" minlength="6" maxlength="20" />
+		        <div class="ui-form-explain">请输入原密码。</div>
+		    </div>
+		
+		    <div class="ui-form-item ">
+		        <label for="password" class="ui-label"><span class="ui-form-required">*</span>新密码：</label>
+		        <input id="password" name="新密码" type="password" class="ui-input" required minlength="6" />
+		        强度:
+		        <div class="ui-form-explain">密码的长度必须大于或等于6。</div>
+		    </div>
+		
+		    <div class="ui-form-item">
+		        <label for="password-confirmation" class="ui-label"><span class="ui-form-required">*</span>重输新密码：</label>
+		        <input id="password-confirmation" name="password-confirmation" type="password" required class="ui-input" data-rule="confirmation{target: '#password'}" />
+		    </div>
+		
+		    <div class="ui-form-item">
+		        <span class="ui-button-sblue ui-button" id="pwd_save_btn">确定</span>
+		        <span class="ui-button-swhite ui-button" id="pwd_cancel_btn">取消</span>
+		    </div>
+		</form>
+          </li>
+          <li class="fn-clear bc">
+            <div class="item-name">资金密码：</div>
+            <div class="item-text">在账户充值、提款时需要输入的密码</div>
+            <div class="item-action">
+              <a class="J_account_xbox" href="#/security/paypwd" title="修改资金密码" id="change_paypwd_trigger">修改资金密码</a>
+              <span class="ui-separator">|</span>
+              <a href="javascript:;" title="找回资金密码" id="find_paypwd">找回资金密码</a>
+            </div>
+          </li>
+          <li class="fn-clear" style="display: none;" id="paypwd_panel">
+          <form data-widget="validator" class="ui-form" id="paypwd_form">
+           
+	            <div class="ui-tiptext-container ui-tiptext-container-error fn-hide">
+				    <p class="ui-tiptext ui-tiptext-error">
+				        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					    <span></span> 
+				    </p>
+				</div>
+				<div class="ui-tiptext-container ui-tiptext-container-success fn-hide">
+				    <p class="ui-tiptext ui-tiptext-success">
+				        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+				        资金密码修改成功。
+				    </p>
+				</div>
+				<br />
+		    <div class="ui-form-item">
+		        <label for="oldpaypwd" class="ui-label"><span class="ui-form-required">*</span>原资金密码：</label>
+		        <input id="oldpaypwd" name="原资金密码" class="ui-input"  type="password" />
+		        <div class="ui-form-explain">未设定时,原资金密码留空。</div>
+		    </div>
+		
+		    <div class="ui-form-item ">
+		        <label for="paypassword" class="ui-label"><span class="ui-form-required">*</span>新资金密码：</label>
+		        <input id="paypassword" name="新资金密码" type="password" class="ui-input" required minlength="6" />
+		        强度:
+		        <div class="ui-form-explain">资金密码的长度必须大于或等于6。</div>
+		    </div>
+		
+		    <div class="ui-form-item">
+		        <label for="paypassword-confirmation" class="ui-label"><span class="ui-form-required">*</span>重输新资金密码：</label>
+		        <input id="paypassword-confirmation" name="paypassword-confirmation" type="password" required class="ui-input" data-rule="confirmation{target: '#paypassword'}" />
+		    </div>
+		
+		    <div class="ui-form-item">
+		        <span class="ui-button-sblue ui-button" id="paypwd_save_btn">确定</span>
+		        <span class="ui-button-swhite ui-button" id="paypwd_cancel_btn">取消</span>
+		    </div>
+		</form>
+          </li>
+          <li class="fn-clear">
+            <div class="item-name">安全保护问题：</div>
+            <div class="item-text">
+              您已设置 1 个安全保护问题
+            </div>
+            <div class="item-action">
+              <a href="###" title="修改">修改</a>
+            </div>
+          </li>
+          <li class="fn-clear bc">
+            <div class="item-name">短信校验服务：</div>
+            <div class="item-text">
+              <i class="iconfont no"></i>未开通<br>
+              申请该服务之后，账户相关设置或资金变动都需要手机验证码确认
+            </div>
+            <div class="item-action">
+              <a href="#/security/mobile" title="开通">开通</a>
+              <span title="已开通" class="fn-hide">已开通</span>
+            </div>
+          </li>
+          <li class="fn-clear" style="display: none;" id="mobile_panel">
+            <form class="ui-form" data-widget="validator" name="" method="post" action="#" id="mobile_form">
+             <div class="ui-tiptext-container ui-tiptext-container-error fn-hide">
+				    <p class="ui-tiptext ui-tiptext-error">
+				        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					    <span></span> 
+				    </p>
+				</div>
+				<div class="ui-tiptext-container ui-tiptext-container-success fn-hide">
+				    <p class="ui-tiptext ui-tiptext-success">
+				        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+				        手机修改成功。
+				    </p>
+				</div>
+				<br />
+				
+					<div class="ui-form-item">
+			               <label for="mobile_num" class="ui-label"><span class="ui-form-required">*</span>手机号码：</label>
+					        <input id="mobile_num" name="手机号" class="ui-input" required type="number" minlength="11" maxlength="11" />
+					        <div class="ui-form-explain">请输入手机号。</div>
+			        </div>
+			
+			        <div class="ui-form-item">
+			            <label for="vcode" class="ui-label">验证码</label>
+			            <input id ="vcode" class="ui-input ui-input-checkcode" type="number" required data-rule="checkValidCode" data-explain="校验码(4位数字)" minlength="4" maxlength="4" autocomplete="off" value="" name="校验码">
+			            <span id="getcode" class="ui-button-swhite ui-button" >发送校验码</span>
+			            <div class="ui-form-explain"></div>
+			        <div class="ui-tiptext-container ui-tiptext-container-success fn-hide code">
+					    <p class="ui-tiptext ui-tiptext-success">
+					        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+					        校验码发送成功。
+					    </p>
+					</div>
+					<div class="ui-tiptext-container ui-tiptext-container-error fn-hide code">
+					    <p class="ui-tiptext ui-tiptext-error">
+					        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					        校验码发送失败。
+					    </p>
+					</div>
+			        </div>
+					
+					<div class="ui-form-item">
+						<input type="submit" id='bind_mobile_btn' class="ui-button ui-button-mblue" value="绑定此手机">
+						<span class="ui-button-swhite ui-button" id="mobile_cancel_btn">取消</span>
+					</div>
+			</form>
+          </li>
+          <li class="fn-clear bc">
+            <div class="item-name">邮箱绑定服务：</div>
+            <div class="item-text">
+              <i class="iconfont no"></i>未开通<br>
+              申请该服务之后，您可以通过邮箱找回您的密码,保证账号安全!
+            </div>
+            <div class="item-action">
+              <a href="#/security/mail" title="开通">开通</a>
+              <span title="已开通" class="fn-hide">已开通</span>
+            </div>
+          </li>
+          <li class="fn-clear" style="display: block;" id="mail_panel">
+            <form class="ui-form" data-widget="validator" name="" method="post" action="#" id="mail_form">
+             <div class="ui-tiptext-container ui-tiptext-container-error fn-hide">
+				    <p class="ui-tiptext ui-tiptext-error">
+				        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					    <span></span> 
+				    </p>
+				</div>
+				<div class="ui-tiptext-container ui-tiptext-container-success fn-hide">
+				    <p class="ui-tiptext ui-tiptext-success">
+				        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+				        邮箱修改成功。
+				    </p>
+				</div>
+				<br />
+				
+					<div class="ui-form-item">
+			               <label for="_email" class="ui-label"><span class="ui-form-required">*</span>邮箱：</label>
+					        <input id="_email" name="邮箱" class="ui-input" required type="email"/>
+			        </div>
+			
+			        <div class="ui-form-item">
+			            <label for="mail_vcode" class="ui-label">校验码</label>
+			            <input id ="mail_vcode" class="ui-input ui-input-checkcode" type="number" required data-rule="checkValidMailCode" data-explain="校验码(4位数字)" minlength="4" maxlength="4" autocomplete="off" value="" name="校验码">
+			            <span id="getcode" class="ui-button-swhite ui-button" >发送校验码</span>
+			        <div class="ui-tiptext-container ui-tiptext-container-success fn-hide code">
+					    <p class="ui-tiptext ui-tiptext-success">
+					        <i class="ui-tiptext-icon iconfont success" title="成功"></i>
+					        校验码发送成功。
+					    </p>
+					</div>
+					<div class="ui-tiptext-container ui-tiptext-container-error fn-hide code">
+					    <p class="ui-tiptext ui-tiptext-error">
+					        <i class="ui-tiptext-icon iconfont error" title="出错"></i>
+					        校验码发送失败。
+					    </p>
+					</div>
+			        </div>
+					
+					<div class="ui-form-item">
+						<input type="submit" id='bind_mail_btn' class="ui-button ui-button-mblue" value="绑定此邮箱">
+						<span class="ui-button-swhite ui-button" id="mail_cancel_btn">取消</span>
+					</div>
+			</form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 安全设置面板 end-->
+    <!-- 银行卡面板 -->
+    <div id="cards-panel" data-route="cards" class="account-main new-channel-main">
+      <div class="ui-block ui-block-title ui-block-robot">
+        <div class="ui-title ui-title-line fn-clear">
+          <h2>我的银行卡</h2>
+        </div>
+      </div>
+      <div class="ui-tipbox ui-tipbox-message mr-t30">
+        <div class="ui-tipbox-icon">
+          <i class="iconfont ico-info" title="提示"></i>
+        </div>
+        <div class="ui-tipbox-content">
+          <h3 class="ui-tipbox-title">绑定银行卡</h3>
+          <p class="ui-tipbox-explain">绑定银行卡可以更好地保障您的资金安全</p>
+          <p class="ui-tipbox-explain">每个用户可绑定<span class="number">3</span>张银行卡</p>
+        </div>
+      </div>
+      <div class="cards-box mr-t20 fn-clear" id="cards-box">
+      <script type="text/x-handlebars-template" id="card-template">
+		 <ul class="card-list">
+    {{#each items}}
+					<li class="card-list-item" key="{{cardId}}">
+					<div class="card-box-name fn-clear">
+					  <span class="bank-logo {{bankCode}}"></span>
+					  <span class="bank-name" title="{{bankName}}">{{bankName}}</span>
+					  <span class="bank-num4">尾号{{bankCard}}</span>
+					</div>
+					<div class="card-box-express">
+					<div class="express-status">
+          {{#if valided}}
+					  <div class="valided" style="display: ;">
+						<span class="asset-icon asset-icon-express-s">
+						  <span class="fn-hide">激活状态</span>
+						</span>
+						<span>已激活</span>
+					  </div>
+					
+          {{else}}
+					  <div class="notvalided">
+						<span class="asset-icon asset-icon-express-s">
+						  <label class="">
+							金额
+							<input id='card-1' class="ui-input" style="width:50px;">
+						  </label>
+						</span>
+						<a class="ving" href="javascript:;">
+						  <span style="color:#0D98F7;padding-left:5px;">激活</span>
+						</a>
+					  </div>
+          {{/if}}
+					</div>
+					<div class="express-else">
+					  <a class="iconfont delete" href="javascript:;" title="删除"></a>
+					</div>
+				  </div>
+				  </li>
+    {{/each}}
+		</ul>
+      </script>
+        
+        <div class="cards-action">
+          <i class="iconfont locked" title="已锁定" id="card_lock"></i>
+          <i class="iconfont unlocked" title="点击锁定"></i>
+        </div>
+      </div>
+      <div class="ui-border mr-t20 fn-clear">
+        <form class="ui-form ui-form-large card-form" data-widget="validator" name="" method="post" action="#" id="addcard_form">
+          <fieldset>
+            <legend>添加银行卡</legend>
+            <div class="ui-form-item fn-hide">
+              <p class="ui-form-text">一个个文字文字</p>
+            </div>
+            <div class="ui-form-item" id="bank-box">
+              <label for="" class="ui-label">
+                选择开户银行
+              </label>
+      <script type="text/x-handlebars-template" id="bank-template">
+              <ul class="ui-list-icons fn-clear" id="banks">
+			{{#each items}}
+				<li class="cashier-bank">
+                  <input type="radio" key="{{sysBankId}}" bankName="{{sysBankName}}" bankCode="{{sysBankCode}}"   value="{{sysBankCode}}" id="bind-{{sysBankCode}}" name="channelToken">
+                  <label for="bind-{{sysBankCode}}" class="icon-box limited-coupon">
+                    <span title="中国建设银行" class="false icon {{sysBankCode}}">{{sysBankName}}</span>
+                  </label>
+                </li>
+			{{/each}}	
+              </ul>
+      </script> 
+			<div class="ui-form-explain">请选择一个银行。</div>
+            </div>
+            <div class="ui-form-item">
+              <label for="account-name" class="ui-label">
+                开户人姓名
+              </label>
+              <input id="account-name" class="ui-input card-number" required  name="account-name" type="text" maxlength="19" minlength="2" autocomplete="off">
+			<div class="ui-form-explain">请输入开户人姓名。</div>
+            </div>
+            <div class="ui-form-item">
+              <label for="card-number" class="ui-label">
+                银行卡号
+              </label>
+              <input id="card-number" class="ui-input card-number" required name="card-number" type="text" maxlength="19" minlength="16" autocomplete="off">
+			<div class="ui-form-explain">请输入银行卡号。</div>
+            </div>
+            <div class="ui-form-item ui-form-item-error">
+              <label for="" class="ui-label">开户地区</label>
+              <select id="province" onchange="findCity()" required name='province' type="select">
+                <option value="BJ">北京市</option>
+                <option value="SH">上海市</option>
+                <option value="TJ">天津市</option>
+                <option value="JS">江苏省</option>
+                <option value="ZJ">浙江省</option>
+                <option value="AH">安徽省</option>
+                <option value="HEB">河北省</option>
+                <option value="SX">山西省</option>
+                <option value="NMG">内蒙古自治区</option>
+                <option value="LN">辽宁省</option>
+                <option value="JL">吉林省</option>
+                <option value="HLJ">黑龙江省</option>
+                <option value="FJ">福建省</option>
+                <option value="JX">江西省</option>
+                <option value="SD">山东省</option>
+                <option value="HEN">河南省</option>
+                <option value="HUB">湖北省</option>
+                <option value="HUN">湖南省</option>
+                <option value="GD">广东省</option>
+                <option value="GX">广西壮族自治区</option>
+                <option value="HAN">海南省</option>
+                <option value="CQ">重庆市</option>
+                <option value="SC">四川省</option>
+                <option value="GZ">贵州省</option>
+                <option value="YN">云南省</option>
+                <option value="XZ">西藏自治区</option>
+                <option value="SHX">陕西省</option>
+                <option value="GS">甘肃省</option>
+                <option value="QH">青海省</option>
+                <option value="NX">宁夏回族自治区</option>
+                <option value="XJ">新疆维吾尔自治区</option>
+              </select>
+              <select id="city">
+              	<option value="0">--选择城市--</option>
+              </select>
+            </div>
+            <div class="ui-form-item">
+              <input type="submit" id="addcard_submit" class="ui-button ui-button-lblue" value="确认无误并添加">
+              <input type="reset" class="ui-button ui-button-lwhite" value="重新填写">
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!-- 银行卡面板 end -->
+    <!-- 团队面板 -->
+    <div id="team-panel" data-route="team" class="account-main new-channel-main">
+      <div class="ui-block ui-block-title ui-block-robot">
+        <div class="ui-title ui-title-line fn-clear">
+          <h2>我的团队</h2>
+          <a href="###" class="ui-button ui-button-sblue ui-list-addmember" title="添加成员"><i class="iconfont addmember"></i>添加成员</a>
+        </div>
+      </div>
+      <div class="ui-tipbox ui-tipbox-message mr-t30">
+          <div class="ui-tipbox-icon">
+            <i class="iconfont ico-info" title="提示"></i>
+          </div>
+          <div class="ui-tipbox-content">
+            <h3 class="ui-tipbox-title">您当前的个人域名: http://s7n8.com</h3>
+            <p class="ui-tipbox-explain">您可以发送您的个人域名给朋友，他们通过您的域名注册后，即可成为您的团队成员。</p>
+            <p class="ui-tipbox-explain">您也可以通过点击 <a href="###" class="ui-button ui-button-sblue ui-list-addmember" title="添加成员"><i class="iconfont addmember"></i>添加成员</a> 为您的朋友开户。</p>
+          </div>
+        </div>
+      <div class="ui-border mr-t20">
+		<ul class="member-list fn-clear">
+		 <table class="ui-table" id="treehome" style="border:0;line-height:28px;width:818px;">
+	<!-- 	  <caption>
+		  <a href="#" onclick="jQuery('#treehome').treetable('expandAll'); return false;">全部展开</a>
+		  <a href="#" onclick="jQuery('#treehome').treetable('collapseAll'); return false;">全部收起</a>
+		  </caption> -->
+			 <thead>
+			  <tr>
+				<th>用户名</th>
+				<th width="300" class="txt-right">操作</th>
+			  </tr>
+			 </thead>
+		<script id="tree-template" type="text/x-handlebars-template">
+		 <tbody >
+		 {{#each items}}
+			<tr data-tt-id="{{codeKey}}" data-tt-parent-id="{{parentid}}" userName="{{userName}}"><td><span class='file'>{{userName}}</span></td><td class="txt-right">
+				<span>
+				<a href="#/team" title="明细" data-action="detail">明细</a>
+				<span class="ui-separator">|</span>
+				<a href="#/team" title="团队" data-action="team">团队</a>
+				<span class="ui-separator">|</span>
+				<a href="#/team" title="充值" data-action="recharge">充值</a>
+				<span class="ui-separator">|</span>
+				<a href="#/team" title="冻结" data-action="freeze">冻结</a>
+				</span>
+				</td>
+			</tr>
+		{{/each}}	
+		</tbody>
+		</script>	
+		</table>
+		</ul>
+      </div>
+    </div>
+    <!-- 团队面板 end -->
+    <!-- 消息面板 -->
+    <div id="messages-panel" data-route="messages" class="account-main new-channel-main">
+      <div class="ui-block ui-block-title ui-block-robot">
+        <div class="ui-title ui-title-line fn-clear">
+          <h2>消息中心</h2>
+          <a href="#/messages" class="ui-button ui-button-sblue ui-list-sendmsg" title="发送消息"><i class="iconfont sendmsg"></i>发送消息</a>
+        </div>
+      </div>
+      <div class="mr-t30">
+        <div class="ui-tab" id="msgtype_box">
+		<script type='text/x-handlebars-template' id="msgtype_template">
+          <ul class="ui-tab-items">
+		{{#each items}}
+            <li class="ui-tab-item " type="{{messageTypeId}}">
+              <a href="javascript:;">{{messageTypeName}}</a>
+            </li>
+		{{/each}} 
+		</ul>
+		</script>
+        </div>
+        <div class="ui-tab-content" >
+        <div id="msg_box">
+    <script type='text/x-handlebars-template' id="msg_template">
+          <ul class="ui-list ui-list-graylink ui-list-nosquare fn-clear" style="margin: 0 0 20px 0;" >
+		{{#each items}}
+            <li class="ui-list-item fn-clear">
+              <a href="###"><h5>{{title}}</h5></a>
+               <div class="item-action fn-hide">
+                {{content}}
+              </div>
+            </li>
+		 {{/each}} 
+		{{#unless items}}
+	<div id="searchResultTip">
+        <div class="have-no-result border-b">
+      		<div class="module-myrecord-msg fn-clear">
+      			<img src="/static/images/empty.jpg" alt="没有交易记录" class="fn-left">
+      			<p class="module-myrecord-msg-txt fn-left">没有找到记录，请调整搜索条件。</p>
+      		</div>
+      	</div>
+      </div>
+		{{/unless}}
+          </ul>
+          </script>
+        </div>
+				 
+		 <div class="ui-paging" id="msg_pager">
+		    <a href="#" class="ui-paging-prev ">
+		        <i class="iconfont" title="左三角形"></i> 上一页
+		    </a>
+		    <span class="ui-paging-prev">
+		       <i class="iconfont" title="左三角形"></i> 上一页
+		    </span>
+		    <a class="ui-paging-next">
+		        下一页 <i class="iconfont" title="右三角形"></i>
+		    </a>
+		    <span class="ui-paging-next">
+		        下一页 <i class="iconfont" title="右三角形"></i>
+		    </span>
+		    <span class="ui-paging-info">第<span class="ui-paging-bold"><b class="current_page"></b> /<b class="total_page"></b></span>页</span>
+		    <span class="ui-paging-which"><input name="some_name" value="" type="text"></span>
+		    <a class="ui-paging-info ui-paging-goto" href="#">跳转</a>
+		</div>
+		
+        
+        </div>
+      </div>
+    </div>
+    <!-- 消息面板 end -->
+
+  </div>    
+</div>
+<!--#include virtual="/pages/footer.html"-->
+<!-- @TODO: http://aralejs.org/select/examples/cascade.html -->
+</body>
+</html>

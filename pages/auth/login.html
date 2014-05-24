@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  	<title>登录中心 - 宝麟娱乐</title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/static/??seajs/seajs/2.2.1/sea.js,seajs/seajs-combo/1.0.1/seajs-combo.js,seajs/seajs-style/1.0.2/seajs-style.js,config.js"></script>
+    <script>
+    //非 iframe 跳转到首页登录
+    window.self === window.top ? window.location.href="/" : '';
+    seajs.config({
+      alias: {
+        "common.css": "kirin/common/1.0.0/common.css"
+        ,"header.css": "kirin/common/1.0.0/header.css"
+        ,"fontello.css": "kirin/common/1.0.0/fontello.css"
+        ,"login.css": "kirin/login/1.0.0/login.css"
+        ,"login": "kirin/login/1.0.0/login"
+      }
+    });
+    seajs.use(["common.css", "header.css", "fontello.css","login.css"]);
+    </script>
+  </head>
+  <body>
+    <div class="login login-modern" id="J-login">
+      <form name="loginForm" id="login" action="" method="post" class="ui-form" data-qrcode="false">
+        <fieldset>
+          <h2 class="ui-form-title " id="J-login-title">登录宝麟</h2>
+          <div class="sl-error" id="J-errorBox" errortype="">
+            <i class="iconfont error" title="出错"></i>
+            <span class="sl-error-text"></span>
+          </div>
+          <script type="text/javascript">
+          ACCOUNTTIPS = {
+            //未激活
+            "STATUS_NEED_ACTIVATE": '该账户信息不完整，暂不能登录，请完成<a href="/reg/activate/index.htm" target="_blank">注册</a>后再登录。',
+            //密码上限
+            "PASSWORD_REACH_LIMIT": '该账户登录出错已达上限将锁定密码3小时，请<a href="/findpass.html" target="_blank">找回登录密码</a>后登录。',
+            //不存在
+            "NOT_EXIST": '该账户不存在或登录密码出错已达上限，请更换账户。',
+            //海外用户
+            "OVERSEAS_MOBILE": '宝麟暂不支持海外手机用户直接登录，请从<a href="/">宝麟</a>入口登录。',
+            "INVALID_OVERSEAS_MOBILE": '账户名是电子邮箱或手机号码，国际手机号码请按照852-26888888的格式输入',
+            //ip地址不安全
+            "CLIENT_IP_NOT_THE_SAME": '当前环境可能存在风险，为了您的账户安全，请勿继续操作。',
+            "MOBILE_ACCOUNT_NEED_QRLOGON": '钱包注册用户仅限扫码登录'
+          };
+          </script>
+          <div class="ui-form-item" id="J-username">
+            <label id="J-label-user" class="ui-label" for="J-input-user">
+              <span class="ui-icon ui-icon-user"><i class="iconfont username"></i></span>
+            </label>
+            <input type="text" id="J-input-user" class="ui-input ui-input-normal" name="logonId" autocomplete="off" tabindex="1" value="" maxlength="100" placeholder="用户名" data-explain="">
+            <div class="ui-form-explain"></div>
+          </div>
+          <div class="ui-form-item ui-form-item-20pd" id="J-password">
+            <label id="J-label-editer" class="ui-label" data-desc="登录密码" for="password_input">
+              <span class="ui-icon ui-icon-security" id="safeSignCheck"><i class="iconfont password"></i></span>
+            </label>
+            <span class="standardPwdContainer" style="display: inline-block;">
+              <input type="password" tabindex="2" id="password_input" name="password_input" class="ui-input" oncontextmenu="return false" onpaste="return false" oncopy="return false" oncut="return false" autocomplete="off" data-explain=""  placeholder="密码">
+            </span>
+            <p class="ui-form-other ui-form-other-fg">
+              <a class="textlink forgot" href="/findpass.html" tabindex="5" seed="authcenter-pwd-forget" target="_blank">忘记登录密码？</a>
+            </p>
+          </div>
+          <div class="ui-form-item ui-form-item-30pd" id="J-submit">
+            <input type="submit" value="登 录" class="ui-button" id="J-login-btn" tabindex="4">
+            <p class="ui-form-other">
+              <a href="/app/kirinResource/thirdparty/login?act=login&to=qq" class="textlink icon" title="QQ 登录" tabindex="6">
+                <i class="iconfont qq"></i>
+              </a>
+              <a href="/app/kirinResource/thirdparty/login?act=login&to=weibo" class="textlink icon" title="微博登录" tabindex="7">
+                <i class="iconfont weibo"></i>
+              </a>
+              <a href="/app/kirinResource/thirdparty/login?act=login&to=ali" class="textlink icon" title="支付宝登录" tabindex="8">
+                <i class="iconfont alipay"></i>
+              </a>
+              <a href="/app/kirinResource/thirdparty/login?act=login&to=taobao" class="textlink icon" title="淘宝登录" tabindex="9">
+                <i class="iconfont taobao"></i>
+              </a>
+              <a class="register" href="" target="_blank" title="免费注册" tabindex="10">免费注册</a>
+            </p>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <script type="text/javascript">
+    seajs.use(['login','$'],function(Login,$){
+      var Validator = Login.Validator, Xbox = Login.Xbox, crossIframe = Login.crossIframe;
+      validator = new Validator({
+        element: '#login',
+        autoSubmit: false,
+        onFormValidated: function(err, results, form) {
+          window.console && console.log && console.log('error='+err);
+          if(!err) {
+            $('#J-login-btn').addClass('ui-button-disabled').val('正在进入...').attr('disabled','disabled');
+          }
+        }
+      });
+      validator.addItem({
+        element: '#J-input-user',
+        required: true,
+        rule:'',
+        errormessageRequired: '请输入用户名'
+      })
+      .addItem({
+        element: '#password_input',
+        required: true,
+        rule:'password',
+        errormessageRequired: '请输入密码',
+        showMessage: function(message, element) {
+          var err_box = $('#J-errorBox');
+          var Err = $.trim(this.getExplain(validator.query('#J-input-user').element).html());
+          if (Err) {
+            $('#J-login-title').addClass('fn-hide');
+            err_box.find('.sl-error-text').html(Err);
+            err_box.addClass('sl-error-display');
+          }
+          else{
+            $('#J-login-title').addClass('fn-hide');
+            err_box.find('.sl-error-text').html(message);
+            err_box.addClass('sl-error-display');            
+          }
+        },
+        hideMessage: function(message, element) {
+          var err_box = $('#J-errorBox');
+          var Err = $.trim(this.getExplain(validator.query('#J-input-user').element).html());
+          // console.log(Err);
+          if (!Err) {
+            err_box.find('.sl-error-text').html('');
+            err_box.removeClass('sl-error-display');
+            $('#J-login-title').removeClass('fn-hide');
+          }
+          else{
+            err_box.find('.sl-error-text').html(Err);
+            err_box.addClass('sl-error-display');
+            $('#J-login-title').addClass('fn-hide');            
+          }
+        }        
+      });
+      $('.ui-form-other .icon').click(function(e){
+        e.preventDefault();
+        var parent_ = self.parent;
+        if (parent_ && parent_.getXbox){
+          parent_.getXbox().set('content', e.currentTarget.href).set('height',500).show();
+        }
+      })
+      crossIframe();
+    })
+    </script>  
+  </body>
+</html>

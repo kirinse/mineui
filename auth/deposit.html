@@ -16,10 +16,10 @@
       alias: {
         "deposit": "kirin/deposit/1.0.0/deposit"
         ,"deposit.css": "kirin/deposit/1.0.0/deposit.css"
-        ,"iconfont.css": "kirin/common/1.0.0/iconfont.css"
+        ,"fontello.css": "kirin/common/1.0.0/fontello.css"
       }
     });
-    seajs.use(["deposit.css", "iconfont.css"]);
+    seajs.use(["deposit.css", "fontello.css"]);
     </script>
   </head>
   <body class="deposit">
@@ -103,7 +103,7 @@
               </li>
               <li class="ui-tab-item">
                 <input type="radio" name="destination" value="lotto" id="dest-lotto">
-                <label class="ui-tipbox ui-tipbox-success" for="dest-lotto">
+                <label class="ui-tipbox ui-tipbox-success ui-tipbox-notselected" for="dest-lotto">
                   <div class="ui-tipbox-icon">
                     <i class="iconfont" title="彩票"></i>
                   </div>
@@ -554,7 +554,9 @@
         if($(this).hasClass('ui-tab-item-current')) return;
         //样式
         $('.ui-tab-deposit-type li').removeClass('ui-tab-item-current');
+        $('.ui-tab-deposit-type li label').removeClass('ui-tipbox-selected').addClass('ui-tipbox-notselected');
         $(this).addClass('ui-tab-item-current');
+        $(this).find('label').removeClass('ui-tipbox-notselected').addClass('ui-tipbox-selected');
         //进度
         $('#content .ui-step .ui-step-start').addClass('ui-step-done');
       });

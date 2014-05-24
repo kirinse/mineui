@@ -1,7 +1,7 @@
 <?php echo $_GET['_callback']?>({
   stat: "ok",
   totalCount: 3,
-  popMsg:false,
+  popMsg:true,
   infos: [
    {
      level:1,
