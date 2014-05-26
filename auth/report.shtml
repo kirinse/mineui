@@ -47,7 +47,7 @@ seajs.use(['report.css']);
               <!--交易时间start-->
               <div class="ui-form-item fn-left" id="J-search-date-container">
                 <label class="ui-form-label">交易时间：</label>
-                <div class="ui-form-item-content " id="J-datetime-select">
+                <div class="ui-form-item-content fn-left" id="J-datetime-select">
                   <div class="inline-block custom-date-input" id="J-custom-date">
                     <input readonly="readonly" class="ui-input ui-input-len10" id="beginDate" value="2014.04.03" name="beginDate" autocomplete="off" data-widget-cid="widget-5">
                     <select id="beginTime" name="beginTime" class="ui-form-select fn-hide" autocomplete="off" style="display: none;">
