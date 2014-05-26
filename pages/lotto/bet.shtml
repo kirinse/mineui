@@ -284,7 +284,21 @@
   <script type="text/x-handlebars-template" id="bet-modes">
     <label><input type="radio" name="rates" value="{{rates}}">{{label}}</label>
   </script>
-<!-- /内容 -->
+<!-- /主体 -->
+  <script type="text/javascript">
+  seajs.config({
+    alias: {
+      "bet": "kirin/bet/1.0.0/bet"
+      ,"bet.css": "kirin/bet/1.0.0/bet.css"
+    }
+    ,vars:{
+      locale:'zh-CN'
+    }
+  });
+  seajs.use(['bet','bet.css'],function(Bet){
+    
+  });
+  </script>
 <!--#include virtual="/pages/footer.html"-->
   </body>
 </html>
