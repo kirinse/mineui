@@ -3,9 +3,9 @@
 seajs.config({
   alias:{
     "register.css":"kirin/register/1.0.0/register.css"
-    ,"autocomplete":"arale/autocomplete/1.3.0/autocomplete"//'autocomplete/0.8.0/autocomplete'
+    ,"autocomplete":"arale/autocomplete/1.2.2/autocomplete"//'autocomplete/0.8.0/autocomplete'
     ,"xbox": "alipay/xbox/1.0.3/xbox"//alipay/xbox/0.9.7/xbox
-    ,"pop-validator": "alipay/pop-validator/1.0.0/pop-validator"
+    ,"pop-validator": "kirin/pop-validator/1.0.0/pop-validator"
     ,"select":"arale/select/0.9.9/select"//select/0.9.0/select
     ,"request":"alipay/request/0.9.0/request"//alipay/request/0.9.1/request
   }
@@ -65,7 +65,7 @@ seajs.use(['register.css']);
           <label class="ui-label ui-label-area">您所在的国家或地区</label>
           <input type="hidden" id="country" name="country" value="CN">
           <input type="hidden" id="acc-type" name="accType" value="2">
-          <select class="fn-hide" id="country-1" name="country-1" style="display: none;">
+          <select class="fn-hide" id="country-1" name="country-1">
             <option value="CN">中国大陆</option>
             <option value="HK">香港</option>
             <option value="MO">澳门</option>
@@ -91,7 +91,6 @@ seajs.use(['register.css']);
             <option value="US">美国(USA)</option>
             <option value="VN">越南(Vietnam)</option>
           </select>
-          <a href="#" class="ui-select-trigger" style="width: 401px;">中国大陆<i class="iconfont dropdown"></i></a>
         </div>
         <div class="ui-form-item">
           <label for="J-accName" class="ui-label">账户名</label>
@@ -110,7 +109,9 @@ seajs.use(['register.css']);
           <label for="J-agree" class="ui-checkbox-label">我同意<a id="J-alipay-treaty" href="#" class="ft-grey" target="_blank">支付宝服务协议</a></label>
         </div>
         <div class="ui-form-item">
-          <input id="J-submit" type="submit" class="ui-button ui-button-lblue" value="下一步">
+          <div id="submitBtn">
+            <input id="J-submit" type="submit" class="ui-button ui-button-lblue" value="下一步">
+          </div>
           <span class="ui-form-confirm"><span class="loading-text fn-hide">正在提交信息</span></span>
         </div>
       </fieldset>
@@ -123,7 +124,7 @@ seajs.use(['register.css']);
   seajs.use(['autocomplete','xbox','pop-validator','$','select','request'], function(AutoComplete,Xbox,Validator,$,Select, request){
     //ajax会报错，用jQuery代替
     var jQuery = $;
-    $(function(){
+    jQuery(function(){
       //自动补全——邮箱后缀数据
       var autoCompleteData = [
         'qq.com',
@@ -136,51 +137,26 @@ seajs.use(['register.css']);
         'sohu.com',
         '21cn.com'
       ];
+      var dataSource = function(query){
+        query = query.replace(/^(.*)@.*$/,'$1');
+        var autoCompleteResult = [];
+        if(!query.match(/[^0-9]/)){
+  				autoCompleteResult.push(query);
+      	}
+        return autoCompleteResult.concat($.map(autoCompleteData, function(v) {
+            return query + '@' + v;
+        }));
+      };
       //自动补全实例化
       new AutoComplete({
         trigger: '#J-accName',
         submitOnEnter:false,
-        dataSource: function(query) {
-          //输入源去除@
-          query = query.replace(/^([^@]*)@.*$/,'$1');
-        	//定义结果数据
-        	var autoCompleteResult = [];
-        	//如果只有数字，在第一条插入输入的数字
-          if(!query.match(/[^0-9]/)){
-            autoCompleteResult.push(query);
-          }
-          //拼装数据源
-        	for(i in autoCompleteData){
-            var mail = i;
-            autoCompleteResult.push(query + '@' + autoCompleteData[mail]);
-          }
-          return autoCompleteResult;
-        },
-        filter: function(data, query){
-          //是否结果是空
-          var empty = false;
-        	//定义最终展现数据
-          var result = [];
-          jQuery.each(data,function(index, value){
-            //如果输入的邮箱已经和结果中的某一项匹配了，就可以不展示下拉
-          	if(query.indexOf("@") > -1 && value == query){
-              empty = true;
-              //把匹配的数据条目拼装给结果
-            }
-            else if(value.indexOf(query) > -1){
-              result.push({"value":value});
-            }
-          });
-          if(empty){
-            return [];
-          }
-          else{
-            return result;
-          }
-        }
+        html: '<a>{{{label}}}</a>',
+        classPrefix:"ui-autocomplete"
+        ,dataSource:dataSource
       }).render();
       //预设账户名输入框
-      var accNameInput = $("#J-accName");
+      var accNameInput = jQuery("#J-accName");
       //预设校验码输入框
       var checkcodeInput = $("#J-checkcode");
       //预设按钮
@@ -191,6 +167,8 @@ seajs.use(['register.css']);
       var validator = new Validator({
         element: '#J-index-form',
         checkNull:false,
+        autoFocus:false,
+        skipHidden:true,
         showMessage: function(message, element) {
           this.getItem(element).removeClass(this.get('itemErrorClass'))
           .removeClass(this.get('itemSuccessClass'))
@@ -244,18 +222,18 @@ seajs.use(['register.css']);
       re_validator=validator;
       //新加规则
       var accName=Validator.getRule('email').or('mobile');
-      Validator.addRule('accName',accName,'支付宝账户名是邮箱地址或手机号码。');
+      Validator.addRule('accName',accName,'宝麟账户名是邮箱地址或手机号码。');
       Validator.addRule('checkcode',/^.{4}$/,'验证码不正确，请重新输入。');
       Validator.addRule("state",function(options,commit){
         var state=jQuery.trim(options.element.val());
-        if (state=="QS") {
-          commit(true, "请选择国家或地区。");
+        if (state==="QS"||state==='') {
+          commit(false, "请选择国家或地区。");
         }
         else{
-          commit(null);
+          commit(true);
         }
       });
-      Validator.setMessage('email', '支付宝个人（港澳台/海外）账户名只支持电子邮箱。');
+      Validator.setMessage('email', '宝麟个人（港澳台/海外）账户名只支持电子邮箱。');
       Validator.addRule('ajaxCheckUserName',function(options,commit){
         validator.popMsgHide({
           el : options.element
@@ -264,9 +242,7 @@ seajs.use(['register.css']);
           type	: 'POST',
           url		:'/account/reg/acctStatusCheck.json',
           data	:{
-            accName : $('#J-accName').val(),
-            json_tk : form_tk,
-            json_ua : json_ua
+            accName : $('#J-accName').val()
           },
           timeout :10000,
           success	:function(msg){
@@ -326,7 +302,7 @@ seajs.use(['register.css']);
               element: '#J-accName',
               required: true,
               rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} accName ajaxCheckUserName',
-              display: "支付宝账户名"
+              display: "宝麟账户名"
             });
           }
           else if(target.attr("data-value") == "QS"){
@@ -339,7 +315,7 @@ seajs.use(['register.css']);
               element: '#J-accName',
               required: true,
               rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} ajaxCheckUserName',
-              display: "支付宝账户名"
+              display: "宝麟账户名"
             });
           }
           else{
@@ -351,7 +327,7 @@ seajs.use(['register.css']);
               element: '#J-accName',
               required: true,
               rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} email ajaxCheckUserName',
-              display: "支付宝账户名"
+              display: "宝麟账户名"
             });
           }
         }).render();
@@ -423,14 +399,14 @@ seajs.use(['register.css']);
       function letBtnGrey(){
         if(submitInput.attr("data-validatorFlag") == "false" || submitInput.attr("data-agreeFlag") == "false"){
           $("#J-submit").attr("disabled","disabled");
-          $("#J-submit").parent().addClass("ui-button-ldisable").removeClass("ui-button-lorange");
+          $("#J-submit").addClass("ui-button-ldisable").removeClass("ui-button-lblue");
         }
       }
       //使按钮正常
       function letBtnBack(){
         if(submitInput.attr("data-validatorFlag") == "true" && submitInput.attr("data-agreeFlag") == "true"){
           $("#J-submit").removeAttr("disabled");
-          $("#J-submit").parent().removeClass("ui-button-ldisable").addClass("ui-button-lorange");
+          $("#J-submit").removeClass("ui-button-ldisable").addClass("ui-button-lblue");
         }
       }
       //国家码映射
@@ -534,79 +510,90 @@ seajs.use(['register.css']);
 
       	//根据不同的accStatus显示不同的提示信息
       	if(accStatus=="login"){
-      		window.Tracker && Tracker.click("login");
-      		popMsg='此账户已注册支付宝，<a href=\'https://auth.alipay.com/login/index.htm?logonId='+accName+'\' titile="立即登录" target="_blank" seed="signInNow">立即登录</a>';
+      		popMsg='此账户已注册宝麟，<a href=\'/?logonId='+accName+'\' title="立即登录">立即登录</a>';
       		popType = 'warn';
-      	}else if(accStatus=="loginq"){
-      		window.Tracker && Tracker.click("warn");
-      		popMsg= '您已是支付宝会员，但账户信息不完整，请 <a href=\'https://auth.alipay.com/login/index.htm?logonId='+accName+'&goto=https://lab.alipay.com/user/reg/complete/finishRegister.htm\' titile="登录" target="_blank" seed="signIn">登录</a> 后补全，享受更多服务。';	
+      	}
+        else if(accStatus=="loginq"){
+      		popMsg= '您已是宝麟会员，但账户信息不完整，请 <a href=\'/?logonId='+accName+'&goto=/auth/finishRegister.htm\' title="登录">登录</a> 后补全，享受更多服务。';	
       		popType = 'warn';
-      	}else if(accStatus=="available"){
-      		window.Tracker && Tracker.click("available");
+      	}
+        else if(accStatus=="available"){
       		popMsg ='<span class="ft-white">ok</span>';	
       		popType = 'success';
-      	}else if(accStatus=="havanatemp"){
+      	}
+        else if(accStatus=="havanatemp"){
       		popMsg = '此账户名被阿里巴巴集团的其他账户占用，且未完成注册，请<a href=\'https://passport.alipay.com/register/continue.htm?hid='+havanaId+'\' target="_blank" seed="havanatemp_continue">继续注册</a>。';
       		popType = 'warn';
-      	}else if(accStatus=="aliuserexist"){
+      	}
+        else if(accStatus=="aliuserexist"){
       		popMsg = '此账户名注册过阿里巴巴集团的其他账户，暂不支持注册支付宝，请重新输入。';
       		popType = 'warn';
-      	}else if(accStatus=="aliuserexistneedlogin"){
-      		window.Tracker && Tracker.click("aliuserexistneedlogin");
-      		popMsg = '此邮箱/手机号已注册<a href=\'https://passport.alipay.com/login.htm?appName=alipay&havana_return_url=https://my.alipay.com/portal/i.htm\'>阿里通行证</a>，请用此账号登录激活支付宝。';
+      	}
+        else if(accStatus=="aliuserexistneedlogin"){
+      		popMsg = '此邮箱/手机号已注册<a href=\'/?appName=alipay&havana_return_url=https://my.alipay.com/portal/i.htm\'>宝麟通行证</a>，请用此账号登录激活宝麟。';
       		popType = 'warn';
-      	}else if(accStatus=="unsupportedcountry"){
-      		window.Tracker && Tracker.click("unsupportedcountry");
+      	}
+        else if(accStatus=="unsupportedcountry"){
       		popMsg = '抱歉，暂不支持该账户补全信息。建议更换其他邮箱或手机号重新注册。';
       		popType = 'warn';
-      	}else if(accStatus=="taobaouser"){
-      		window.Tracker && Tracker.click("taobaouser");
-      		popMsg = '您在注册淘宝<span class="ft-orange">（'+nick+'）</span>时同步创建了此支付宝账户。<a href=\'https://login.taobao.com/member/login.jhtml?from=alipay&goto=https%3A%2F%2Flab.alipay.com%2Fuser%2Freg%2Fcomplete%2FfinishRegister.htm\' target="_blank" seed="taobaoUserSignIn">淘宝账户登录</a>';
+      	}
+        else if(accStatus=="taobaouser"){
+      		popMsg = '您在注册淘宝<span class="ft-orange">（'+nick+'）</span>时同步创建了此宝麟账户。<a href=\'javascript:;\'>淘宝账户登录</a>';
       		popType = 'warn';
-      	}else if(accStatus=="activate" && accType == "2"){
+      	}
+        else if(accStatus=="activate" && accType == "2"){
       		if($("#country").val() == country){
-      			window.Tracker && Tracker.click("activate2_success");
       			popMsg = '<span class="ft-white">ok</span>';
       			popType = 'success';
-      		}else{
-      			window.Tracker && Tracker.click("activate2_warn");
-      			popMsg = '您已是支付宝个人'+countryChinaeseName+'会员，但账户信息不完整，请<a seed="personal_continue" href=\'https://memberprod.alipay.com/account/reg/index.htm?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
+      		}
+          else{
+      			popMsg = '您已是宝麟个人'+countryChinaeseName+'会员，但账户信息不完整，请<a href=\'/?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
       			popType = 'warn';
       		}
-      	}else if(accStatus=="activate" && accType == "1"){
-      		window.Tracker && Tracker.click("activate1");
-      		popMsg = '您已是支付宝企业会员，但账户信息不完整，请<a seed="enterprise_continue" href=\'https://memberprod.alipay.com/account/reg/enterpriseIndex.htm?accName='+accName+'\'>继续注册</a>，享受更多服务。';
+      	}
+        else if(accStatus=="activate" && accType == "1"){
+      		popMsg = '您已是宝麟代理会员，但账户信息不完整，请<a href=\'/?accName='+accName+'\'>继续注册</a>，享受更多服务。';
       		popType = 'warn';
-      	}else if(accStatus=="activatenotalipayq" && accType == "2"){
+      	}
+        else if(accStatus=="activatenotalipayq" && accType == "2"){
       		if($("#country").val() == country){
-      			window.Tracker && Tracker.click("activatenotalipayq2_success");
-      			popMsg = '您已是支付宝会员，但账户信息不完整，请继续注册，享受更多服务。';
+      			popMsg = '您已是宝麟会员，但账户信息不完整，请继续注册，享受更多服务。';
       			popType = 'success';
-      		}else{
-      			window.Tracker && Tracker.click("activatenotalipayq2_warn");
-      			popMsg = '您已是支付宝个人'+countryChinaeseName+'会员，但账户信息不完整，请<a seed="personal_notalipay_continue" href=\'https://memberprod.alipay.com/account/reg/index.htm?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
+      		}
+          else{
+      			popMsg = '您已是宝麟个人'+countryChinaeseName+'会员，但账户信息不完整，请<a href=\'/?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
       			popType = 'warn';
       		}	
-      	}else if(accStatus=="activatenotalipayq" && accType == "1"){
-      		window.Tracker && Tracker.click("activatenotalipayq1");
-      		popMsg = '您已是支付宝企业会员，但账户信息不完整，请<a seed="enterprise_notalipay_continue" href=\'https://memberprod.alipay.com/account/reg/enterpriseIndex.htm?accName='+accName+'\'>继续注册</a>，享受更多服务。';
+      	}
+        else if(accStatus=="activatenotalipayq" && accType == "1"){
+      		popMsg = '您已是宝麟代理会员，但账户信息不完整，请<a href=\'/?accName='+accName+'\'>继续注册</a>，享受更多服务。';
       		popType = 'warn';
-      	}else if(accStatus=="exceedlimit"){
-      		window.Tracker && Tracker.click("exceedlimit");
+      	}
+        else if(accStatus=="exceedlimit"){
       		popMsg = '今天此手机号码已接收'+totalLimit+'次短信校验码，请更换手机号码/电子邮箱或明天再试。';
       		popType = 'warn';
-      	}else if(accStatus=="invalid"){
-      		window.Tracker && Tracker.click("invalid");
-      		popMsg = '支付宝账户名是邮箱地址或手机号码。';
+      	}
+        else if(accStatus=="invalid"){
+      		popMsg = '宝麟账户名是邮箱地址或手机号码。';
       		popType = 'error';
-      	}else if(accStatus=="forbidden"){
-      		window.Tracker && Tracker.click("forbidden");
-                  if(logonType=="MOBILE"){var text="手机号码";}else if(logonType=="EMAIL"){var text="电子邮箱";}
+      	}
+        else if(accStatus=="forbidden"){
+          if(logonType=="MOBILE"){
+            var text="手机号码";
+          }
+          else if(logonType=="EMAIL"){
+            var text="电子邮箱";
+          }
       		popMsg = '此'+text+'暂不支持作为账户名，请更换';
       		popType = 'error';
       	}
       	else{
-      		if(logonType=="MOBILE"){var text="手机号码";}else if(logonType=="EMAIL"){var text="电子邮箱";}
+      		if(logonType=="MOBILE"){
+            var text="手机号码";
+          }
+          else if(logonType=="EMAIL"){
+            var text="电子邮箱";
+          }
       		popMsg = '抱歉，系统忙，暂无法检测此'+text+'是否可用作账户名。<a href="#" id="reCheck">重新检测</a>';
       		popType = 'warn';
       	}
@@ -621,7 +608,8 @@ seajs.use(['register.css']);
       	if($(this).attr("checked")){
       		submitInput.attr("data-agreeFlag","true");
       		letBtnBack();
-      	}else{
+      	}
+        else{
       		submitInput.attr("data-agreeFlag","false");
       		letBtnGrey();	
       	}
@@ -649,7 +637,7 @@ seajs.use(['register.css']);
       			element: '#J-accName',
       			required: true,
       			rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} ajaxCheckUserName',
-      			display: "支付宝账户名"
+      			display: "宝麟账户名"
       		});				
       	}else{
       		//换提示
@@ -660,16 +648,18 @@ seajs.use(['register.css']);
       			element: '#J-accName',
       			required: true,
       			rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} email ajaxCheckUserName',
-      			display: "支付宝账户名"
+      			display: "宝麟账户名"
       		});				
       	}
       }
       var accCheck = "";
       if(accCheck == "mobileCheck"){
       	mobile_check_box.show();
-      }else if(accCheck == "emailCheck"){
+      }
+      else if(accCheck == "emailCheck"){
       	email_check_box.show();
-      }else{
+      }
+      else{
       	//发起帐户名校验
       	if(jQuery.trim(accNameInput.val())){
       		accNameInput.val(jQuery.trim(accNameInput.val()));			
@@ -678,7 +668,9 @@ seajs.use(['register.css']);
       			{
       				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
       				var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-      				if (r!=null) return unescape(r[2]); return ""; //返回参数值
+      				if (r!=null)
+                return unescape(r[2]);
+              return ""; //返回参数值
       			}
       			var countryInit = getUrlParam("country");
       			selectCountry(countryInit);
@@ -692,243 +684,208 @@ seajs.use(['register.css']);
   });
 </script>
 <script type="text/javascript">
-/**
- *
- * 实时校验码模块
- *
- * @author 定风波
- * @create 2012-09-07
- */
-seajs.use(['$', 'alipay/request/0.9.1/request'], function($, request) {
-
+  /**
+   * 实时校验码模块
+   */
+  seajs.use(['$', 'request'], function($, request) {
     var jQuery = $;
-
     $(function() {
-
-        var realtimeCheckcode = {
-
-            //当前所在的表单
-            form: null,
-
-            //checkcodeServer地址
-            checkcodeServer: "/account/reg/picCheckCode.json",
-
-            //验证码的dom
-            checkcode: null,
-
-            //验证码的icon图标dom
-            checkcodeIcon: null,
-
-            //结果变量
-            result: false,
-
-            //统计发送请求的次数
-            count: 0,
-
-            //统计错误的次数
-            errorCount: 0,
-
-            //设置超时时间
-            timeout: 2000,
-
-            //设置实时校验码超时时间为9分钟（保险起见，实时校验码的失效时间比session少1分钟）:
-            invalidTime: 1000 * 60 * 9,
-
-            //记录初始化时间:
-            initialTime:new Date().getTime(),
-
-            //标识当前页面停留时间:
-            nowTime:null,
-
-            //判断是否超时:
-            isInvalid:false,
-
-            //标识此时是否在校验,如果用户点击刷新，则阻断上次校验；
-            isChecking:false,
-
-            //标识当前已经校验过的数据,避免用户输入4位数后继续点击键盘重复校验相同值；
-            nowValue:null,
-
-            //表单提交的方法,这个变量同时标识当前用户是否点击过提交按钮
-            formSubmit_: null,
-
-            //初始化事件,赋予变量值
-            init: function() {
-                //form使用的是原生的表单
-                this.form = $('form')[0];
-                this.checkcode = $('#J-checkcode');
-                this.checkcodeIcon = $('#checkcodeIcon');
+      var realtimeCheckcode = {
+        //当前所在的表单
+        form: null,
+        //checkcodeServer地址
+        checkcodeServer: "/account/reg/picCheckCode.json",
+        //验证码的dom
+        checkcode: null,
+        //验证码的icon图标dom
+        checkcodeIcon: null,
+        //结果变量
+        result: false,
+        //统计发送请求的次数
+        count: 0,
+        //统计错误的次数
+        errorCount: 0,
+        //设置超时时间
+        timeout: 2000,
+        //设置实时校验码超时时间为9分钟（保险起见，实时校验码的失效时间比session少1分钟）:
+        invalidTime: 1000 * 60 * 9,
+        //记录初始化时间:
+        initialTime:new Date().getTime(),
+        //标识当前页面停留时间:
+        nowTime:null,
+        //判断是否超时:
+        isInvalid:false,
+        //标识此时是否在校验,如果用户点击刷新，则阻断上次校验；
+        isChecking:false,
+        //标识当前已经校验过的数据,避免用户输入4位数后继续点击键盘重复校验相同值；
+        nowValue:null,
+        //表单提交的方法,这个变量同时标识当前用户是否点击过提交按钮
+        formSubmit_: null,
+        //初始化事件,赋予变量值
+        init: function() {
+          //form使用的是原生的表单
+          this.form = $('form')[0];
+          this.checkcode = $('#J-checkcode');
+          this.checkcodeIcon = $('#checkcodeIcon');
+        },
+        //异步请求的方法
+        request: function(value) {
+          var that = this;
+          //发起请求之前先重置一次；
+          that.checkReset();
+          that.count++;
+          that.nowTime = new Date().getTime();
+          //判断当前是否页面停留时间超过10分钟，如果超过10分钟，则失效，不进行实时校验
+          that.isInvalid = that.nowTime - that.initialTime > that.invalidTime ? true : false ;
+          //如果请求数超过5次的话，不再去发请求 ||如果当前时间超过10分钟，也不再去发请求
+          if (that.count > 5 || that.isInvalid) return;
+          //标识用户当前在发送实时校验码校验;
+          that.isChecking = true;
+          //用户当前进行校验的值;
+          that.nowValue = value;
+          request.ajax({
+            type	: 'POST',
+            url		: that.checkcodeServer,
+            data	: {checkCode : value,timestamp: new Date().getTime()},
+            timeout: that.timeout,
+            success: function(data) {
+              that.successCallback(data);
             },
-
-            //异步请求的方法
-            request: function(value) {
-                var that = this;
-                //发起请求之前先重置一次；
-                that.checkReset();
-
-                that.count++;
-
-                that.nowTime = new Date().getTime();
-
-                //判断当前是否页面停留时间超过10分钟，如果超过10分钟，则失效，不进行实时校验
-                that.isInvalid = that.nowTime - that.initialTime > that.invalidTime ? true : false ;
-
-                //如果请求数超过5次的话，不再去发请求 ||如果当前时间超过10分钟，也不再去发请求
-                if (that.count > 5 || that.isInvalid) return;
-                //标识用户当前在发送实时校验码校验;
-                that.isChecking = true;
-
-                //用户当前进行校验的值;
-                that.nowValue = value;
-
-                request.ajax({
-                    type	: 'POST',
-                    url		: that.checkcodeServer,
-                    data	: {checkCode : value,timestamp: new Date().getTime()},
-                    timeout: that.timeout,
-                    success: function(data) {
-                        that.successCallback(data);
-                    },
-                    failure: function() {
-                        that.failureCallback();
-                    }
-                });
-            },
-
-            //结果有返回的时候
-            successCallback: function(data) {
-                //如果此时用户已经点击刷新校验码，则阻止此次返回的结果显示；
-                if(!this.isChecking) return;
-                if (!data.stat) {
-                    this.checkTimeout();
-                }else{
-                    if (data.stat == "ok") {
-                        //返回结果正确，且用户已经点击过提交，则直接提交表单，并且显示正确的图标;
-                        if (this.formSubmit_) this.submitForm();
-                        //返回结果正确，但是用户没有点击过提交，则显示正确的图标，同时标识结果为正确;
-                        this.checkcodeIcon.addClass("checkcodeIcon-right");
-                        this.result = true;
-                    } else {
-                        //记录用户失败的次数
-                        this.errorCount++;
-                        //返回结果错误，显示错误的图标，并且focus到验证码框
-                        this.checkcodeIcon.addClass("checkcodeIcon-wrong");
-                        this.checkcode.trigger("focus");
-                        this.result = false;
-                        this.formSubmit_ = null;
-                    }
-                }
-            },
-
-            //结果超时或者接口挂了的时候
-            failureCallback: function() {
-                //如果此时用户已经点击刷新校验码，则阻止此次返回的结果显示
-                if(!this.isChecking) return;
-                //结果超时或者接口挂了，如果此时用户已经点击提交，则直接提交
-                if (this.formSubmit_) {
-                    this.submitForm();
-                } else {
-                    //结果超时或者接口挂了，用户没有点击提交，则标识结果为正确（允许用户点击提交的时候直接提交表单)
-                    this.checkTimeout();
-                }
-            },
-
-            //接口超时或者接口不可用的情况下,默认都为true，防止因为实时校验码影响到登录功能
-            checkTimeout: function() {
-                this.result = true;
-            },
-
-            //重置实时校验码的功能,标识校验码结果为false,同时标识用户没有点击过提交按钮
-            checkReset: function() {
-                this.checkcodeIcon.removeClass("checkcodeIcon-right");
-                this.checkcodeIcon.removeClass("checkcodeIcon-wrong");
-                this.result = false;
-                this.formSubmit_ = null;
-                //当校验码没有返回的时候用户点击刷新验证码，则标识用户没有在校验
-                this.isChecking = false;
-                //清空用户用于校验的值
-                that.nowValue = null;
-            },
-
-            //提交表单切面
-            submitAspect: function() {
-                var submit_ = this.form.submit;
-                that = this;
-                this.form.submit = function() {
-                    that.formSubmit_ = submit_;
-
-                    //先判断是否已经校验过5次,校验过5次之后不再去校验,直接提交表单 || 判断页面是否超时，如果超时也提交
-                    if (that.count > 5 || that.isInvalid) {
-                        that.submitForm();
-                    } else {
-                        //判断实时校验码标识的结果
-                        if (that.result) {
-                            //标识符为true，提交表单
-                            that.submitForm();
-                        } else {
-                            //如果当前用户没有进行实时校验（当输入第四位的keyup的同时blur掉，则不会执行keyup事件），点击提交，会去发一次校验；
-                            if(that.checkcode.val() != that.nowValue){
-                                that.request(that.checkcode.val());
-                            }else{
-                                //标识符为false，把按钮恢复，首页定制的;
-                                var indexSubBtn = $("#J-submit");
-                                indexSubBtn.removeAttr("disabled");
-                                if($("#J-index-form")[0]){
-                                    indexSubBtn.parent().addClass("ui-button-lorange").removeClass("ui-button-ldisable");
-                                }else{
-                                    indexSubBtn.parent().addClass("ui-button-lblue").removeClass("ui-button-ldisable");
-                                }
-                                indexSubBtn.parent().next().find(".loading-text")[0] && indexSubBtn.parent().next().find(".loading-text").addClass("fn-hide");
-
-                                //标识符为false，focus验证码框;
-                                that.checkcode.trigger("focus");							
-                            }
-                        }
-                    }
-
-                };
-            },
-
-            //直接提交表单的方法，方法会先判断用户是否有点击过提交表单的按钮，没点击过不会提交
-            submitForm: function() {
-                var submit_ = this.formSubmit_;
-                if (!submit_) return;
-                try {
-                    submit_();
-                } catch (e) {
-                    submit_.call(that.form);
-                }
-            },
-
-            //监听去空格逻辑中发出来的事件，在去空格之后判断输入验证码的长度
-            bindEvent: function() {
-                var that = this;
-                this.checkcode.keyup(function(){
-                    $(this).val(jQuery.trim($(this).val()));
-                    var value = $(this).val();
-                    /*
-                     *如果验证码输入长度小于4位，重置实时校验码功能;		
-                     */
-                    if (value.length < 4) {
-                        that.checkReset();
-                    } else if (value.length == 4) {
-                        //如果当前用户进行校验的值和上一个值相同，则不校验,避免出现用户输满4个字符后点击键盘其他字符发起的重复校验；
-                        if(value != that.nowValue) that.request(value);
-                    }
-                });
-
-                $("#J-checkcode-img").click(function(){
-                    //重置实时校验码
-                    that.checkReset();
-                });
-
+            failure: function() {
+              that.failureCallback();
             }
+          });
+        },
+        //结果有返回的时候
+        successCallback: function(data) {
+          //如果此时用户已经点击刷新校验码，则阻止此次返回的结果显示；
+          if(!this.isChecking) return;
+          if (!data.stat) {
+            this.checkTimeout();
+          }
+          else{
+            if (data.stat == "ok") {
+              //返回结果正确，且用户已经点击过提交，则直接提交表单，并且显示正确的图标;
+              if (this.formSubmit_) this.submitForm();
+              //返回结果正确，但是用户没有点击过提交，则显示正确的图标，同时标识结果为正确;
+              this.checkcodeIcon.addClass("checkcodeIcon-right");
+              this.result = true;
+            }
+            else {
+              //记录用户失败的次数
+              this.errorCount++;
+              //返回结果错误，显示错误的图标，并且focus到验证码框
+              this.checkcodeIcon.addClass("checkcodeIcon-wrong");
+              this.checkcode.trigger("focus");
+              this.result = false;
+              this.formSubmit_ = null;
+            }
+          }
+        },
+        //结果超时或者接口挂了的时候
+        failureCallback: function() {
+          //如果此时用户已经点击刷新校验码，则阻止此次返回的结果显示
+          if(!this.isChecking) return;
+          //结果超时或者接口挂了，如果此时用户已经点击提交，则直接提交
+          if (this.formSubmit_) {
+            this.submitForm();
+          }
+          else {
+            //结果超时或者接口挂了，用户没有点击提交，则标识结果为正确（允许用户点击提交的时候直接提交表单)
+            this.checkTimeout();
+          }
+        },
+        //接口超时或者接口不可用的情况下,默认都为true，防止因为实时校验码影响到登录功能
+        checkTimeout: function() {
+          this.result = true;
+        },
+        //重置实时校验码的功能,标识校验码结果为false,同时标识用户没有点击过提交按钮
+        checkReset: function() {
+          this.checkcodeIcon.removeClass("checkcodeIcon-right");
+          this.checkcodeIcon.removeClass("checkcodeIcon-wrong");
+          this.result = false;
+          this.formSubmit_ = null;
+          //当校验码没有返回的时候用户点击刷新验证码，则标识用户没有在校验
+          this.isChecking = false;
+          //清空用户用于校验的值
+          that.nowValue = null;
+        },
+        //提交表单切面
+        submitAspect: function() {
+          var submit_ = this.form.submit;
+          that = this;
+          this.form.submit = function() {
+            that.formSubmit_ = submit_;
+            //先判断是否已经校验过5次,校验过5次之后不再去校验,直接提交表单 || 判断页面是否超时，如果超时也提交
+            if (that.count > 5 || that.isInvalid) {
+              that.submitForm();
+            }
+            else {
+              //判断实时校验码标识的结果
+              if (that.result) {
+                //标识符为true，提交表单
+                that.submitForm();
+              }
+              else {
+                //如果当前用户没有进行实时校验（当输入第四位的keyup的同时blur掉，则不会执行keyup事件），点击提交，会去发一次校验；
+                if(that.checkcode.val() != that.nowValue){
+                  that.request(that.checkcode.val());
+                }
+                else{
+                  //标识符为false，把按钮恢复，首页定制的;
+                  var indexSubBtn = $("#J-submit");
+                  indexSubBtn.removeAttr("disabled");
+                  if($("#J-index-form")[0]){
+                    indexSubBtn.parent().addClass("ui-button-lorange").removeClass("ui-button-ldisable");
+                  }else{
+                    indexSubBtn.parent().addClass("ui-button-lblue").removeClass("ui-button-ldisable");
+                  }
+                  indexSubBtn.parent().next().find(".loading-text")[0] && indexSubBtn.parent().next().find(".loading-text").addClass("fn-hide");
+                  //标识符为false，focus验证码框;
+                  that.checkcode.trigger("focus");							
+                }
+              }
+            }
+          };
+        },
+        //直接提交表单的方法，方法会先判断用户是否有点击过提交表单的按钮，没点击过不会提交
+        submitForm: function() {
+          var submit_ = this.formSubmit_;
+          if (!submit_) return;
+          try {
+            submit_();
+          } catch (e) {
+            submit_.call(that.form);
+          }
+        },
+        //监听去空格逻辑中发出来的事件，在去空格之后判断输入验证码的长度
+        bindEvent: function() {
+          var that = this;
+          this.checkcode.keyup(function(){
+            $(this).val(jQuery.trim($(this).val()));
+            var value = $(this).val();
+            /*
+             *如果验证码输入长度小于4位，重置实时校验码功能;		
+             */
+            if (value.length < 4) {
+              that.checkReset();
+            }
+            else if (value.length == 4) {
+              //如果当前用户进行校验的值和上一个值相同，则不校验,避免出现用户输满4个字符后点击键盘其他字符发起的重复校验；
+              if(value != that.nowValue) that.request(value);
+            }
+          });
+          $("#J-checkcode-img").click(function(){
+            //重置实时校验码
+            that.checkReset();
+          });
         }
-        realtimeCheckcode.init();
-        realtimeCheckcode.bindEvent();
-        realtimeCheckcode.submitAspect();
+      }
+      realtimeCheckcode.init();
+      realtimeCheckcode.bindEvent();
+      realtimeCheckcode.submitAspect();
     });
-});
+  });
 </script>
 <!--#include virtual="/pages/footer.html"-->
 </body>

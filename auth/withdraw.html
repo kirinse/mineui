@@ -384,10 +384,10 @@
       });
       // var panels = tabs.get('panels');
       tabs.on("switched", function(toIndex, fromIndex){
-        if(toIndex == 2)
-        {
+        if(toIndex == 2){
           $('#form-inputs').addClass('fn-hide');
-        } else if(toIndex == 1) {
+        }
+        else if(toIndex == 1) {
           //取消银行卡校验框
           var item = validator.query('[name=card]');
           item.element.removeAttr('checked');
@@ -397,7 +397,9 @@
           $('#J-amount-explain .min').html('100');
           $('#J-amount-explain .max').html('9999999');
           $('#J-amount-explain').show();
-        } else {
+          $('#form-inputs').removeClass('fn-hide');
+        }
+        else {
           $('#J-amount-explain .min').html('');
           $('#J-amount-explain .max').html('');
           $('#J-amount-explain').hide();
