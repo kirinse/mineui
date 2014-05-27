@@ -3,11 +3,11 @@
 seajs.config({
   alias:{
     "register.css":"kirin/register/1.0.0/register.css"
-    ,"autocomplete":"arale/autocomplete/1.2.2/autocomplete"//'autocomplete/0.8.0/autocomplete'
-    ,"xbox": "alipay/xbox/1.0.3/xbox"//alipay/xbox/0.9.7/xbox
+    ,"autocomplete":"arale/autocomplete/1.2.2/autocomplete"
+    ,"xbox": "alipay/xbox/1.0.3/xbox"
     ,"pop-validator": "kirin/pop-validator/1.0.0/pop-validator"
-    ,"select":"arale/select/0.9.9/select"//select/0.9.0/select
-    ,"request":"alipay/request/0.9.0/request"//alipay/request/0.9.1/request
+    ,"select":"arale/select/0.9.9/select"
+    ,"request":"alipay/request/0.9.0/request"
   }
 });
 seajs.use(['register.css']);
