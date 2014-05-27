@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<html>
+<head>
+  <meta name="keywords" content=""> 
+  <meta name="description" content=""> 
+  <title>我的宝麟 － 宝麟</title>
+  <script>
+  if(top.loginstatus==0){
+  	 top.location.href="/auth/mykirin.html";
+  }
+  function topredirect(k){
+   if(k==1) top.location.href="/auth/mykirin.html";
+  }
+  </script>
+  <script type="text/javascript">
+    window._to = { start: new Date() };
+  </script>
+  <style>
+  	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button {
+  		margin: 0;
+  		padding: 0;
+  	}
+  	body, button, input, select, textarea {
+  		font: 12px/1.5 tahoma,arial,宋体;
+  		background:transparent;
+  	}
+  	ol, ul {
+  		list-style: none outside none;
+  	}   
+  	a{
+  		font-size:12px;
+  		font-weight:500;
+  	}
+  	html{
+  		background:transparent;
+  	}
+  	img{
+  		border:0px;
+  	}
+  	#ServerNum {
+  		display: none;
+  	}
+  	/*容器*/
+  	#userLogined{
+  		width:284px;
+  		overflow:hidden;
+  		color:#ffffff;
+  		background:rgba(0, 0, 0, 0.2);
+  		filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#33000000', EndColorStr='#33000000');
+  	}
+  	#userLogined a,#userLogined a:hover{
+  		color:#ffffff;
+  	}
+  	:root #userLogined{
+  		filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00000000', EndColorStr='#00000000')\9;
+  	}
+  	#userLogined a,#userLogined a:hover{
+  		color:#ffffff;
+  	}
+  	#userLogined .user-container{
+  		padding: 25px 30px 30px;
+  	}
+  	#userLogined h4.wellcome{
+  		font-size:16px;
+  		margin: 0 0 16px 0;
+  		padding:0;
+  	}
+  	#userLogined .spitline {
+  		display: block; 
+  		overflow: hidden;
+  		height: 1px;
+  		background:rgba(255, 255, 255, 0.3);
+  		filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#55FFFFFF', EndColorStr='#55FFFFFF');
+  	}
+  	#userLogined .user-info {
+  		margin: 16px 0 0 0;
+  		font-size: 14px;
+  	}
+  	#userLogined .user-info .user-info-title {}
+  	#userLogined .user-info .user-info-account {
+  		margin: 4px 0 0 0; 
+  		font-weight: 700; 
+  		font-family: verdana, Arial; 
+  		color: #FF9700; 
+  		word-break: break-all;
+  		word-wrap: break-word;
+  	}
+  	#userLogined .user-info .user-info-account img {
+  		vertical-align: -2px;
+  	}
+  	#userLogined .user-info .user-info-button {
+  		margin: 15px 0 0 0; 
+  	}
+  	#userLogined .user-info .user-info-button a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      cursor: pointer;
+/*      width: 219px;*/
+      padding: 0px 20px;
+      font-size: 16px;
+      line-height: 40px;
+      height: 40px;
+      color: #fff;
+      *zoom: 1;
+      *overflow: visible;
+      text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+      font-weight: normal;
+      font-weight: bold\0;
+      *font-weight: bold;
+      _font-weight: bold;
+      background-color:#0088cc;
+      background:-webkit-gradient(linear,left top,left bottom,from(#0088cc),to(#0077aa));
+      background:-moz-linear-gradient(top,#0088cc,#0077aa);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0077aa');
+      background:-o-linear-gradient(top,#0088cc,#0077aa);
+      background:-ms-linear-gradient(top,#0088cc 0%,#0077aa 100%);
+      background:linear-gradient(top,#0088cc,#0077aa);
+      border: none;
+      -webkit-border-radius: 0 0;
+      -moz-border-radius: 0 0;
+      border-radius: 0 0;
+  	}
+  	#userLogined .user-info .user-info-button a:hover {
+      text-decoration: none;
+      background-color:#0099cc;
+      background:-webkit-gradient(linear,left top,left bottom,from(#0099cc),to(#006699));
+      background:-moz-linear-gradient(top,#0099cc,#006699);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0099cc', endColorstr='#006699');
+      background:-o-linear-gradient(top,#0099cc,#006699);
+      background: -ms-linear-gradient(top,#0099cc 0%,#006699 100%);
+      background:linear-gradient(top,#0099cc,#006699);
+  	}
+  </style>
+</head>
+<body class="blank">
+  <div id="container">
+    <div id="userLogined">
+      <div class="user-container">
+        <h4 class="wellcome">欢迎使用宝麟！</h4>
+        <span class="spitline">&nbsp;</span>
+        <div class="user-info">
+          <p class="user-info-title">您当前正在使用的宝麟账户是：</p>
+          <p class="user-info-account" title="<%=request.getUserPrincipal().getName()%>">
+            <%=request.getUserPrincipal().getName()%>
+            <a class="il-accout-type" title="金账户">
+              <img src="/static/images/vip/ico-vip-s.gif" height="16" width="16" alt="金账户">
+            </a>
+          </p>
+          <p class="user-info-button">
+            <a onclick="topredirect(1);" href="javascript:;" target="_parent">进入我的宝麟</a>
+          </p>
+          <p class="ui-button">
+            <a id="lgout" href="/auth/auth.jsp?GLO=true" >切换账号</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="ServerNum" class="ft-fff"></div>
+  <meta style="visibility: hidden !important; display: block !important; width: 0px !important; height: 0px !important; border-style: none !important;"></meta>
+</body>
+</html>
