@@ -1,0 +1,688 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "register.css":"kirin/register/1.0.0/register.css"
+    ,"autocomplete":"arale/autocomplete/1.2.2/autocomplete"
+    ,"xbox": "alipay/xbox/1.0.3/xbox"
+    ,"pop-validator": "kirin/pop-validator/1.0.0/pop-validator"
+    ,"select":"arale/select/0.9.9/select"
+    ,"request":"alipay/request/0.9.0/request"
+  }
+});
+seajs.use(['register.css']);
+</script>
+<div id="container">
+  <div class="grid-780 grid-780-pd fn-clear">
+    <div class="navi-container">
+      <ol class="ui-step ui-step-diamond ui-step-blue ui-step-4">
+  			<li class="ui-step-start ui-step-active">
+          <div class="ui-step-line">-</div>    
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">1</i>
+            <span class="ui-step-text">验证用户名</span>
+          </div>
+        </li>
+        <li>
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">2</i>
+            <span class="ui-step-text">设置身份信息</span>
+          </div>
+        </li>
+        <li>
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">3</i>
+            <span class="ui-step-text">设置支付方式</span>
+          </div>
+        </li>
+        <li class="ui-step-end">
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="iconfont ui-step-number"></i>
+            <span class="ui-step-text">成功</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="grid-780 fn-clear">
+    <ul class="tab-choose">
+      <li class="tab-choose-item tab-choose-item-personal"><a href="javascript:;">个人用户</a><em class="arrow"></em></li>
+      <li class="tab-choose-item tab-choose-item-business"><a href="javascript:;">代理用户</a></li>
+    </ul>
+  </div>
+  <div class="grid-780 box-shadow fn-clear">
+    <form id="J-index-form" method="post" class="ui-form ui-form-l ui-form-general" action="">
+      <fieldset>
+        <legend>注册</legend>
+        <div class="ui-form-item ui-form-item-first ui-form-item-area">
+          <label class="ui-label ui-label-area">您所在的国家或地区</label>
+          <input type="hidden" id="country" name="country" value="CN">
+          <input type="hidden" id="acc-type" name="accType" value="2">
+          <select class="fn-hide" id="country-1" name="country-1">
+            <option value="CN">中国大陆</option>
+            <option value="HK">香港</option>
+            <option value="MO">澳门</option>
+            <option value="TW">台湾</option>
+            <option value="AU">澳大利亚(Australia)</option>
+            <option value="CA">加拿大(Canada)</option>
+            <option value="FR">法国(France)</option>
+            <option value="DE">德国(Germany)</option>
+            <option value="ID">印度尼西亚(Indonesia)</option>
+            <option value="IT">意大利(Italy)</option>
+            <option value="JP">日本(Japan)</option>
+            <option value="KR">韩国(Korea)</option>
+            <option value="MY">马来西亚(Malaysia)</option>
+            <option value="NZ">新西兰(New Zealand)</option>
+            <option value="NL">荷兰(Netherlands)</option>
+            <option value="PH">菲律宾(Philippines)</option>
+            <option value="RU">俄罗斯(Russia)</option>
+            <option value="SG">新加坡(Singapore)</option>
+            <option value="SE">瑞典(Sweden)</option>
+            <option value="TH">泰国(Thailand)</option>
+            <option value="GB">英国(UK)</option>
+            <option value="UA">乌克兰(Ukraine)</option>
+            <option value="US">美国(USA)</option>
+            <option value="VN">越南(Vietnam)</option>
+          </select>
+        </div>
+        <div class="ui-form-item">
+          <label for="J-accName" class="ui-label">用户名</label>
+          <input id="J-accName" name="accName" class="ui-input" type="text" placeholder="输入手机号码或电子邮箱" data-explain="请输入用户名。" data-error="" maxlength="100" value="" autocomplete="off" data-pop="J-pop-accName">
+        </div>
+        <div class="ui-form-item">
+          <label for="J-checkcode" class="ui-label">验证码</label>
+          <input id="J-checkcode" name="checkCode" class="ui-input ui-input-100 ime-disabled" type="text" autocomplete="off" data-explain="输入左图中的字符，不区分大小写。" data-error="    " placeholder="输入验证码" maxlength="4">
+          <span class="sl-checkcodeIcon">
+            <span class="checkcodeIcon" id="checkcodeIcon"></span>
+          </span>
+          <img id="J-checkcode-img" title="点击图片刷新验证码" class="checkcode-img" complete="complete" src="https://omeo.alipay.com/service/checkcode?sessionID=45611f5d4a2493f212c97c62e95751fc&amp;r=0.2167511583017553" alt="输入验证码" style="cursor:pointer;">
+        </div>
+        <div class="ui-form-item ui-form-item-checkbox">
+          <input id="J-agree" name="agree" checked="checked" class="ui-checkbox" type="checkbox">
+          <label for="J-agree" class="ui-checkbox-label">我同意<a id="J-alipay-treaty" href="#" class="ft-grey" target="_blank">支付宝服务协议</a></label>
+        </div>
+        <div class="ui-form-item">
+          <div id="submitBtn">
+            <input id="J-submit" type="submit" class="ui-button ui-button-lblue" value="下一步">
+          </div>
+          <span class="ui-form-confirm"><span class="loading-text fn-hide">正在提交信息</span></span>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  //定义validator全局变量
+  var re_validator;
+  seajs.use(['autocomplete','xbox','pop-validator','$','select'], function(AutoComplete,Xbox,Validator,$,Select){
+    //ajax会报错，用jQuery代替
+    var jQuery = $;
+    jQuery(function(){
+      //自动补全——邮箱后缀数据
+      var autoCompleteData = [
+        'qq.com',
+        '163.com',
+        '126.com',
+        '189.cn',
+        'sina.com',
+        'hotmail.com',
+        'gmail.com',
+        'sohu.com',
+        '21cn.com'
+      ];
+      var dataSource = function(query){
+        query = query.replace(/^(.*)@.*$/,'$1');
+        var autoCompleteResult = [];
+        if(!query.match(/[^0-9]/)){
+  				autoCompleteResult.push(query);
+      	}
+        return autoCompleteResult.concat($.map(autoCompleteData, function(v) {
+            return query + '@' + v;
+        }));
+      };
+      //自动补全实例化
+      new AutoComplete({
+        trigger: '#J-accName',
+        submitOnEnter:false,
+        html: '<a>{{{label}}}</a>',
+        classPrefix:"ui-autocomplete"
+        ,dataSource:dataSource
+      }).render();
+      //预设账户名输入框
+      var accNameInput = jQuery("#J-accName");
+      //预设校验码输入框
+      var checkcodeInput = $("#J-checkcode");
+      //预设按钮
+      var submitInput = $("#J-submit");
+      submitInput.attr("data-validatorFlag","true");
+      submitInput.attr("data-agreeFlag","true");
+      //Validator初始化
+      var validator = new Validator({
+        element: '#J-index-form',
+        checkNull:false,
+        autoFocus:false,
+        skipHidden:true,
+        showMessage: function(message, element) {
+          this.getItem(element).removeClass(this.get('itemErrorClass'))
+          .removeClass(this.get('itemSuccessClass'))
+          .removeClass(this.get('itemWarnClass'))
+          .removeClass(this.get('itemProblemClass'));
+          if(element.attr("data-showWarn")){
+            this.getItem(element).addClass(this.get('itemWarnClass'));
+          }
+          else{
+            this.getItem(element).addClass(this.get('itemErrorClass'));
+          }
+          this.popMsgShow({
+            el : element,
+            msg : message
+          });
+          //重新检测的处理
+          if($("#reCheck")[0]){
+            $("#reCheck").click(function(e){
+              re_validator.query("#J-accName").execute();
+              e.preventDefault();
+            });
+          }
+        },
+        hideMessage: function(message, element) {
+          var data_explain = element.attr("data-explain") || "";
+          if(data_explain != "" && !element.parents(".ui-form-item").hasClass("ui-form-item-focus")){
+            this.popMsgHide({
+              el : element
+            });
+          }
+          var successMsg = this.query(element).get("successMsg");
+          if(typeof successMsg != "undefined" && !element.is(":focus")){
+            this.getItem(element)
+            .removeClass(this.get('itemErrorClass'))
+            .removeClass(this.get('itemSuccessClass'))
+            .removeClass(this.get('itemWarnClass'))
+            .removeClass(this.get('itemProblemClass'))
+            .addClass(this.get('itemSuccessClass'));
+            this.popMsgShow({
+              el : element,
+              msg : successMsg
+            });
+          }
+        },
+        onItemValidate:function(element){
+          if(element.attr("id") == "J-accName"){
+            element.val(jQuery.trim(element.val()));
+          }
+        }
+      });
+      re_validator=validator;
+      //新加规则
+      var accName=Validator.getRule('email').or('mobile');
+      Validator.addRule('accName',accName,'宝麟账户名是邮箱地址或手机号码。');
+      Validator.addRule('checkcode',/^.{4}$/,'验证码不正确，请重新输入。');
+      Validator.addRule("state",function(options,commit){
+        var state=jQuery.trim(options.element.val());
+        if (state==="QS"||state==='') {
+          commit(false, "请选择国家或地区。");
+        }
+        else{
+          commit(true);
+        }
+      });
+      Validator.setMessage('email', '宝麟个人（港澳台/海外）账户名只支持电子邮箱。');
+      Validator.addRule('ajaxCheckUserName',function(options,commit){
+        validator.popMsgHide({
+          el : options.element
+        });
+        $.ajax({
+          type	: 'POST',
+          url		:'/account/reg/acctStatusCheck.json',
+          data	:{
+            accName : $('#J-accName').val()
+          },
+          timeout :10000,
+          success	:function(msg){
+            var stat = msg.stat;
+            var accName = msg.info.accName;
+            var accStatus = msg.info.accStatus;
+            var accType = msg.info.accType;
+            var country = msg.info.country;
+            var logonType = msg.info.logonType;
+            var nick = msg.info.nick;
+            var totalLimit = msg.info.totalLimit;
+            var havanaId = msg.info.havanaId;
+            refreshToken(msg.jsonToken);
+            ajaxAccNameDisplay(nick,accStatus,accType,country,logonType,totalLimit,accName,havanaId,commit,options.element);
+          },
+          failure:function(msg){
+            var popMsg = '抱歉，系统忙，暂无法检测此账户名是否可用。<a href="#" id="reCheck">重新检测</a>';
+            var popType = 'warn';
+            ajaxCommit(popType,popMsg,commit,options.element);
+          }
+        })
+      });
+      Validator.setMessage("required","{{please}}"+"{{display}}。");
+      //帐户名Validator验证
+      validator.addItem({
+        element: '#J-accName',
+        required: true,
+        rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} accName ajaxCheckUserName',
+        display: "支付宝账户名"
+      });
+      //验证码Validator验证
+      validator.addItem({
+        element: '#J-checkcode',
+        required: true,
+        display: "验证码",
+        rule: 'required{"please":"请输入"} checkcode',
+        position:$('#J-checkcode-img')
+      });
+      var country1,country2;
+      //区域select初始化
+      if($("#country-1")[0]){
+        country1 = new Select({
+          trigger:'#country-1',
+          classPrefix:'ui-select'
+        }).on('change',function(target){
+          //首先隐藏错误提示
+          validator.popMsgHide({
+            el:$("#country-1")
+          });
+          $("#country").val(target.attr("data-value"));
+          if(target.attr("data-value") == "CN"){
+            //换提示
+            accNameInput.attr({"placeholder":"输入手机号码或电子邮箱","data-explain":"输入的手机号码或电子邮箱将作<br />为账户名。"});
+            //换绑规则
+            validator.removeItem("#J-accName");
+            validator.addItem({
+              element: '#J-accName',
+              required: true,
+              rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} accName ajaxCheckUserName',
+              display: "宝麟账户名"
+            });
+          }
+          else if(target.attr("data-value") == "QS"){
+            //如果是请选择
+            //换提示
+            accNameInput.attr({"placeholder":"输入手机号码或电子邮箱","data-explain":"输入的手机号码或电子邮箱将作<br />为账户名。"});
+            //换绑规则
+            validator.removeItem("#J-accName");
+            validator.addItem({
+              element: '#J-accName',
+              required: true,
+              rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} ajaxCheckUserName',
+              display: "宝麟账户名"
+            });
+          }
+          else{
+            //换提示
+            accNameInput.attr({"placeholder":"输入电子邮箱","data-explain":"输入的电子邮箱将作为账户名。"});
+            //换绑规则
+            validator.removeItem("#J-accName");
+            validator.addItem({
+              element: '#J-accName',
+              required: true,
+              rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} email ajaxCheckUserName',
+              display: "宝麟账户名"
+            });
+          }
+        }).render();
+        country1.getOption(0).addClass('ui-select-item-top');
+        country1.getOption(1).addClass('ui-select-item-top');
+        country1.getOption(2).addClass('ui-select-item-top');
+        country1.getOption(3).addClass('ui-select-item-top');
+      }
+      if ($("#country-1").size() > 0) {
+        validator.addItem({
+          element: '#country-1',
+          required: false,
+          errormessageRequired: '请选择国家或地区。',
+          rule:"state",
+          position: $('#country-1').next()
+        });
+      }
+      //XBOX初始化
+      var mobile_check_box = new Xbox({
+        content		: 'https://memberprod.alipay.com/account/reg/section/mobileCheck.htm?scene=mobileReg',
+        width		: 650
+      }).render().before('show',function(){
+        this.element.addClass("xbox-hideClose");
+      });
+      var email_check_box = new Xbox({
+        content		: 'https://memberprod.alipay.com/account/reg/section/emailCheck.htm',
+        width		: 650
+      }).render().before('show',function(){
+        this.element.addClass("xbox-hideClose");
+      });
+      var agreement_box = new Xbox({
+        trigger: "#J-alipay-treaty",
+        content: 'https://memberprod.alipay.com/account/reg/section/agreement.htm',
+        width: 500
+      }).render().before('show',function(){
+        this.element.addClass("xbox-hideClose");
+      });
+      //Ajax回调处理后的显示
+      function ajaxCommit(popType,popMsg,commit,element){
+        if(popType == "error"){
+          element.removeAttr("data-showWarn");
+          submitInput.attr("data-validatorFlag","false");
+          letBtnGrey();
+          commit(true,popMsg);
+        }
+        else if(popType == "warn"){
+          element.attr("data-showWarn","true");
+          submitInput.attr("data-validatorFlag","false");
+          letBtnGrey();
+          commit(true,popMsg);
+        }
+        else if(popType == "success"){
+          element.removeAttr("data-showWarn");
+          validator.query(element).set("successMsg",popMsg);
+          submitInput.attr("data-validatorFlag","true");
+          letBtnBack();
+          commit(null);
+        }
+      }
+      //设置国家
+      function selectCountry(country){
+        if(country==""){country="CN"}
+        if(country=="CN" || country=="TW" || country=="HK" || country=="MO" || country=="KR" || country=="JP" || country=="SG" || country=="MY" || country=="US" || country=="GB" || country=="AU" || country=="CA" || country=="TH" || country=="VN" || country=="DE" || country=="FR" || country=="RU" || country=="UA" || country=="PH" || country=="IT" || country=="NZ" || country=="ID" || country=="NL" || country=="SE" ){
+          country1.select("li[data-value='"+country+"']");
+        }
+        $("#country").val(country);
+      }
+      //使按钮变灰
+      function letBtnGrey(){
+        if(submitInput.attr("data-validatorFlag") == "false" || submitInput.attr("data-agreeFlag") == "false"){
+          $("#J-submit").attr("disabled","disabled");
+          $("#J-submit").addClass("ui-button-ldisable").removeClass("ui-button-lblue");
+        }
+      }
+      //使按钮正常
+      function letBtnBack(){
+        if(submitInput.attr("data-validatorFlag") == "true" && submitInput.attr("data-agreeFlag") == "true"){
+          $("#J-submit").removeAttr("disabled");
+          $("#J-submit").removeClass("ui-button-ldisable").addClass("ui-button-lblue");
+        }
+      }
+      //国家码映射
+      function getCountry(countryCode){
+      	switch (countryCode){
+      		case "CN":
+      			return "中国大陆";
+      		break;
+      		case "TW":
+      			return "台湾";
+      		break;
+      		case "HK":
+      			return "香港";
+      		break;
+      		case "MO":
+      			return "澳门";
+      		break;
+      		case "KR":
+      			return "韩国";
+      		break;
+      		case "JP":
+      			return "日本";
+      		break;
+      		case "SG":
+      			return "新加坡";
+      		break;
+      		case "MY":
+      			return "马来西亚";
+      		break;
+                  case "US":
+      			return "美国";
+      		break;
+                  case "UA":
+      			return "乌克兰";
+      		break;
+                  case "GB":
+      			return "英国";
+      		break;
+                  case "AU":
+      			return "澳大利亚";
+      		break;
+                  case "CA":
+      			return "加拿大";
+      		break;
+                  case "TH":
+      			return "泰国";
+      		break;
+                  case "VN":
+      			return "越南";
+      		break;
+                  case "DE":
+      			return "德国";
+      		break;
+                  case "PH":
+      			return "菲律宾";
+      		break;
+                  case "IT":
+      			return "意大利";
+      		break;
+                  case "FR":
+      			return "法国";
+      		break;
+                  case "RU":
+      			return "俄罗斯";
+      		break;
+                  case "NZ":
+      			return "新西兰";
+      		break;
+                  case "ID":
+      			return "印度尼西亚";
+      		break;
+                  case "NL":
+      			return "荷兰";
+      		break;
+                  case "SE":
+      			return "瑞典";
+      		break;
+      		default:
+      			return "";
+      	}					
+      }
+	
+      function refreshToken(token){
+      	form_tk = token;
+      	jQuery("input[name='_form_token']").val(token);
+              UA_Opt.setToken(token);
+          	UA_Opt.reload();
+      }
+      //帐户名AJAX验证按条件回显处理
+      function ajaxAccNameDisplay(nick,accStatus,accType,country,logonType,totalLimit,accName,havanaId,commit,element){
+      	var popMsg;
+      	var popType;
+
+      	//国家中文名
+      	if(country!=""){
+      		var countryChinaeseName="（"+getCountry(country)+"）";
+      	}else{
+      		country="CN";
+      		var countryChinaeseName="（中国大陆）";
+      	}
+
+      	//根据不同的accStatus显示不同的提示信息
+      	if(accStatus=="login"){
+      		popMsg='此账户已注册宝麟，<a href=\'/?logonId='+accName+'\' title="立即登录">立即登录</a>';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="loginq"){
+      		popMsg= '您已是宝麟会员，但账户信息不完整，请 <a href=\'/?logonId='+accName+'&goto=/auth/finishRegister.htm\' title="登录">登录</a> 后补全，享受更多服务。';	
+      		popType = 'warn';
+      	}
+        else if(accStatus=="available"){
+      		popMsg ='<span class="ft-white">ok</span>';	
+      		popType = 'success';
+      	}
+        else if(accStatus=="havanatemp"){
+      		popMsg = '此账户名被阿里巴巴集团的其他账户占用，且未完成注册，请<a href=\'https://passport.alipay.com/register/continue.htm?hid='+havanaId+'\' target="_blank" seed="havanatemp_continue">继续注册</a>。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="aliuserexist"){
+      		popMsg = '此账户名注册过阿里巴巴集团的其他账户，暂不支持注册支付宝，请重新输入。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="aliuserexistneedlogin"){
+      		popMsg = '此邮箱/手机号已注册<a href=\'/?appName=alipay&havana_return_url=https://my.alipay.com/portal/i.htm\'>宝麟通行证</a>，请用此账号登录激活宝麟。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="unsupportedcountry"){
+      		popMsg = '抱歉，暂不支持该账户补全信息。建议更换其他邮箱或手机号重新注册。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="taobaouser"){
+      		popMsg = '您在注册淘宝<span class="ft-orange">（'+nick+'）</span>时同步创建了此宝麟账户。<a href=\'javascript:;\'>淘宝账户登录</a>';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="activate" && accType == "2"){
+      		if($("#country").val() == country){
+      			popMsg = '<span class="ft-white">ok</span>';
+      			popType = 'success';
+      		}
+          else{
+      			popMsg = '您已是宝麟个人'+countryChinaeseName+'会员，但账户信息不完整，请<a href=\'/?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
+      			popType = 'warn';
+      		}
+      	}
+        else if(accStatus=="activate" && accType == "1"){
+      		popMsg = '您已是宝麟代理会员，但账户信息不完整，请<a href=\'/?accName='+accName+'\'>继续注册</a>，享受更多服务。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="activatenotalipayq" && accType == "2"){
+      		if($("#country").val() == country){
+      			popMsg = '您已是宝麟会员，但账户信息不完整，请继续注册，享受更多服务。';
+      			popType = 'success';
+      		}
+          else{
+      			popMsg = '您已是宝麟个人'+countryChinaeseName+'会员，但账户信息不完整，请<a href=\'/?accName='+accName+'&country='+country+'\'>继续注册</a>，享受更多服务。';
+      			popType = 'warn';
+      		}	
+      	}
+        else if(accStatus=="activatenotalipayq" && accType == "1"){
+      		popMsg = '您已是宝麟代理会员，但账户信息不完整，请<a href=\'/?accName='+accName+'\'>继续注册</a>，享受更多服务。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="exceedlimit"){
+      		popMsg = '今天此手机号码已接收'+totalLimit+'次短信校验码，请更换手机号码/电子邮箱或明天再试。';
+      		popType = 'warn';
+      	}
+        else if(accStatus=="invalid"){
+      		popMsg = '宝麟账户名是邮箱地址或手机号码。';
+      		popType = 'error';
+      	}
+        else if(accStatus=="forbidden"){
+          if(logonType=="MOBILE"){
+            var text="手机号码";
+          }
+          else if(logonType=="EMAIL"){
+            var text="电子邮箱";
+          }
+      		popMsg = '此'+text+'暂不支持作为账户名，请更换';
+      		popType = 'error';
+      	}
+      	else{
+      		if(logonType=="MOBILE"){
+            var text="手机号码";
+          }
+          else if(logonType=="EMAIL"){
+            var text="电子邮箱";
+          }
+      		popMsg = '抱歉，系统忙，暂无法检测此'+text+'是否可用作账户名。<a href="#" id="reCheck">重新检测</a>';
+      		popType = 'warn';
+      	}
+      	ajaxCommit(popType,popMsg,commit,element);
+      }
+      //消除黄色报错标识
+      $("#J-accName").focus(function(){
+      	$(this).removeAttr("data-showWarn");
+      });
+      //是否同意协议事件处理
+      $("#J-agree").click(function(){
+      	if($(this).attr("checked")){
+      		submitInput.attr("data-agreeFlag","true");
+      		letBtnBack();
+      	}
+        else{
+      		submitInput.attr("data-agreeFlag","false");
+      		letBtnGrey();	
+      	}
+      });
+      //图片验证码点击，换验证码，清内容，focus
+      $("#J-checkcode-img").click(function(){
+      	var src=$(this).attr("src");
+      	src = src.substring(0, src.indexOf("r=")+2)
+      	$(this).attr("src",src+Math.random());
+      	checkcodeInput.val("").trigger("focus");
+      });
+      //做后端返回页面的情况
+      //隐藏第二个地区选择框，如果回传时选择的是海外，还得换绑帐户名规则
+      if($("#country-1").val() != ""||$("#country-1 option:selected").text() == "请选择"){
+      	$(".ui-select-trigger:eq(1)").addClass("fn-hide");
+      }
+      if($("#country-1").val() != "CN"){
+      	//如果是请选择的情况
+      	if($("#country-1").val() == "QS"){
+      		//换提示
+      		accNameInput.attr({"placeholder":"输入手机号码或电子邮箱","data-explain":"输入的手机号码或电子邮箱将作<br />为账户名。"});
+      		//换绑规则
+      		validator.removeItem("#J-accName");
+      		validator.addItem({
+      			element: '#J-accName',
+      			required: true,
+      			rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} ajaxCheckUserName',
+      			display: "宝麟账户名"
+      		});				
+      	}else{
+      		//换提示
+      		accNameInput.attr({"placeholder":"输入电子邮箱","data-explain":"输入的电子邮箱将作为账户名。"});
+      		//换绑规则
+      		validator.removeItem("#J-accName");
+      		validator.addItem({
+      			element: '#J-accName',
+      			required: true,
+      			rule: 'required{"please":"请输入"} minlength{"min":4} maxlength{"max":100} email ajaxCheckUserName',
+      			display: "宝麟账户名"
+      		});				
+      	}
+      }
+      var accCheck = "";
+      if(accCheck == "mobileCheck"){
+      	mobile_check_box.show();
+      }
+      else if(accCheck == "emailCheck"){
+      	email_check_box.show();
+      }
+      else{
+      	//发起帐户名校验
+      	if(jQuery.trim(accNameInput.val())){
+      		accNameInput.val(jQuery.trim(accNameInput.val()));			
+      		if(accNameInput.val() != ""){
+      			function getUrlParam(name)
+      			{
+      				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      				var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+      				if (r!=null)
+                return unescape(r[2]);
+              return ""; //返回参数值
+      			}
+      			var countryInit = getUrlParam("country");
+      			selectCountry(countryInit);
+      			validator.query('#J-accName').execute();
+      		}
+      	}
+      }
+      //处理后端报错
+      validator.renderDataError();
+  	});
+  });
+</script>
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>
