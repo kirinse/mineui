@@ -1,0 +1,158 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "mykirin.css":"kirin/mykirin/1.0.0/mykirin.css"
+    ,"help.css":"kirin/help/1.0.0/help.css"
+    ,"sticky":"arale/sticky/1.3.1/sticky"
+    ,"accordion":"arale/switchable/1.0.2/accordion"
+  }
+});
+seajs.use(['mykirin.css','help.css']);
+seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(Sticky,Accordion,$,Position){
+  $('.has-sub').click(function(e){
+    e.preventDefault();
+    $($(e.currentTarget).next('ul')[0]).toggle();
+    $('#thirdNav ul li').removeClass('third-nav-item-current');
+    $(e.currentTarget).closest('.third-nav-item').addClass('third-nav-item-current');
+    st.adjust();
+  })
+  var st = Sticky("#account-lside", {top:0}, function(status) {
+    if (status){
+      $('#account-lside').css({'margin-left':'0'});
+    }
+    else {
+      $('#account-lside').css({'margin-left':'1px'});
+    }
+  });
+});
+</script>
+<div id="container" class="ui-container fn-clear">
+  <div id="content" class="ui-grid-25 fn-clear">
+    <div id="account-lside-btLine"></div>
+    <div id="account-lside" coor="asidenav">
+      <div id="thirdNav">
+        <ul class="third-nav">
+          <li class="third-nav-item third-nav-item-current">
+            <div>
+              <a href="?my" class="third-nav-link">
+                我的宝麟
+                <i class="iconfont third-nav-angle"></i>
+              </a>              
+            </div>
+          </li>
+          <li class="third-nav-item">
+            <a href="javascript:;" class="third-nav-link has-sub">
+              安全设置
+              <i class="iconfont third-nav-angle"></i>
+            </a>
+            <ul>
+              <li class="third-nav-item">
+                <a href="javascript:;" class="third-nav-link">开户</a>
+              </li>
+              <li class="third-nav-item">
+                <a href="javascript:;" class="third-nav-link has-sub">
+                  转账信息
+                </a>
+                <ul style="display:none" class="nav-3">
+                  <li class="third-nav-item">
+                    <a class="third-nav-link" href="?a=deposit">
+                      <span class="t3">存款</span>
+                    </a>
+                  </li>
+                  <li class="third-nav-item">
+                    <a class="third-nav-link" href="?a=withdrawal">
+                      <span class="t3">提款</span>
+                    </a>
+                  </li>
+                  <li class="third-nav-item">
+                    <a class="third-nav-link" href="?a=transfer">
+                      <span class="t3">转账</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="third-nav-item">
+                <a href="javascript:;" class="third-nav-link has-sub">技术信息</a>
+                <ul style="display: none" class="nav-3">
+                  <li><a class="third-nav-link" href="?a=security"><span class="t3">安全咨询</span></a></li>
+                  <li><a class="third-nav-link" href="?a=browser"><span class="t3">浏览器格式</span></a></li>
+                  <li><a class="third-nav-link" href="?a=standby"><span class="t3">备用网址</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="third-nav-item ">
+            <a onclick="javascript:;" id="cards-trigger" class="third-nav-link">
+              <i class="iconfont bankcard"></i>
+              银行卡
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a href="#/team" class="third-nav-link">
+              <i class="iconfont team"></i>
+              我的团队
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+          <li class="third-nav-item ">
+            <a href="#/messages" class="third-nav-link">
+              <i class="iconfont message"></i>
+              消息中心
+            </a>
+            <i class="iconfont third-nav-angle"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 内容面板 -->
+    <div class="content-area">
+      <h1>快乐彩常见问题</h1>
+      <h2>快乐彩各个国家官方网址是什么？</h2>
+      <p>北京快乐8：<a _src="http://www.bwlc.gov.cn/bulletin/search.jsp?id=3" href="http://www.bwlc.gov.cn/bulletin/search.jsp?id=3">http://www.bwlc.gov.cn/bulletin/search.jsp?id=3</a></p>
+      <p>加拿大快乐彩：<a _src="http://lotto.bclc.com/winning-numbers/keno-and-keno-bonus.html" href="http://lotto.bclc.com/winning-numbers/keno-and-keno-bonus.html">http://lotto.bclc.com/winning-numbers/keno-and-keno-bonus.html</a> </p>
+      <p>澳洲快乐彩：<a _src="https://www.acttab.com.au/keno/results" href="https://www.acttab.com.au/keno/results">https://www.acttab.com.au/keno/results</a> </p>
+      <p>斯洛伐克keno：<a _src="https://eklubkeno.etipos.sk/Archive.aspx" href="https://eklubkeno.etipos.sk/Archive.aspx">https://eklubkeno.etipos.sk/Archive.aspx</a> </p>
+      <p>加拿大西部：<a _src="http://www.wclc.com/winning-numbers/keno.htm" href="http://www.wclc.com/winning-numbers/keno.htm">http://www.wclc.com/winning-numbers/keno.htm</a> </p>
+      <p>马耳他快乐彩：<a _src="http://www.maltco.com/keno/QuickKeno_Today_Results.php" href="http://www.maltco.com/keno/QuickKeno_Today_Results.php">http://www.maltco.com/keno/QuickKeno_Today_Results.php</a></p>
+      <h2>快乐彩开关盘时间是什么？</h2>
+      <p>以下皆以北京时间为准，开关盘时间仅供参考，具体请以官方公布的时间为准</p>
+      <h3>Australia &nbsp; &nbsp;澳大利亚</h3>
+      <p>周一到周四 &nbsp; 开盘05:45AM (北京时间)，关盘 12:30AM (北京时间)</p>
+      <p>周五 &amp; 周六 &nbsp;开盘05:45AM (北京时间)，关盘 01:30AM (北京时间)</p>
+      <p>周日 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 开盘 07:45AM (北京时间)，关盘 12:30AM (北京时间)</p>
+      <h3>Beijing &nbsp; &nbsp;北京</h3>
+      <p><span style="line-height: 1.62;">周一至周日 &nbsp;开盘 09:00AM (北京时间)，关盘 23:55PM (北京时间)</span></p>
+      <h3>Canada &nbsp; 加拿大</h3>
+      <p>周一至周日 开盘 09:00PM (北京时间)，关盘 08:00PM (北京时间)</p>
+      <p>(请注意，官网每天晚上7:00PM到8:00PM都会暂停一小时) (北京时间)</p>
+      <h3>West Canada &nbsp; &nbsp;加拿大西部</h3>
+      <p>周一至周日 开盘 20:30PM (北京时间)，关盘 14:30PM (北京时间)</p>
+      <h3>Slovakia &nbsp; &nbsp; 斯洛伐克</h3>
+      <p><span style="line-height: 1.62;">周一至周日 开盘 11:00AM (北京时间)，关盘 05:50AM (北京时间)</span></p>
+      <h3>Malta &nbsp; &nbsp; 马耳他</h3>
+      <p>周一至周日 开盘 13:00AM (北京时间)，关盘 05:10AM(北京时间)</p>
+      <h2>快乐彩投注支持哪些语言?</h2>
+      <p>目前快乐彩独家提供中文和英文版本投注。</p>
+      <h2>谁可以投注快乐彩投注？</h2>
+      <p>任何年满18岁拥有账号，以及有阅读和了解网站的规则与条款即可下注快乐彩投注。</p>
+      <h2>什么国家支持快乐彩投注？</h2>
+      <p>目前我们长期开放的快乐彩国家有北京快乐8、澳洲keno、斯洛伐克、加拿大西部、加拿大、马耳他等，未来我们还可能开放更多国家的快乐彩供彩票爱好者游戏。</p>
+      <h2>最低投注限额是多少？</h2>
+      <p>快乐彩最低投注是5元人民币。</p>
+      <h2>最高投注额是多少？</h2>
+      <p>快乐彩投注的最高投注额会根据所提供的赔率而不同，当您投注时超过最高额，投注框会自动调整您的投注额为该笔注单的最高投注额。</p>
+      <h2>我是否可以投注连串过关?</h2>
+      <p>目前只可以投注单笔投注，但可以同时投注多个单注，在投注另一个注单之前不需要等待审核中的注单成功即可进行投注。</p>
+      <h2>在哪里我可以看到我的投注记录？</h2>
+      <p>在快乐彩投注页面右上方点击下注记录和历史记录即可查看所有的快乐彩投注历史记录。</p>
+      <h2>是否可以取消我的投注？</h2>
+      <p>一旦您的投注确认，即无法取消或更改。</p>
+    </div>
+    <!-- 内容面板 end-->
+  </div>    
+</div>
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>

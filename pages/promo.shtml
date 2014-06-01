@@ -1,0 +1,37 @@
+<!--#include virtual="/pages/header.html"-->
+<!-- <script type="text/javascript" src="/static/kirin/timeline/2.4.0/js/storyjs-embed.js"></script> -->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "report.css":"kirin/report/1.0.0/report.css"
+    ,"storyjs":"kirin/timeline/2.4.0/js/storyjs-embed.js"
+  }
+});
+seajs.use(['report.css']);
+seajs.use(['$','storyjs'],function($){
+  $(document).ready(function() {
+  	createStoryJS({
+  		type: 'timeline',
+  		width: '100%',
+  		height: '600',
+  		source: 'example_json.json',
+  		embed_id:	'timeline',
+      lang: 'zh-cn',
+      hash_bookmark: true,
+  		debug: true
+  	});
+  });  
+});
+</script>
+  <div id="container" class="ui-container">
+    <div id="content" class=" fn-clear" coor-rate="0.02" coor="default">
+      <div id="timeline">
+        
+      </div>
+    </div>
+  </div>
+<!-- <link rel="stylesheet" href="./styles.css" /> -->
+
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>
