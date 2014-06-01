@@ -55,17 +55,17 @@ seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(St
                   转账信息
                 </a>
                 <ul style="display:none" class="nav-3">
-                  <li class="third-nav-item">
+                  <li class="third-nav-item sub">
                     <a class="third-nav-link" href="?a=deposit">
                       <span class="t3">存款</span>
                     </a>
                   </li>
-                  <li class="third-nav-item">
+                  <li class="third-nav-item sub">
                     <a class="third-nav-link" href="?a=withdrawal">
                       <span class="t3">提款</span>
                     </a>
                   </li>
-                  <li class="third-nav-item">
+                  <li class="third-nav-item sub">
                     <a class="third-nav-link" href="?a=transfer">
                       <span class="t3">转账</span>
                     </a>
@@ -75,9 +75,9 @@ seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(St
               <li class="third-nav-item">
                 <a href="javascript:;" class="third-nav-link has-sub">技术信息</a>
                 <ul style="display: none" class="nav-3">
-                  <li><a class="third-nav-link" href="?a=security"><span class="t3">安全咨询</span></a></li>
-                  <li><a class="third-nav-link" href="?a=browser"><span class="t3">浏览器格式</span></a></li>
-                  <li><a class="third-nav-link" href="?a=standby"><span class="t3">备用网址</span></a></li>
+                  <li class="third-nav-item third"><a class="third-nav-link" href="?a=security"><span class="t3">安全咨询</span></a></li>
+                  <li class="third-nav-item third"><a class="third-nav-link" href="?a=browser"><span class="t3">浏览器格式</span></a></li>
+                  <li class="third-nav-item third"><a class="third-nav-link" href="?a=standby"><span class="t3">备用网址</span></a></li>
                 </ul>
               </li>
             </ul>
