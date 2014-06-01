@@ -9,14 +9,19 @@ seajs.config({
   }
 });
 seajs.use(['mykirin.css','help.css']);
-seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(Sticky,Accordion,$,Position){
-  $('.has-sub').click(function(e){
-    e.preventDefault();
-    $($(e.currentTarget).next('ul')[0]).toggle();
-    $('#thirdNav ul li').removeClass('third-nav-item-current');
-    $(e.currentTarget).closest('.third-nav-item').addClass('third-nav-item-current');
-    st.adjust();
-  })
+seajs.use(['sticky','accordion','$'],function(Sticky,Accordion,$){
+  new Accordion({
+    element:'#thirdNav .third-nav-sub-items'
+    ,multiple: true
+    ,activeIndex: -99
+  }).render();
+  // $('.has-sub').click(function(e){
+  //   e.preventDefault();
+  //   $($(e.currentTarget).next('ul')[0]).toggle();
+  //   $('#thirdNav ul li').removeClass('third-nav-item-current');
+  //   $(e.currentTarget).closest('.third-nav-item').addClass('third-nav-item-current');
+  //   st.adjust();
+  // })
   var st = Sticky("#account-lside", {top:0}, function(status) {
     if (status){
       $('#account-lside').css({'margin-left':'0'});
@@ -33,7 +38,7 @@ seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(St
     <div id="account-lside" coor="asidenav">
       <div id="thirdNav">
         <ul class="third-nav">
-          <li class="third-nav-item third-nav-item-current">
+          <li class="third-nav-item">
             <div>
               <a href="?my" class="third-nav-link">
                 我的宝麟
@@ -41,40 +46,42 @@ seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(St
               </a>              
             </div>
           </li>
-          <li class="third-nav-item">
-            <a href="javascript:;" class="third-nav-link has-sub">
-              安全设置
-              <i class="iconfont third-nav-angle"></i>
-            </a>
-            <ul>
-              <li class="third-nav-item">
+          <li class="third-nav-item third-nav-sub-items">
+            <div data-switchable-role="trigger">
+              <a href="javascript:;" class="third-nav-link has-sub">
+                安全设置
+                <i class="iconfont third-nav-angle"></i>
+              </a>
+            </div>
+            <ul data-switchable-role="panel">
+              <li class="third-nav-item third-nav-item-level1">
                 <a href="javascript:;" class="third-nav-link">开户</a>
               </li>
-              <li class="third-nav-item">
-                <a href="javascript:;" class="third-nav-link has-sub">
+              <li class="third-nav-item third-nav-item-level1 third-nav-sub-items">
+                <a href="javascript:;" class="third-nav-link has-sub" data-switchable-role="trigger">
                   转账信息
                 </a>
-                <ul style="display:none" class="nav-3">
-                  <li class="third-nav-item sub">
+                <ul style="display:none" class="nav-3" data-switchable-role="panel">
+                  <li class="third-nav-item third">
                     <a class="third-nav-link" href="?a=deposit">
                       <span class="t3">存款</span>
                     </a>
                   </li>
-                  <li class="third-nav-item sub">
+                  <li class="third-nav-item third">
                     <a class="third-nav-link" href="?a=withdrawal">
                       <span class="t3">提款</span>
                     </a>
                   </li>
-                  <li class="third-nav-item sub">
+                  <li class="third-nav-item third">
                     <a class="third-nav-link" href="?a=transfer">
                       <span class="t3">转账</span>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="third-nav-item">
-                <a href="javascript:;" class="third-nav-link has-sub">技术信息</a>
-                <ul style="display: none" class="nav-3">
+              <li class="third-nav-item third-nav-item-level1 third-nav-sub-items">
+                <a href="javascript:;" class="third-nav-link has-sub" data-switchable-role="trigger">技术信息</a>
+                <ul style="display: none" data-switchable-role="panel" class="nav-3">
                   <li class="third-nav-item third"><a class="third-nav-link" href="?a=security"><span class="t3">安全咨询</span></a></li>
                   <li class="third-nav-item third"><a class="third-nav-link" href="?a=browser"><span class="t3">浏览器格式</span></a></li>
                   <li class="third-nav-item third"><a class="third-nav-link" href="?a=standby"><span class="t3">备用网址</span></a></li>
@@ -82,21 +89,21 @@ seajs.use(['sticky','accordion','$','arale/position/1.0.1/position'],function(St
               </li>
             </ul>
           </li>
-          <li class="third-nav-item ">
+          <li class="third-nav-item">
             <a onclick="javascript:;" id="cards-trigger" class="third-nav-link">
               <i class="iconfont bankcard"></i>
               银行卡
             </a>
             <i class="iconfont third-nav-angle"></i>
           </li>
-          <li class="third-nav-item ">
+          <li class="third-nav-item">
             <a href="#/team" class="third-nav-link">
               <i class="iconfont team"></i>
               我的团队
             </a>
             <i class="iconfont third-nav-angle"></i>
           </li>
-          <li class="third-nav-item ">
+          <li class="third-nav-item">
             <a href="#/messages" class="third-nav-link">
               <i class="iconfont message"></i>
               消息中心
