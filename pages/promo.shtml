@@ -1,5 +1,9 @@
 <!--#include virtual="/pages/header.html"-->
-<!-- <script type="text/javascript" src="/static/kirin/timeline/2.4.0/js/storyjs-embed.js"></script> -->
+<style>
+.ui-container{
+  padding:0;
+}
+</style>
 <script type="text/javascript">
 seajs.config({
   alias:{
@@ -18,7 +22,8 @@ seajs.use(['$','storyjs'],function($){
   		embed_id:	'timeline',
       lang: 'zh-cn',
       hash_bookmark: true,
-  		debug: true
+      // start_at_end: true,
+      js:'/static/kirin/timeline/2.4.0/js/timeline.js'
   	});
   });  
 });
