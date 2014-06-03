@@ -17,7 +17,7 @@ seajs.use(['$','storyjs'],function($){
   	createStoryJS({
   		type: 'timeline',
   		width: '100%',
-  		height: '600',
+  		height: 619,//$(window).height()-$('header').height()-$('#footer').height(),
   		source: 'example_json.json',
   		embed_id:	'timeline',
       lang: 'zh-cn',
