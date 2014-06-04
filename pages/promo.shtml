@@ -3,6 +3,9 @@
 .ui-container{
   padding:0;
 }
+#timeline{
+  min-height:603px;
+}
 </style>
 <script type="text/javascript">
 seajs.config({
@@ -22,7 +25,7 @@ seajs.use(['$','storyjs'],function($){
   		embed_id:	'timeline',
       lang: 'zh-cn',
       hash_bookmark: true,
-      // start_at_end: true,
+      start_at_end: true,
       js:'/static/kirin/timeline/2.4.0/js/timeline.js'
   	});
   });  

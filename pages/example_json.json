@@ -7,7 +7,7 @@
         "startDate":"2011,12,12",
   			"endDate":"2012,1,27",
         "headline":"哇音",
-        "text":"<p>哇音测试</p>",
+        "text":"<p>哇音测试</p><p></p><a href='javascript:;' style='left:200px;'>分享</a>",
         "asset":
         {
           "media":"/images/slide1.jpg",
