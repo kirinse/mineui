@@ -1,0 +1,166 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "step.css":"alice/step/1.0.3/step.css"
+    ,"list.css":"alice/list/1.0.1/list.css"
+    ,"findpass.css":"kirin/findpass/1.0.0/findpass.css"
+    ,"findpass":"kirin/findpass/1.0.0/findpass"
+    ,"button-count":"alipay/button-count/1.0.0/button-count"
+  }
+});
+seajs.use(['findpass.css','step.css','list.css']);
+</script>
+<div class="container">
+  <div class="content">
+    <div class="maincenter">
+      <ol class="ui-step ui-step-diamond ui-step-blue ui-step-3">
+        <li class="ui-step-start ui-step-active">
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">1</i>
+            <span class="ui-step-text">验证身份</span>
+          </div>
+        </li>
+        <li>
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">2</i>
+            <span class="ui-step-text">重置登录密码</span>
+          </div>
+        </li>
+        <li class="ui-step-end">
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="iconfont ui-step-number"></i>
+            <span class="ui-step-text">找回成功</span>
+          </div>
+        </li>
+      </ol>
+      <div class="maincenter-box">
+        <div class="maincenter-box-tip">
+          <p class="ui-tiptext ui-tiptext-message">
+            <i class="iconfont ui-tiptext-icon info"></i>
+            您正在使用 “<span class="strong">电子邮箱</span>” 验证身份，请完成以下操作：
+          </p>
+        </div>
+        <div class="sentmail">
+          <p class="result">
+            <i class="icon iconfont ico-safeguard"></i>邮件已发送到您的邮箱
+            <span class="account">a22***@163.com</span>。请按邮箱中的提示操作，完成身份验证。
+          </p>
+          <p class="result">
+            <a href="http://mail.163.com/" target="_blank" class="ui-button ui-button-mblue">
+              <span class="ui-button-text">立即查收邮件</span>
+            </a>
+          </p>
+        </div>
+        <form class="ui-form" id="J-inputCodeForm" method="post" action="">
+          <div class="ui-form-item">
+            <label class="ui-label">验证码</label>
+            <input type="text" class="ui-input ui-input-checkcode" data-explain="请输入您收到的4位验证码，不区分大小写。" data-display="验证码" autocomplete="off" value="" id="J-code" name="code">
+            <div class="ui-form-explain">请输入您收到的4位验证码，不区分大小写。</div>
+          </div>
+          <div class="ui-form-item ui-form-item-last">
+            <input type="submit" value="下一步" class="ui-button ui-button-mblue">
+          </div>          
+        </form>
+        <div class="resentmail">
+          <p class="title">一直没有收到邮件？</p>
+          <ul class="ui-list">
+            <li class="ui-list-item">
+              <span class="ui-list-item-text">请先检查是否在垃圾邮件中。如果还未收到，请</span>
+              <button id="J-resend-mail" class="ui-button ui-button-swhite">点击重新发送邮件</button>
+              <span class="list-btn-explain" id="J-resend-success"></span>
+            </li>
+            <li class="ui-list-item">
+              <span class="ui-list-item-text">还是收不到？请</span>
+              <a href="###">选择其他验证方式</a>              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+seajs.use(['$', 'button-count','findpass'], function (jQuery, ButtonCount, Findpass) {
+  var resendSuccess = jQuery("#J-resend-success");
+  var resendError = jQuery("#J-reGetCode-error");
+  var buttonCount = new ButtonCount({
+    element:'#J-resend-mail',
+    disabledClass:'ui-button-sdisable',
+    enabledClass:'ui-button-swhite',
+    initialize:true,
+    hook:{
+      url:'/console/reSendMail.json',
+      type:"GET",
+      dataType:"json",
+      data:{
+        "sp":"1-resetQueryPwd-fullpage",
+        "emailType":"privacyCheckEmail"
+      },
+      cache:false
+    },
+    count:60,
+    countTemplate:'({{count}}秒后)重新发送邮件'
+  }).on('success',function (data) {
+    data = data[0];
+    if (data.stat === "ok") {
+      resendSuccess.attr("class", "list-btn-explain list-btn-explain-success");
+      resendSuccess.html("<i class='iconfont success'></i>发送成功");
+      setTimeout(function () {
+          resendSuccess.attr("class", "list-btn-explain");
+          resendSuccess.html("");
+      }, 2000);
+    } else if (data.stat === "fail") {
+      resendSuccess.attr("class", "list-btn-explain list-btn-explain-error");
+      resendSuccess.html("<i class='iconfont error'></i>" + '抱歉，无法重发邮件');
+      resendSuccess.removeClass("fn-hide");
+    } else if (data.stat === "deny") {
+      if (data.target.length > 0) {
+          window.location = data.target;
+      }
+    }
+  }).on('error',function (data) {
+    resendSuccess.attr("class", "list-btn-explain list-btn-explain-error");
+    resendSuccess.html("<i class='iconfont error'></i>抱歉，无法重发邮件");
+    resendSuccess.removeClass("fn-hide");
+  }).on('click', function () {
+    //更新样式
+    resendSuccess.attr("class", "list-btn-explain list-btn-explain-loading");
+    resendSuccess.html("<i class='icon icon-loading'></i>正在发送...");
+    //动态获取 input 值
+    var ajaxHook = this.get('hook');
+    ajaxHook.data.mobile = jQuery('#J-mobile').val();
+    this.set('hook', ajaxHook);
+  });
+  buttonCount.start();
+  buttonCount.disable();
+  var Validator = Findpass.Validator;
+  /* Validator 表单校验*/
+  validator = new Validator({
+    element: '#J-inputCodeForm',
+    autoSubmit: true,
+    failSilently: false,
+    onFormValidated: function(err, results, form){
+      if(!err){
+        jQuery('.ui-form-item-last .ui-button-mblue').attr('disabled','disabled').val('跳转中...').removeClass('ui-button-mblue').addClass('ui-button-mdisable');
+      }
+    }
+  });
+  validator.addItem({
+    element: '#J-code',
+    required: true,
+    rule: 'minlength{min:4} maxlength{max:4}',
+    errormessageRequired: '请输入验证码。'
+  })
+});
+</script>
+
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>

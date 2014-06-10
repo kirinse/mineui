@@ -1,0 +1,90 @@
+<!--#include virtual="/pages/header.html"-->
+<script type="text/javascript">
+seajs.config({
+  alias:{
+    "step.css":"alice/step/1.0.3/step.css"
+    ,"findpass.css":"kirin/findpass/1.0.0/findpass.css"
+    ,"findpass":"kirin/findpass/1.0.0/findpass"
+  }
+});
+seajs.use(['findpass.css','step.css']);
+</script>
+<div class="container">
+  <div class="content">
+    <div class="maincenter">
+      <ol class="ui-step ui-step-diamond ui-step-blue ui-step-3">
+        <li class="ui-step-start ui-step-active">
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">1</i>
+            <span class="ui-step-text">验证身份</span>
+          </div>
+        </li>
+        <li>
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="ui-step-number">2</i>
+            <span class="ui-step-text">重置登录密码</span>
+          </div>
+        </li>
+        <li class="ui-step-end">
+          <div class="ui-step-line">-</div>
+          <div class="ui-step-icon">
+            <i class="iconfont"></i>
+            <i class="iconfont ui-step-number"></i>
+            <span class="ui-step-text">找回成功</span>
+          </div>
+        </li>
+      </ol>
+      <div class="maincenter-box">
+        <div class="maincenter-box-tip">
+            <p class="ui-tiptext ui-tiptext-message">
+                <i class="iconfont ui-tiptext-icon info"></i>
+                您正在使用 “<span class="strong">安全保护问题</span>” 验证身份，请填写以下信息：
+            </p>
+        </div>
+        <form class="ui-form" id="J-findPwdForm" method="post" action="findpass2.shtml">
+          <div class="ui-form-item">
+            <label class="ui-label ui-label-reset">安全保护问题</label>
+            <p class="ui-form-text" id="J-secQa-1">我的出生地是？</p>
+          </div>
+          <div class="ui-form-item">
+            <label class="ui-label">答案</label>
+            <input type="text" class="ui-input" id="J-answer-1" name="answer1" value="" autocomplete="off">
+          </div>
+          <div class="ui-form-item ui-form-item-last">
+            <input type="submit" value="下一步" class="ui-button ui-button-mblue">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+seajs.use(['findpass'],function(Findpass){
+  var Validator = Findpass.Validator;
+  /* Validator 表单校验*/
+  validator = new Validator({
+    element: '#J-findPwdForm',
+    autoSubmit: true,
+    failSilently: false,
+    onFormValidated: function(err, results, form){
+      if(!err){
+        jQuery('.ui-form-item-last .ui-button-mblue').attr('disabled','disabled').val('跳转中...').removeClass('ui-button-mblue').addClass('ui-button-mdisable');
+      }
+    }
+  });
+  validator.addItem({
+    element: '#J-answer-1',
+    required: true,
+    rule: '',
+    errormessageRequired: '请输入安全保护问题的答案。'
+  })
+})
+</script>
+
+<!--#include virtual="/pages/footer.html"-->
+</body>
+</html>
