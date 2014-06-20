@@ -1,21 +1,21 @@
 {
-  stat:"ok"
-  ,infos:[
+  "stat":"ok"
+  ,"infos":[
     {
-      title:"低频彩"
-      ,code:"DP"
+      "title":"低频彩"
+      ,"code":"DP"
     }
     ,{
-      title:"时时彩"
-      ,code:"SSC"
+      "title":"时时彩"
+      ,"code":"SSC"
     }
     ,{
-      title:"十一选五"
-      ,code:"11X5"
+      "title":"十一选五"
+      ,"code":"11X5"
     }
     ,{
-      title:"快乐8"
-      ,code:"KENO"
+      "title":"快乐8"
+      ,"code":"KENO"
     }
   ]
 }

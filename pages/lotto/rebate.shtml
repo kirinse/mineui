@@ -5,253 +5,107 @@
       <h2>返点设置</h2>
     </div>
     <div class="ui-tab mr-t10">
-        <ul class="ui-tab-items" id="J-lotto-types">
-            <li class="ui-tab-item">
-                <a href="javascript:;">低频彩</a>
-            </li>
-            <li class="ui-tab-item">
-                <a href="javascript:;">时时彩</a>
-            </li>
-            <li class="ui-tab-item">
-                <a href="javascript:;">十一选五</a>
-            </li>
-            <li class="ui-tab-item">
-                <a href="javascript:;">快乐8</a>
-            </li>
-            <li class="ui-tab-item">
-                <a href="javascript:;">快3</a>
-            </li>
-        </ul>
+        <ul class="ui-tab-items" id="J-lotto-types"></ul>
     </div>
-    <!-- 类型面板 -->
-    <div class="ui-box ui-box-follow ui-lottos-panel">
-      <div class="ui-box-container">
-        <div class="ui-box-content">
-          <div class="ui-table-container">
-            <table class="ui-table ui-table-nosideborder">
-              <!-- 一个彩种 -->
-              <thead>
-                <tr>
-                  <th colspan="2" style="font-weight:700;">
-                    <a href="javascript:;" class="ui-table-head-title" data-switchable-role="trigger">
-                      <i class="iconfont"></i>
-                      福彩 3D
-                    </a>
-                  </th>
-                  <th>奖金: 
-                    <select id="base-prize">
-                      <option value="1500">1500</option>
-                      <option value="1600">1600</option>
-                      <option value="1700">1700</option>
-                      <option value="1800">1800</option>
-                      <option value="1900">1900</option>                                    
-                    </select>
-                  </th>
-                  <th>
-                    返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/>%
-                    <a class="ui-button ui-button-swhite">设置</a>
-                  </th>
-                </tr>
-              </thead>
-              <tbody data-switchable-role="panel">
-                <tr>
-                  <td>不定位</td>
-                  <td>一码不定位</td>
-                  <td>奖金: 6.6元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td rowspan=3>三星</td>
-                  <td>直选</td>
-                  <td>奖金: 1700元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>组选</td>
-                  <td>
-                    组三: 570元<br>
-                    组六: 280元
-                  </td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>五码串高</td>
-                  <td>
-                  组三: 1425元<br>
-                  组六: 1425元
-                  </td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td rowspan=2>二星</td>
-                  <td>二星直选</td>
-                  <td>奖金: 170元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td>二星组选</td>
-                  <td>奖金: 85元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>一星</td>
-                  <td>定位胆</td>
-                  <td>奖金: 17元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td>不定位</td>
-                  <td>二码不定位</td>
-                  <td>奖金: 31元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>大小单双</td>
-                  <td>大小单双</td>
-                  <td>奖金: 6.8元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-action">
-                  <td colspan="3"></td>
-                  <td>
-                    <button class="ui-button ui-button-mblue">保存</button>
-                  </td>
-              </tbody>
-              <!-- /一个彩种 -->
-              <!-- 一个彩种 -->
-              <thead>
-                <tr>
-                  <th colspan="2" style="font-weight:700;">
-                    <a href="javascript:;" class="ui-box-head-more" data-switchable-role="trigger">
-                      <i class="iconfont"></i>
-                      体彩 P3/P5
-                    </a>
-                  </th>
-                  <th>奖金: 
-                    <select id="base-prize">
-                      <option value="1500">1500</option>
-                      <option value="1600">1600</option>
-                      <option value="1700">1700</option>
-                      <option value="1800">1800</option>
-                      <option value="1900">1900</option>                                    
-                    </select>
-                  </th>
-                  <th>
-                    返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/>%
-                    <a class="ui-button ui-button-swhite">设置</a>
-                  </th>
-                </tr>
-              </thead>
-              <tbody data-switchable-role="panel">
-                <tr>
-                  <td>不定位</td>
-                  <td>一码不定位</td>
-                  <td>奖金: 6.6元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td rowspan=3>三星</td>
-                  <td>直选</td>
-                  <td>奖金: 1700元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>组选</td>
-                  <td>
-                    组三: 570元<br>
-                    组六: 280元
-                  </td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>五码串高</td>
-                  <td>
-                  组三: 1425元<br>
-                  组六: 1425元
-                  </td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td rowspan=2>二星</td>
-                  <td>二星直选</td>
-                  <td>奖金: 170元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td>二星组选</td>
-                  <td>奖金: 85元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>一星</td>
-                  <td>定位胆</td>
-                  <td>奖金: 17元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr>
-                  <td>不定位</td>
-                  <td>二码不定位</td>
-                  <td>奖金: 31元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-split">
-                  <td>大小单双</td>
-                  <td>大小单双</td>
-                  <td>奖金: 6.8元</td>
-                  <td><label>返点: <input type="text" class="ui-input ui-input-rebate" name="rebate" id="rebate"/></label>% (范围：0~5.8%)</td>
-                </tr>
-                <tr class="ui-table-action">
-                  <td colspan="3"></td>
-                  <td>
-                    <button class="ui-button ui-button-mblue">保存</button>
-                  </td>
-              </tbody>
-              <!-- /一个彩种 -->
-            </table>
-          </div>
-        </div>
-      </div>
+    <div id="J-lottotype-panel-container">
+      <!-- 类型面板 -->
+      <!-- /类型面板 -->
     </div>
-    <!-- /类型面板 -->
   </div>
 </section>
-
+<div id="loading" class="loading fn-hide">
+  <div class="ui-loading-text">
+    <span>正在加载</span>
+    <span id="loading-content"></span>
+    ...
+  </div>
+</div>
+<script type="text/x-handlebars-template" id="lotto-template">
+  <thead>
+    <tr>
+      <th style="font-weight:700;width:130px">
+        <a href="javascript:;" class="ui-table-head-title" data-switchable-role="trigger">
+          <i class="iconfont"></i>
+          {{{title}}}
+        </a>
+      </th>
+      <th colspan="2">
+        <div style="position:relative;">
+          <label class="min-prize">
+            最低奖金: 
+            <input type="text" class="ui-input ui-input-rebate" maxlength="4"/>
+          </label>
+          <div class="slide-wrapper" id="J-prize-slider-{{{code}}}"></div>
+          <label class="max-prize">
+            最高奖金: 
+            <input type="text" class="ui-input ui-input-rebate" maxlength="4"/>
+          </label>
+          <button class="ui-button ui-button-swhite">保存</button>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody data-switchable-role="panel" id="J-prize-details-{{{code}}}">
+    {{#infos}}
+    {{#compare method.length 1}}
+    <tr>
+      <td>{{title}}</td>
+      <td>{{method.[0].title}}</td>
+      <td>
+      {{#each method.[0].prizes}}
+      {{#if level}}{{level}}{{else}}奖金{{/if}}: 
+      <span class="prize-slider-range" data-count="{{count}}">
+        <span>{{count}}</span>
+         - 
+        <span>{{count}}</span>
+      </span>
+      <br>
+      {{/each}}
+      </td>
+    </tr>
+    {{/compare}}
+    {{#compare method.length ">" 1}}
+    {{#each method}}
+    <tr>
+      {{#compare @index "===" 0}}<td rowspan="{{../../method.length}}">{{../../title}}</td>{{/compare}}
+      <td>{{title}}</td>
+      <td>
+      {{#each prizes}}
+      {{#if level}}{{level}}{{else}}奖金{{/if}}: 
+      <span class="prize-slider-range" data-count="{{count}}"{{#if base}} data-base="{{{base}}}"{{/if}}>
+        <span>{{count}}</span>
+         - 
+        <span>{{count}}</span>
+      </span>
+      <br>
+      {{/each}}
+      </td>
+    </tr>
+    {{/each}}
+    {{/compare}}
+    {{/infos}}
+  </tbody>
+</script>
 <script type="text/javascript">
+var loading;
 seajs.config({
   alias: {
-    "rebate": "kirin/rebate/1.0.0/rebate"
-    ,"tab":"alice/tab/1.0.1/tab.css"
-    ,"box":"alice/box/1.1.0/box.css"
-    ,"table": "alice/table/1.1.0/table.css"
-    ,"button":"alice/button/1.2.0/button.css"
-    ,"select.css":"alice/select/1.0.2/select.css"
-    ,"rebate.css": "kirin/rebate/1.0.0/rebate.css"
-    ,"form": "alice/form/1.0.2/form.css"
+    'rebate':'kirin/rebate/1.0.0/rebate'
+    ,'rebate.css':'kirin/rebate/1.0.0/rebate.css'
   }
 });
-seajs.use(['rebate','tab','box','table','button','select.css','form'], function(Rebate){
-  var Select = Rebate.Select, Tabs = Rebate.Tabs, Accordion = Rebate.Accordion;
+seajs.use(['rebate','rebate.css'], function(Rebate){
   var LottoType = Rebate.LottoType;
-  new Select({
-    trigger:'.ui-table-nosideborder select'
-    ,triggerTpl: '<a href="#"><span data-role="trigger-content"></span><i class="iconfont dropdown" title="下三角形"></i></a>'
-    ,width: 90
-  }).render();
-  new Accordion({
-    element: '.ui-lottos-panel'
-    ,multiple: true
-    ,activeIndex: 0
-    ,classPrefix: 'ui-accordion'
-  }).render();
   new LottoType({
-    element: jQuery('.ui-content')[0]
+    element: '.ui-content'
     ,triggers: '.ui-tab .ui-tab-items li'
+    ,panelContainer: '#J-lottotype-panel-container'
     ,panels: '.ui-lottos-panel'
     ,triggerType: 'click'
     ,activeTriggerClass:'ui-tab-item-current'
+    ,loadingEle:'#loading'
   }).render();
 });
-seajs.use('rebate.css');
 </script>
 <!--#include virtual="/pages/footer.html"-->
 </body>
