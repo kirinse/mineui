@@ -86,6 +86,14 @@
     {{/infos}}
   </tbody>
 </script>
+<script type="text/x-handlebars-template" id="tip-template">
+  <div class="ui-tiptext-container ui-tiptext-container-{{type}}">
+    <p class="ui-tiptext ui-tiptext-{{type}}">
+      <i class="ui-tiptext-icon iconfont {{type}}"></i>
+      {{{content}}}
+    </p>
+  </div>
+</script>
 <script type="text/javascript">
 var loading;
 seajs.config({
