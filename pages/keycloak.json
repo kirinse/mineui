@@ -1,0 +1,8 @@
+{
+  "realm": "kirin",
+  "realm-public-key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWNDaBHNnULRK/GhKU+o4klqJLYG3Rx3y7L1CIeT2uvizxk4a8n32G11fyG9elPZIo0FLrR4qXoxIE+tANZjVPxPAg16RhVf4X+iOohoyzzOAofKyoYZNl5mzmltILowQXk3ltVsvJwme9R3TxXa+1BVXqNgtnGdYaoFX2l/X//wIDAQAB",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "lobby",
+  "public-client": true
+}

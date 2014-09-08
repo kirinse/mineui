@@ -183,9 +183,10 @@
     alias: {
       "slide": "arale/switchable/1.0.2/slide"
       ,"index.css": "kirin/index/1.0.0/index.css"
+      ,"keycloak": "kirin/keycloak/1.0.0/keycloak"
     }
   });
-  seajs.use(['slide','$','index.css'],function(Slide,$){
+  seajs.use(['slide','$','keycloak','index.css'],function(Slide,$,Keycloak){
     /* banner */
     var banners = new Slide({
       element: '#banner'
@@ -215,6 +216,22 @@
       ,hasTriggers: false
       ,interval: 6000
     })
+    /* keycloak */
+    var keycloakAuth = new Keycloak('keycloak.json');
+    var loadFailure = function () {
+      console.log('Failed to load data.  Check console log');
+    };
+
+    var reloadData = function () {
+      keycloakAuth.updateToken(10)
+      .success(function(){
+        console.log('success');
+      })
+      .error(function() {
+        console.log('Failed to load data.  User is logged out.');
+      });
+    }
+    keycloakAuth.init({ onLoad: 'check-sso' }).success(reloadData);
   });
   </script>
 </body>
